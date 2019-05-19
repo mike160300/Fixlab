@@ -23,19 +23,35 @@ const routes: Routes = [
   }
 ]
 
+//Módulos:
+import { AuthModule } from './auth/auth.module';
+
+//Servicios:
+
+//Componentes de Ngx-Bootstrap:
+
+
+//Componentes:
+import { HomeComponent } from './components/home/home.component';
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+
 @NgModule({
   declarations: [
     AppComponent,
     ProfileComponent,
     LoginComponent,
     RegisterComponent,
-    HomeComponent
+    HomeComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes)
+    RouterModule.forRoot(routes),
+    AuthModule,
+    AppRoutingModule,
+    ServiceWorkerModule.register('ngsw-worker.js', { enabled: environment.production })
   ],
   providers: [AuthenticationService, AuthGuardService],
   bootstrap: [AppComponent]

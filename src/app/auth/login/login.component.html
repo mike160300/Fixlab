@@ -1,0 +1,34 @@
+<!--Inicio de sesión-->
+<div class="py-5 text-center">
+  <div class="container">
+    <div class="row">
+      <div class="login-box">
+          <img src="/assets/icons/flash_1.png" class="avatar" alt="Avatar Image">
+          <h1>Accede a Fixlab</h1>
+          <form (ngSubmit)="login(f)" #f="ngForm" novalidate="">
+            <!-- Introduce tu correo electrónico -->
+            <input type="text" id="email" name="email" class="form-control" #email="ngModel" ngModel 
+                  placeholder="Correo electrónico">
+                            
+            <!-- Introduce tu password -->
+            <input type="password" class="form-control" id="password" name="password" #password="ngModel" ngModel placeholder="Password">      
+
+            <!--Submit para iniciar sesión con correo electrónico-->
+            <input type="submit" class="btn btn-primary" value="Iniciar Sesión" [disabled]="!f.valid">
+                    
+            <p>ó</p>
+
+            <!--Botón para iniciar sesión con Google-->  
+            <button type="button" (click)="auth.googleLogin()" class="btn btn-primary btn-google">
+              <img src="/assets/icons/icon-google.png" alt="Google Account">
+            </button>
+            <hr>
+            <a [routerLink]="['/forgot']" routerLinkActive="active">¿Olvidaste tu contraseña?</a><br>
+            <a [routerLink]="['/register']" routerLinkActive="active">¿No tienes una cuenta?</a>
+          </form>
+      </div>      
+    </div>
+  </div>  
+</div>
+
+

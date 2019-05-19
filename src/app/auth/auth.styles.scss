@@ -1,0 +1,92 @@
+.login-box
+{
+    width: 320px;
+    background: #fff;
+    border-radius: 10px;
+    border: 10px;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    padding: 75px 30px;
+    position: absolute;
+    text-align: center;
+
+}
+
+.login-box .avatar 
+{
+    width: 100px;
+    height: 100px;
+    border-radius: 20%;
+    position: absolute;
+    top: -50px;
+    left: calc(50% - 50px);
+}
+  
+.login-box h1 
+{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 30px;
+}
+  
+.login-box label 
+{
+    margin: 0;
+    padding: 0;
+    font-weight: bold;
+    display: block;
+}
+  
+.login-box input 
+{
+    width: 100%;
+    margin-bottom: 20px;
+}
+  
+.login-box input[type="text"], .login-box input[type="password"] 
+{
+    height: 40px;
+    color: #151515;
+    font-size: 16px;
+}
+  
+.login-box input[type="submit"] 
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 18px;
+    border-radius: 20px;
+}
+
+.login-box a 
+{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: #101015;
+}
+  
+.login-box a:hover
+{
+    color: #151515;
+}
+
+.btn-google 
+{
+    /*f57906*/
+    color: white;
+    background: transparent;
+    text-align: center;
+    top: 50px;
+    border-radius: 20px;
+}
+
+.custom-checkbox
+{
+    color:#ea7c24;
+}
+
