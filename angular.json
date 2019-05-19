@@ -3,21 +3,17 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "Fixlab": {
+    "FixLab": {
       "root": "",
       "sourceRoot": "src",
       "projectType": "application",
       "prefix": "app",
-      "schematics": {
-        "@schematics/angular:component": {
-          "style": "scss"
-        }
-      },
+      "schematics": {},
       "architect": {
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
-            "outputPath": "dist/Fixlab",
+            "outputPath": "dist/FixLab",
             "index": "src/index.html",
             "main": "src/main.ts",
             "polyfills": "src/polyfills.ts",
@@ -28,15 +24,12 @@
               "src/manifest.json"
             ],
             "styles": [
-              "src/styles.scss",
-		          "./node_modules/bootstrap/dist/css/bootstrap.css"
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "./node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
-            "scripts": [
-            "./node_modules/jquery/dist/jquery.min.js",
-            "./node_modules/popper.js/dist/umd/popper.js",
-            "./node_modules/bootstrap/dist/js/bootstrap.js"
-            ],
-            "es5BrowserSupport": true
+            "scripts": []
           },
           "configurations": {
             "production": {
@@ -55,33 +48,25 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "budgets": [
-                {
-                  "type": "initial",
-                  "maximumWarning": "2mb",
-                  "maximumError": "5mb"
-                }
-              ],
-              "serviceWorker": true,
-              "ngswConfigPath": "src/ngsw-config.json"
+              "serviceWorker": true
             }
           }
         },
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "Fixlab:build"
+            "browserTarget": "FixLab:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "Fixlab:build:production"
+              "browserTarget": "FixLab:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "Fixlab:build"
+            "browserTarget": "FixLab:build"
           }
         },
         "test": {
@@ -92,7 +77,10 @@
             "tsConfig": "src/tsconfig.spec.json",
             "karmaConfig": "src/karma.conf.js",
             "styles": [
-              "src/styles.scss"
+              {
+                "input": "node_modules/@angular/material/prebuilt-themes/indigo-pink.css"
+              },
+              "src/styles.css"
             ],
             "scripts": [],
             "assets": [
@@ -116,20 +104,19 @@
         }
       }
     },
-    "Fixlab-e2e": {
+    "FixLab-e2e": {
       "root": "e2e/",
       "projectType": "application",
-      "prefix": "",
       "architect": {
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
             "protractorConfig": "e2e/protractor.conf.js",
-            "devServerTarget": "Fixlab:serve"
+            "devServerTarget": "FixLab:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "Fixlab:serve:production"
+              "devServerTarget": "FixLab:serve:production"
             }
           }
         },
@@ -145,5 +132,5 @@
       }
     }
   },
-  "defaultProject": "Fixlab"
+  "defaultProject": "FixLab"
 }
