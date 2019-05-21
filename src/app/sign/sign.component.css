@@ -1,0 +1,36 @@
+.saludo{
+    height: 400px;
+    margin: 0 auto;
+    width: 50%;   
+    justify-content: center;
+}
+
+.titulo{    
+    text-align: center;
+    color: #f8f9fa;
+    font-size: 90px;
+    padding: 2px;
+    background-size: cover;
+    padding: 1px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.botones{
+    width: 60%;
+    margin: 0 auto;
+    position: relative;
+    height: 300px;
+    display: block;
+    margin-top: 50px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.btn-dark{
+background-color: #060504;
+border-color: #060504;  
+}
+
+.btn-dark:hover{
+background-color:#343a40;
+border-color: #343a40;
+}   

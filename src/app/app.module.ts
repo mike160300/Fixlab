@@ -11,11 +11,13 @@ import { RegisterComponent } from './register/register.component'
 import { HomeComponent } from './home/home.component'
 import { AuthenticationService } from './authentication.service'
 import { AuthGuardService } from './auth-guard.service';
+import { SignComponent } from './sign/sign.component'
 
 const routes: Routes = [
-  { path: '', component: HomeComponent },
+  { path: '', component: SignComponent },
   { path: 'login', component: LoginComponent },
   { path: 'register', component: RegisterComponent },
+  { path: 'home', component: HomeComponent },
   {
     path: 'profile',
     component: ProfileComponent,
@@ -30,6 +32,7 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
+    SignComponent
   ],
   imports: [
     BrowserModule,
