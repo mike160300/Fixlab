@@ -6,10 +6,9 @@
           <img src="/assets/icons/flash_1.png" class="avatar" alt="Avatar Image">
           <br>
           <h1>Accede a FixLab </h1>
-          <form (submit)="login(f)" novalidate="f">
+          <form (ngSubmit)="register(f)" #f="ngForm" novalidate="">
 
             <!-- Nombre de usuario -->           
-            <div class="form-group formlogin">
                 <input type="text" id="username" name="username" class="form-control" #username="ngModel" ngModel [ngClass]="{'is-invalid':username.errors!=null && username.touched, 'is-valid':username.errors==null}" required minlength="3" placeholder="Nombre de usuario">
                 <!--Si no es válido-->
                 <div class="invalid-feedback">
@@ -22,7 +21,6 @@
                 </div>
                 <!--Si es válido-->
                 <div *ngIf="username.valid" class="valid-feedback"></div>
-            </div>
             <hr>            
 
             <!--Email-->
@@ -58,9 +56,8 @@
             <hr>
 
 
-            <input class="btn btn-primary btn-block" type="submit" value="Registrase" [routerLink]="['/home']" placeholder="Acceder">
-            <input class="btn btn-danger btn-block" type="button" value="Volver" [routerLink]="['/']" 
-            placeholder="Volver">
+            <input class="btn btn-primary btn-block" type="submit" value="Registrase" [routerLink]="['/home']" [disabled]="!f.valid">
+            <input class="btn btn-danger btn-block" type="button" value="Volver" [routerLink]="['/']">
             <hr>
 
             <a [routerLink]="['/login']" routerLinkActive="active">¿Ya dispone de una cuenta con nosotros?</a>

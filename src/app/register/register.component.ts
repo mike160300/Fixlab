@@ -1,6 +1,7 @@
 import { Component } from "@angular/core";
 import { AuthenticationService, TokenPayload } from "../authentication.service";
 import { Router } from "@angular/router";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
@@ -17,7 +18,7 @@ export class RegisterComponent {
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
-  register() {
+  register(form: NgForm) {
     this.auth.register(this.credentials).subscribe(
       () => {
         this.router.navigateByUrl("/profile");

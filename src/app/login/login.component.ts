@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { AuthenticationService, TokenPayload } from '../authentication.service';
 import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-login',
@@ -17,7 +18,7 @@ export class LoginComponent {
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
-  login() {
+  login(form: NgForm) {
     this.auth.login(this.credentials).subscribe(
       () => {
         this.router.navigateByUrl('/profile')

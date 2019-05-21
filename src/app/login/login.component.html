@@ -6,44 +6,43 @@
           <img src="/assets/icons/flash_1.png" class="avatar" alt="Avatar Image">
           <br>
           <h1>Accede a FixLab </h1>
-          <form (submit)="login(f)" novalidate="f">
+          <form (ngSubmit)="login(f)" #f="ngForm" novalidate="">
 
             <!--Email-->
-            <input type="text" id="email" name="email" class="form-control" #email="ngModel" ngModel
-          [ngClass]= "{'is-invalid':email.errors!=null && email.touched, 'is-valid':email.errors==null}" 
-          required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Correo electrónico">
-            
-            <!--Si es válido-->
-            <div *ngIf="email.valid" class="valid-feedback"></div>
-            <!--Si es inválido-->
-            <div class="invalid-feedback">
-              <div *ngIf="email.errors?.required">
-                  <small>Este campo es requerido.</small>
-              </div>
-              <div *ngIf="email.errors?.pattern">
-                  <small>Se debe introducir un patrón de email válido.</small>
-              </div>
-            </div>
-            <hr>
-            
-            <input type="password" class="form-control" id="password" name="password" #password="ngModel" ngModel placeholder="Password" [ngClass]= "{'is-invalid':password.errors!=null && password.touched, 'is-valid':password.errors==null}" required minlength="8">
-            <!--Si es válido-->
-            <div *ngIf="email.valid" class="valid-feedback"></div>
-            <!--Si es inválido-->
-            <div class="invalid-feedback">
-                <div *ngIf="password.errors?.required">
+              <input type="text" id="email" name="email" class="form-control" #email="ngModel" ngModel
+            [ngClass]= "{'is-invalid':email.errors!=null && email.touched, 'is-valid':email.errors==null}" 
+            required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Correo electrónico">
+              
+              <!--Si es válido-->
+              <div *ngIf="email.valid" class="valid-feedback"></div>
+              <!--Si es inválido-->
+              <div class="invalid-feedback">
+                <div *ngIf="email.errors?.required">
                     <small>Este campo es requerido.</small>
                 </div>
-                <div *ngIf="password.errors?.minlength">
-                    <small>El nombre debe tener al menos {{password.errors.minlength.requiredLength}} carácteres.</small>
+                <div *ngIf="email.errors?.pattern">
+                    <small>Se debe introducir un patrón de email válido.</small>
                 </div>
-            </div>              
+              </div>
+            <hr>
+            
+            <!--Password-->
+              <input type="password" class="form-control" id="password" name="password" #password="ngModel" ngModel placeholder="Password" [ngClass]= "{'is-invalid':password.errors!=null && password.touched, 'is-valid':password.errors==null}" required minlength="8">
+              <!--Si es válido-->
+              <div *ngIf="email.valid" class="valid-feedback"></div>
+              <!--Si es inválido-->
+              <div class="invalid-feedback">
+                  <div *ngIf="password.errors?.required">
+                      <small>Este campo es requerido.</small>
+                  </div>
+                  <div *ngIf="password.errors?.minlength">
+                      <small>El nombre debe tener al menos {{password.errors.minlength.requiredLength}} carácteres.</small>
+                  </div>
+              </div>           
             <hr>
 
-
-            <input class="btn btn-primary btn-block" type="submit" value="Acceder" [routerLink]="['/home']" placeholder="Acceder">
-            <input class="btn btn-danger btn-block" type="button" value="Volver" [routerLink]="['/']" 
-            placeholder="Volver">
+            <input class="btn btn-primary btn-block" type="submit" value="Acceder" [routerLink]="['/home']" [disabled]="!f.valid">
+            <input class="btn btn-danger btn-block" type="button" value="Volver" [routerLink]="['/']">
             <hr>
 
             <a [routerLink]="['/register']" routerLinkActive="active">¿No tienes una cuenta?</a>
