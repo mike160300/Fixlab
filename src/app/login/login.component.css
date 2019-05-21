@@ -1,17 +1,10 @@
 .login-box
 {
-    width: 320px;
-    height: 560px;
     background: #151515ba;
     color: #fff;
     text-align: center;
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
     box-sizing: border-box;
     border-radius: 20px;
-    padding: 70px 30px;
 }
   
 .login-box .avatar 
@@ -56,21 +49,19 @@
     font-size: 16px;
 }
   
-.login-box input[type="submit"] 
+.login-box input[type="submit"], input[type="button"] 
 {
     border: none;
     outline: none;
     height: 40px;
-    background: #6626dd;
     color: azure;
     font-size: 18px;
     border-radius: 20px;
 }
   
-.login-box input[type="submit"]:hover
+.login-box input[type="submit"], input[type="button"]:hover
 {
     cursor: pointer;
-    background: #8838e4;
     color: azure;
 }
 
@@ -85,5 +76,10 @@
 .login-box a:hover
 {
     color: azure;
+}
+
+.login-box hr
+{
+    color: #151515ba;
 }
 
