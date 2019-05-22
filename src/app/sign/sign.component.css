@@ -1,11 +1,8 @@
-.posicion{  
-    margin: 150px;
-}
 
 .saludo{
     height: 400px;
     margin: 0 auto;
-    width: 50%;   
+    width: 70%;   
     justify-content: center;
 }
 
@@ -25,7 +22,6 @@
     position: relative;
     height: 300px;
     display: block;
-    margin-top: 50px;
     font-family: 'Noto Sans KR', sans-serif;
 }
 
@@ -37,4 +33,10 @@ border-color: #060504;
 .btn-dark:hover{
 background-color:#343a40;
 border-color: #343a40;
+}
+
+.img
+{
+    width: 300px;
+    height: 200px;
 }   
