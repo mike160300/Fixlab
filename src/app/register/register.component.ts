@@ -18,6 +18,10 @@ export class RegisterComponent {
   constructor(private auth: AuthenticationService, private router: Router) {}
 
   register() {
+    var email = document.getElementById("email");
+    var username = document.getElementById("username");
+    console.log(username);
+    console.log(email);
     this.auth.register(this.credentials).subscribe(
       () => {
         this.router.navigateByUrl("/profile");
