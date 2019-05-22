@@ -10,7 +10,7 @@
 .login-box .avatar 
 {
     height: 120px;
-    position: fixed;
+    position: static;
     top: 24px;
     left: calc(50% - 107px);
 }

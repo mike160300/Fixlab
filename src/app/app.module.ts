@@ -14,6 +14,7 @@ import { AuthGuardService } from './auth-guard.service';
 import { SignComponent } from './sign/sign.component'
 import { AppRoutingModule } from './app-routing.module';
 import { NavigationComponent } from './navigation/navigation.component';
+import { FooterComponent } from './footer/footer.component';
 
 const routes: Routes = [
   { path: '', component: SignComponent },
@@ -35,7 +36,9 @@ const routes: Routes = [
     LoginComponent,
     RegisterComponent,
     HomeComponent,
-    SignComponent
+    SignComponent,
+    NavigationComponent,
+    FooterComponent
   ],
   imports: [
     BrowserModule,
