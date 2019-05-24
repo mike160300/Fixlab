@@ -1,18 +1,53 @@
-<div class="container">
-  <div class="row">
-    <div class="col-md-6 mt-5 mx-auto">
-      <form (submit)="login()">
-        <h1 class="h3 mb-3 font-weight-normal">Please sign in</h1>
-        <div class="form-group">
-          <label for="email">Email address</label>
-          <input type="email" class="form-control" name="email" placeholder="Enter email" [(ngModel)]="credentials.email">
+<br><br>
+<div class="py-5 text-center text-white">
+    <div class="container-fluid text-center">
+      <div class="row">
+        <div class="p-5 col-lg-6 col-10 mx-auto login-box">
+          <img src="/assets/images/logo.png" class="avatar text-center" alt="Logo FixLab">
+          <br>
+          <h1>Accede a Fixlab</h1>
+          <form (ngSubmit)="login(f)" #f="ngForm" novalidate="">
+
+            <!--Email-->
+              <input type="text" id="email" name="email" class="form-control" #email="ngModel" ngModel
+            [ngClass]= "{'is-invalid':email.errors!=null && email.touched, 'is-valid':email.errors==null}" 
+            required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Correo electrónico">
+              
+              <!--Si es válido-->
+              <div *ngIf="email.valid" class="valid-feedback"></div>
+              <!--Si es inválido-->
+              <div class="invalid-feedback">
+                <div *ngIf="email.errors?.required">
+                    <small>Este campo es requerido.</small>
+                </div>
+                <div *ngIf="email.errors?.pattern">
+                    <small>Se debe introducir un patrón de email válido.</small>
+                </div>
+              </div>
+            <hr>
+            
+            <!--Password-->
+              <input type="password" class="form-control" id="password" name="password" #password="ngModel" ngModel placeholder="Password" [ngClass]= "{'is-invalid':password.errors!=null && password.touched, 'is-valid':password.errors==null}" required minlength="8">
+              <!--Si es válido-->
+              <div *ngIf="email.valid" class="valid-feedback"></div>
+              <!--Si es inválido-->
+              <div class="invalid-feedback">
+                  <div *ngIf="password.errors?.required">
+                      <small>Este campo es requerido.</small>
+                  </div>
+                  <div *ngIf="password.errors?.minlength">
+                      <small>El nombre debe tener al menos {{password.errors.minlength.requiredLength}} carácteres.</small>
+                  </div>
+              </div>           
+            <hr>
+
+            <input class="btn btn-primary btn-block" type="submit" value="Acceder" [routerLink]="['/home']" [disabled]="!f.valid">
+            <input class="btn btn-danger btn-block" type="button" value="Volver" [routerLink]="['/']">
+            <hr>
+
+            <a [routerLink]="['/register']" routerLinkActive="active">¿No tienes una cuenta?</a>
+          </form>
         </div>
-        <div class="form-group">
-          <label for="password">Password</label>
-          <input type="password" class="form-control" name="password" placeholder="Password" [(ngModel)]="credentials.password">
-        </div>
-        <button type="submit" class="btn btn-lg btn-primary btn-block">Sign in</button>
-      </form>
+      </div>
     </div>
   </div>
-</div>

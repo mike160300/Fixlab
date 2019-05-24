@@ -1,9 +1,12 @@
-import { Component } from '@angular/core'
-import { AuthenticationService, TokenPayload } from '../authentication.service'
-import { Router } from '@angular/router'
+import { Component } from '@angular/core';
+import { AuthenticationService, TokenPayload } from '../authentication.service';
+import { Router } from '@angular/router';
+import { NgForm } from '@angular/forms';
 
 @Component({
-  templateUrl: './login.component.html'
+  selector: 'app-login',
+  templateUrl: './login.component.html',
+  styleUrls: ['./login.component.css']
 })
 export class LoginComponent {
   credentials: TokenPayload = {
@@ -15,7 +18,7 @@ export class LoginComponent {
 
   constructor(private auth: AuthenticationService, private router: Router) {}
 
-  login() {
+  login(form: NgForm) {
     this.auth.login(this.credentials).subscribe(
       () => {
         this.router.navigateByUrl('/profile')
