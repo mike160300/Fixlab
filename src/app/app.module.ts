@@ -5,48 +5,62 @@ import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
 
 import { AppComponent } from './app.component'
-import { ProfileComponent } from './profile/profile.component'
-import { LoginComponent } from './login/login.component'
-import { RegisterComponent } from './register/register.component'
-import { HomeComponent } from './home/home.component'
-import { AuthenticationService } from './authentication.service'
-import { AuthGuardService } from './auth-guard.service';
-import { SignComponent } from './sign/sign.component'
-import { AppRoutingModule } from './app-routing.module';
-import { NavigationComponent } from './navigation/navigation.component';
-import { FooterComponent } from './footer/footer.component';
 
-const routes: Routes = [
-  { path: '', component: SignComponent },
-  { path: 'login', component: LoginComponent },
-  { path: 'register', component: RegisterComponent },
-  {path: 'home', component: HomeComponent },
-  {
-    path: 'profile',
-    component: ProfileComponent,
-    canActivate: [AuthGuardService]
-  }
-]
+//Router:
+import { APP_ROUTING } from './app.routes';
+
+//Módulos:
+import { AuthModule } from './auth/auth.module';
+
+//Ngx-Bootstrap:
+import { BsDropdownModule } from 'ngx-bootstrap/dropdown';
+import { AlertModule } from 'ngx-bootstrap/alert';
+import { ButtonsModule } from 'ngx-bootstrap';
+import { BsDatepickerModule } from 'ngx-bootstrap/datepicker';
+import { ModalModule } from 'ngx-bootstrap/modal';
+import { CollapseModule } from 'ngx-bootstrap/collapse';
+import { TabsModule } from 'ngx-bootstrap/tabs';
+import { CarouselModule } from 'ngx-bootstrap/carousel';
+import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
+import { TooltipModule } from 'ngx-bootstrap/tooltip';
+import { AccordionModule } from 'ngx-bootstrap/accordion';
+
+//Componentes:
+import { DashboardComponent } from './components/dashboard/dashboard.component';
+import { HomeComponent } from './components/home/home.component';
+import { ProfileComponent } from './components/profile/profile.component';
+import { NavbarComponent } from './components/navbar/navbar.component';
+import { FooterComponent } from './components/footer/footer.component';
 
 
 @NgModule({
   declarations: [
     AppComponent,
-    ProfileComponent,
-    LoginComponent,
-    RegisterComponent,
+    DashboardComponent,
     HomeComponent,
-    SignComponent,
-    NavigationComponent,
+    ProfileComponent,
+    NavbarComponent,
     FooterComponent
   ],
   imports: [
     BrowserModule,
     FormsModule,
     HttpClientModule,
-    RouterModule.forRoot(routes),
+    AuthModule,
+    APP_ROUTING,
+    BsDropdownModule.forRoot(),
+    AlertModule.forRoot(),
+    AccordionModule.forRoot(),
+    ButtonsModule.forRoot(),
+    TooltipModule.forRoot(),
+    BsDatepickerModule.forRoot(),
+    CollapseModule.forRoot(),
+    ModalModule.forRoot(),
+    TabsModule.forRoot(),
+    CarouselModule.forRoot(),
+    ProgressbarModule.forRoot()
   ],
-  providers: [AuthenticationService, AuthGuardService],
+  providers: [],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
