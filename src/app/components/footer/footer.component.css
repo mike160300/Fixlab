@@ -1,0 +1,16 @@
+.container-fluid
+{
+	background-color: #151515;
+	color: #fff;
+}
+
+a
+{
+	color: grey;
+}
+
+img
+{
+	width: 200px;
+	height: 100px;
+}
