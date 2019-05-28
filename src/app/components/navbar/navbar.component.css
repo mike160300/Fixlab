@@ -1,11 +1,39 @@
+* 
+{
+    box-sizing: border-box;
+}
 
-.navbar
+.navbar-dark
+{
+    background-color:#151515;
+    text-align: center;
+}
+
+
+.logo
+{
+	width: 100px;
+	height: 50px;
+    padding:6px;	
+}
+
+.btn-dark
 {
 	background-color: #151515;
 }
 
-img
+.dropdown-menu, .dropdown-item:hover
 {
-	width: 100px;
-	height: 50px;
+	background-color: #151515;
+	color: #fff;
+}
+
+.dropdown-divider
+{
+	border-top: 1px solid #5a5a5a;
+}
+
+a
+{
+	color: grey;
 }

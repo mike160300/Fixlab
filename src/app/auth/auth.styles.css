@@ -32,7 +32,8 @@
   
 .login-box input 
 {
-    width: 100%;
+    width: 50%;
+    text-align: center;
     margin-bottom: 20px;
 }
   
