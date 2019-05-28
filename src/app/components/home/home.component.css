@@ -1,0 +1,25 @@
+.btn-create, .btn-modify, .btn-delete
+{
+	border-radius: 60%;
+}
+
+.card
+{
+	border-radius: 0.90rem;
+	border-color: #151515ba;
+}
+
+.card-body
+{
+	background-color: #151515ba;
+}
+
+.jumbotron
+{
+	background-color: #151515;
+}
+
+.container
+{
+	color: #fff;
+}
