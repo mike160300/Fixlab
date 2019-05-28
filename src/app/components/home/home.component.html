@@ -32,9 +32,10 @@
         		</div>
     		</div>
 		</div>
- 	
+</div>
+
  	<!--Modal para crear la publicación-->
-	<ng-template #template1>
+	 <ng-template #template1>
 	  <div class="modal-header">
 	    <h4 class="modal-title pull-left">Crear nueva publicación</h4>
 	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef1.hide()">
@@ -42,7 +43,73 @@
 	    </button>
 	  </div>
 	  <div class="modal-body">
-	    This is a modal.
+
+			<div class="container">
+
+				<div class="row">
+						<div class="col-sm-6">
+								<!--Foto-->
+								<div class="text-center">
+										<!--img *ngIf="this.imageUrl==null" src="/assets/img/sin-perfil.png" class="img-thumbnail" alt="avatar">
+										<img *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail" alt="avatar"-->
+										<h6>Seleccione la foto para el producto</h6>
+										<br>
+
+										<div class="container">
+												<!--Barra de progreso-->
+												<progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>
+
+												<!--Muestra el progreso de la barra-->
+												<div class="item">
+														Progress: {{ (uploadProgress | async) / 100 | percent }}
+												</div>
+												<br>
+
+												<!--Se sube una nueva foto para el usuario-->
+												<div class="item">
+														<!--Selecciona un archivo .png o .jpg-->
+														<input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">
+														<!--Botón para poner en funcionamiento el input-->
+														<button type="button" class="btn btn-lg btn-success" (click)="inputFile.click()">
+														Subir foto
+														<i class="fas fa-upload"></i>
+												</button>
+												</div>
+										</div>
+
+								</div>
+						</div>
+						<div class="col-sm-6">
+								<div class="tab-content">
+										<form #cf="ngForm" class="form" id="CreateForm">
+												<div class="form-group">
+														<div class="col-xs-6">
+																<label for="name"><h4>Título</h4></label>
+																<input [(ngModel)]="newProduct.name" #name="ngModel" ngModel type="text" class="form-control" name="name" id="name" placeholder="Escribe un título...">
+														</div>
+												</div>
+												<div class="form-group">
+														<div class="col-xs-6">
+																<label for="descripcion"><h4>Descripción</h4></label>
+																<textarea [(ngModel)]="newProduct.description" #descripcion="ngModel" ngModel type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Escribe aquí de qué trata tu problema..."></textarea>
+														</div>
+												</div>
+
+												<div class="form-group text-center">
+													<button class="btn btn-primary" (click)="createProduct(cf)" type="submit">Crear Publicación
+														<i class="fas fa-pencil-alt"></i>
+													</button>
+													<br><br>
+													<button class="btn btn-cancelar btn-danger" (click)="modalRef1.hide()">Cancelar
+														<i class="far fa-times-circle"></i>
+													</button>
+												</div>
+										</form>
+								</div>
+						</div>
+				</div>
+		</div>
+
 	  </div>
 	</ng-template>
 
@@ -55,7 +122,76 @@
 	    </button>
 	  </div>
 	  <div class="modal-body">
-	    This is a modal.
+
+			<div class="container">
+
+				<div class="row">
+						<div class="col-sm-6">
+								<!--Foto-->
+								<div class="text-center">
+										<!--img *ngIf="this.imageUrl==null" src={{selectedProduct.photoUrl}} class="img-thumbnail" alt="avatar">
+										<img *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail" alt="avatar"-->
+										<h6>Seleccione una nueva foto</h6>
+										<br>
+
+										<div class="container">
+												<!--Barra de progreso-->
+												<progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>
+
+												<!--Muestra el progreso de la barra-->
+												<div class="item">
+														Progress: {{ (uploadProgress | async) / 100 | percent }}
+												</div>
+												<br>
+
+												<!--Se sube una nueva foto para el usuario-->
+												<div class="item">
+														<!--Selecciona un archivo .png o .jpg-->
+														<input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">
+														<!--Botón para poner en funcionamiento el input-->
+														<button type="button" class="btn btn-lg btn-success" (click)="inputFile.click()">
+														Subir foto
+														<i class="fas fa-upload"></i>
+												</button>
+												</div>
+										</div>
+
+								</div>
+						</div>
+						<div class="col-sm-6">
+								<div class="tab-content">
+										<form #f="ngForm" class="form" id="ProductForm">
+												<div class="form-group">
+														<div class="col-xs-6">
+																<label for="name"><h4>Nombre</h4></label>
+																<input [(ngModel)]="nameValue" #name="ngModel" ngModel type="text" class="form-control" name="name" id="name" placeholder="Escribe un título...">
+														</div>
+												</div>
+												<div class="form-group">
+														<div class="col-xs-6">
+																<label for="descripcion"><h4>Descripción</h4></label>
+																<textarea [(ngModel)]="descriptionValue" #descripcion="ngModel" ngModel type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Escribe aquí de qué trata tu problema..."></textarea>
+														</div>
+												</div>
+
+												<div class="form-group text-center">
+														<div class="col-xs-12">
+																<br>
+																<button class="btn btn-primary" (click)="updateProduct(f)" type="submit">Actualizar
+																				<i class="fas fa-sync-alt"></i>
+																</button>
+																<br><br>
+																<button class="btn btn-cancelar btn-danger" (click)="modalRef2.hide()">Cancelar
+																				<i class="far fa-times-circle"></i>
+																</button>
+														</div>
+												</div>
+										</form>
+								</div>
+						</div>
+				</div>
+		</div>
+
 	  </div>
 	</ng-template>
 
@@ -67,8 +203,13 @@
 	      <span aria-hidden="true">&times;</span>
 	    </button>
 	  </div>
-	  <div class="modal-body">
-	    This is a modal.
-	  </div>
+		<div class="modal-body">
+			¿Desea borrar de forma permanente la publicación seleccionada?
+			<br><br>
+			<div class="text-center">
+				<button (click)="delet()" class="btn btn-success" type="button">Sí</button>
+				&nbsp;
+				<button (click)="modalRef3.hide()" class="btn btn-danger btn-cancelar" type="button">No</button>
+			</div>
+		</div>
 	</ng-template>
-</div>

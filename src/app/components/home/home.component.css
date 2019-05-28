@@ -6,10 +6,6 @@
     box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
 }
 
-.container
-{
-	color: #fff;
-}
 
 .notice {
     padding: 15px;
@@ -38,4 +34,42 @@
 .notice-info>strong {
     /*color: #45ABCD;*/
     color: #ac45cd;
+}
+
+.modal-header
+{
+    background: #ac45cd;
+    color: white;
+}
+
+.hidden 
+{  
+    display: none;
+}
+
+hr 
+{
+    background-color: grey;
+}
+
+.row 
+{
+    padding: 20px;
+}
+
+
+/*Prop. para imágenes*/
+
+img {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+.modal-body
+{
+    color: #151515;
 }
