@@ -1,7 +1,73 @@
 <div class="container">
   <div class="jumbotron mt-5">
     <div class="col-sm-8 mx-auto">
-      <h1 class="text-center">WELCOME</h1>
+      <h1 class="text-center">Mis Publicaciones</h1>
+
+      	<br>
+        <div class="containet text-center">
+        	<button type="button" class="btn btn-success btn-create" (click)="create(template1)"
+        	tooltip="Agregar nueva publicación." placement="bottom">
+      			<i class="fas fa-plus fa-2x"></i>
+  			</button>
+        </div>
+        <br><br>
+
+      	<div class="card">
+		  <div class="card-body text-center">
+			   <h2>Título de Publicación</h2>
+			   &nbsp;
+			   <button type="button" class="btn btn-primary btn-modify" (click)="modify(template2)"
+			   tooltip="Modificar la publicación." placement="bottom">
+		      	<i class="fas fa-pencil-alt"></i>
+		  		</button>
+		  		&nbsp;
+		  		<button type="button" class="btn btn-danger btn-delete" (click)="delet(template3)"
+		  		tooltip="Eliminar la publicación." placement="bottom">
+		      	<i class="fas fa-trash-alt"></i>
+		  		</button>
+		  </div>
+		</div>
+
+ 	
+ 	<!--Modal para crear la publicación-->
+	<ng-template #template1>
+	  <div class="modal-header">
+	    <h4 class="modal-title pull-left">Crear nueva publicación</h4>
+	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef1.hide()">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+	    This is a modal.
+	  </div>
+	</ng-template>
+
+	<!--Modal para modificar la publicación-->
+	<ng-template #template2>
+	  <div class="modal-header">
+	    <h4 class="modal-title pull-left">Modificar publicación</h4>
+	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+	    This is a modal.
+	  </div>
+	</ng-template>
+
+	<!--Modal para eliminar la publicación-->
+	<ng-template #template3>
+	  <div class="modal-header">
+	    <h4 class="modal-title pull-left">Eliminar publicación</h4>
+	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef3.hide()">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+	    This is a modal.
+	  </div>
+	</ng-template>
+
     </div>
   </div>
 </div>
