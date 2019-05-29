@@ -8,7 +8,7 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 
 const ROUTES: Routes = [
-    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService],
+    { path: 'dashboard', component: DashboardComponent, //canActivate: [AuthGuardService],
       children: [
         {path: 'home', component: HomeComponent},
         { path: 'profile', component: ProfileComponent }

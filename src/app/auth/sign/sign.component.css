@@ -1,4 +1,6 @@
-
+.centrado{
+    margin: 150px;
+}
 .saludo{
     margin: 0 auto;
     width: 70%;   
