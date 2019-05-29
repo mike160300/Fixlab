@@ -31,6 +31,9 @@ import { HomeComponent } from './components/home/home.component';
 import { ProfileComponent } from './components/profile/profile.component';
 import { NavbarComponent } from './components/navbar/navbar.component';
 import { FooterComponent } from './components/footer/footer.component';
+import { DiscoverComponent } from './components/discover/discover.component';
+import { NotifyComponent } from './components/notify/notify.component';
+import { AnswersComponent } from './components/answers/answers.component';
 
 
 @NgModule({
@@ -40,7 +43,10 @@ import { FooterComponent } from './components/footer/footer.component';
     HomeComponent,
     ProfileComponent,
     NavbarComponent,
-    FooterComponent
+    FooterComponent,
+    DiscoverComponent,
+    NotifyComponent,
+    AnswersComponent
   ],
   imports: [
     BrowserModule,
