@@ -4,7 +4,7 @@
       	<br>
         <div class="containet text-center">
         	<button type="button" class="btn btn-success btn-create" (click)="create(template1)"
-        	tooltip="Agregar nueva publicación." placement="bottom">
+        	tooltip="Agregar nueva publicación" placement="bottom">
       			<i class="fas fa-plus fa-2x"></i>
   			</button>
         </div>
@@ -12,21 +12,22 @@
 
         <div class="container-fluid">
     		<div class="notice notice-info notice-lg">
-        		<strong>Título de Publicación</strong> notice-success
+        		<strong>Título de Publicación</strong>
+        		<hr>
         		<div class="text-right">
 	        		&nbsp;
 	        		<button type="button" class="btn btn-info btn-modify" [routerLink]="['/']"
-				   tooltip="Ver detalles de la publicación." placement="bottom">
+				   tooltip="Ver detalles" placement="bottom">
 			      	<i class="far fa-eye"></i>
 			  		</button>
 			  		&nbsp;
 				   <button type="button" class="btn btn-primary btn-modify" (click)="modify(template2)"
-				   tooltip="Modificar la publicación." placement="bottom">
+				   tooltip="Modificar la publicación" placement="bottom">
 			      	<i class="fas fa-pencil-alt"></i>
 			  		</button>
 			  		&nbsp;
 			  		<button type="button" class="btn btn-danger btn-delete" (click)="delet(template3)"
-			  		tooltip="Eliminar la publicación." placement="bottom">
+			  		tooltip="Eliminar la publicación" placement="bottom">
 			      	<i class="fas fa-trash-alt"></i>
 			  		</button>
         		</div>
@@ -50,10 +51,9 @@
 						<div class="col-sm-6">
 								<!--Foto-->
 								<div class="text-center">
-										<!--img *ngIf="this.imageUrl==null" src="/assets/img/sin-perfil.png" class="img-thumbnail" alt="avatar">
-										<img *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail" alt="avatar"-->
-										<h6>Seleccione la foto para el producto</h6>
-										<br>
+										<img class="img-fluid img-circle img-thumbnail profile-pic" *ngIf="auth.getUserDetails()?.image" src="{{auth.getUserDetails()?.image}}">
+       									<img class="img-fluid profile-pic" *ngIf="!auth.getUserDetails()?.image" src="/assets/images/sin-perfil.png">
+										<h6>Seleccione la foto para el producto</h6><br>
 
 										<div class="container">
 												<!--Barra de progreso-->
@@ -76,6 +76,7 @@
 												</button>
 												</div>
 										</div>
+										<hr>
 
 								</div>
 						</div>
@@ -129,8 +130,8 @@
 						<div class="col-sm-6">
 								<!--Foto-->
 								<div class="text-center">
-										<!--img *ngIf="this.imageUrl==null" src={{selectedProduct.photoUrl}} class="img-thumbnail" alt="avatar">
-										<img *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail" alt="avatar"-->
+										<img class="img-fluid img-circle img-thumbnail profile-pic" *ngIf="auth.getUserDetails()?.image" src="{{auth.getUserDetails()?.image}}">
+       									<img class="img-fluid profile-pic" *ngIf="!auth.getUserDetails()?.image" src="/assets/images/sin-perfil.png">
 										<h6>Seleccione una nueva foto</h6>
 										<br>
 
@@ -155,6 +156,7 @@
 												</button>
 												</div>
 										</div>
+										<hr>
 
 								</div>
 						</div>
@@ -163,7 +165,7 @@
 										<form #f="ngForm" class="form" id="ProductForm">
 												<div class="form-group">
 														<div class="col-xs-6">
-																<label for="name"><h4>Nombre</h4></label>
+																<label for="name"><h4>Título</h4></label>
 																<input [(ngModel)]="nameValue" #name="ngModel" ngModel type="text" class="form-control" name="name" id="name" placeholder="Escribe un título...">
 														</div>
 												</div>
