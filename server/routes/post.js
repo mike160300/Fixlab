@@ -14,7 +14,7 @@ posts.route('/add').post(function (req, res) {
 
   let newpost = new post(req.body);
   newpost.save()
-  
+
   /*const datapost = req.body;
  
  
@@ -43,7 +43,6 @@ posts.route('/').get(function (req, res) {
     }
   });
 }); *?
-
 // Defined edit route
 posts.route('/edit/:id').get(function (req, res) {
   let id = req.params.id;
@@ -61,7 +60,6 @@ businessRoutes.route('/update/:id').post(function (req, res) {
         business.person_name = req.body.person_name;
         business.business_name = req.body.business_name;
         business.business_gst_number = req.body.business_gst_number;
-
         business.save().then(business => {
           res.json('Update complete');
       })
@@ -71,7 +69,6 @@ businessRoutes.route('/update/:id').post(function (req, res) {
     }
   });
 });
-
 // Defined delete | remove | destroy route
 businessRoutes.route('/delete/:id').get(function (req, res) {
     Business.findByIdAndRemove({_id: req.params.id}, function(err, business){
@@ -80,4 +77,4 @@ businessRoutes.route('/delete/:id').get(function (req, res) {
     });
 });
 */
-module.exports = posts;
+module.exports = posts; 

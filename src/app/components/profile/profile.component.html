@@ -1,0 +1,83 @@
+<div class="container box">
+
+    <!--Imagen de Perfil-->
+        <img class="img-fluid img-circle img-thumbnail profile-pic" *ngIf="auth.getUserDetails()?.image" src="{{auth.getUserDetails()?.image}}">
+       	<img class="img-fluid profile-pic" *ngIf="!auth.getUserDetails()?.image" src="/assets/images/sin-perfil.png">
+        <!--img class="img-fluid profile-pic" *ngIf="auth.getUserDetails()?.image!=null" src={{this.imageUrl}} class="img-thumbnail" alt="avatar"-->
+    <br>
+
+    <!--Para actualizar/añadir imagen de perfil a un usuario-->
+    <div class="container">
+       <!--Barra de progreso-->
+       <progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>
+
+        <!--Muestra el progreso de la barra-->
+        <div class="container">
+            Progress: {{ (uploadProgress | async) / 100 | percent }}
+        </div>
+        <br>
+        <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+            <p>La foto se cargó correctamente</p>
+        </div>
+        <br>
+        <!--Se sube una nueva foto para el usuario-->
+        <div class="item">
+            <!--Selecciona un archivo .png o .jpg-->
+            <input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">
+            <!--Botón para poner en funcionamiento el input-->
+            <button type="button" class="btn btn-lg btn-success" (click)="inputFile.click()">
+                Subir foto
+                <i class="fas fa-upload"></i>
+            </button>
+        </div>
+    </div>
+
+    <!--Se muestran los otros datos del usuario-->
+    <div>
+        <div class="tab-content">
+            <div class="tab-pane active" id="home">
+            	<hr>
+                   	<form #f="ngForm" class="form">
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                               	<label for="first_name"><h4>Nombre de Usuario</h4></label>
+                                <input #name type="text" class="form-control" name="name" id="name"
+                                 placeholder="{{auth.getUserDetails()?.username  | titlecase}}">
+                          	</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="email"><h4>Email</h4></label>
+                                <input #email type="text" class="form-control" name="email" id="email" placeholder="{{auth.getUserDetails()?.email}}">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="email"><h4>Descripción del Usuario</h4></label>
+                                <textarea #description type="text" class="form-control" name="description" id="description" placeholder="{{auth.getUserDetails()?.description}}"></textarea>
+                            </div>
+                        </div>                        
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="password"><h4>Contraseña Actual</h4></label>
+                                <input #pass type="password" class="form-control" name="password" id="password" placeholder="password">
+                           	</div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-6">
+                                <label for="password2"><h4>Nueva Contraseña</h4></label>
+                                <input #confirm type="password" class="form-control" name="password2" id="password2" placeholder="nuevo password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div class="col-xs-12">
+                                <br>
+                                <button (click)="update(f)" class="btn btn-lg btn-success" type="submit">
+                                    Actualizar <i class="fas fa-sync-alt"></i>
+                               	</button>
+                            </div>
+                                </div>
+                    </form>
+            </div>
+        </div>
+</div>

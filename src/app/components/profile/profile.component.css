@@ -1,0 +1,54 @@
+img
+{
+    margin:3px;
+    padding:2px;
+    height: 250px;
+    width: 250px;
+    border-radius: 70%;
+}
+
+.box
+{
+    text-align: center;
+    color: #151515;
+    box-sizing: border-box;
+    background-color: #fafafa;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    padding: 15px;
+}
+
+input 
+{
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+input[type="text"], input[type="password"] 
+{
+    outline: none;
+    height: 40px;
+    font-size: 16px;
+}
+  
+input[type="submit"], input[type="button"] 
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    color: azure;
+    font-size: 18px;
+}
+
+hr
+{
+    background-color: azure;
+}
+
+
+.hidden 
+{  
+    display: none;
+}
+
