@@ -82,22 +82,23 @@
 						</div>
 						<div class="col-sm-6">
 								<div class="tab-content">
-										<form #cf="ngForm" class="form" id="CreateForm">
+										<form (ngSubmit)="addpost(f)" #f="ngForm" novalidate="" method="POST">
 												<div class="form-group">
 														<div class="col-xs-6">
 																<label for="name"><h4>Título</h4></label>
-																<input [(ngModel)]="newProduct.name" #name="ngModel" ngModel type="text" class="form-control" name="name" id="name" placeholder="Escribe un título...">
+																<input type="text"  name="title" class="form-control"  placeholder="Nombre del Post" [(ngModel)]="credentials.title">
 														</div>
+														<!--input type="text" class="form-control"  name="image" placeholder="imagen" [(ngModel)]="credentials.image" -->
 												</div>
 												<div class="form-group">
 														<div class="col-xs-6">
 																<label for="descripcion"><h4>Descripción</h4></label>
-																<textarea [(ngModel)]="newProduct.description" #descripcion="ngModel" ngModel type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Escribe aquí de qué trata tu problema..."></textarea>
+																<textarea type="text" name="description" placeholder="Descripcion del Post" [(ngModel)]="credentials.description"></textarea>
 														</div>
 												</div>
 
-												<div class="form-group text-center">
-													<button class="btn btn-primary" (click)="createProduct(cf)" type="submit">Crear Publicación
+												<div class="text-center">
+													<button class="btn btn-primary" value="POST"  type="submit">Crear Publicación
 														<i class="fas fa-pencil-alt"></i>
 													</button>
 													<br><br>
