@@ -10,7 +10,8 @@ import { NgForm } from '@angular/forms';
 })
 export class RegisterComponent {
   credentials: TokenPayload = {
-    id: 0,
+    id_user: 0,
+    email: "",
     username: "",
     email: "",    
     password: ""

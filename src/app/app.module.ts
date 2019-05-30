@@ -6,6 +6,9 @@ import { RouterModule, Routes } from '@angular/router'
 
 import { AppComponent } from './app.component'
 
+//Servicios:
+import { PostsService } from './services/posts.service';
+
 //Router:
 import { APP_ROUTING } from './app.routes';
 
@@ -66,7 +69,7 @@ import { AnswersComponent } from './components/answers/answers.component';
     CarouselModule.forRoot(),
     ProgressbarModule.forRoot()
   ],
-  providers: [],
+  providers: [PostsService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}
