@@ -1,16 +1,16 @@
 import { Component } from "@angular/core";
-import { AuthenticationService, TokenPayload } from "../authentication.service";
+import { AuthenticationService, TokenPayload } from "./../authentication.service";
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
-  styleUrls: ['../login/login.component.css']
+  styleUrls: ['../auth.styles.css']
 })
 export class RegisterComponent {
   credentials: TokenPayload = {
-    id_user: 0,
+    id: 0,
     email: "",
     username: "",
     password: ""
@@ -21,7 +21,7 @@ export class RegisterComponent {
   register(form: NgForm) {
     this.auth.register(this.credentials).subscribe(
       () => {
-        this.router.navigateByUrl("/dashboard/home");
+        this.router.navigateByUrl("/home");
       },
       err => {
         console.error(err);

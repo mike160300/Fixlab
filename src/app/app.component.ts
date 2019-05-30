@@ -2,7 +2,7 @@
 import { Component, OnInit } from  '@angular/core';
 import { ApiService } from  './api.service';
 import { Item } from  './api.service';
-import { AuthenticationService } from './authentication.service'
+import { AuthenticationService } from './auth/authentication.service';
 
 @Component({
 selector:  'app-root',

@@ -1,0 +1,97 @@
+<div class="container">
+      <h1 class="text-center">Mis Publicaciones</h1>
+
+      	<br>
+        <div class="containet text-center">
+        	<button type="button" class="btn btn-success btn-create" (click)="create(template1)"
+        	tooltip="Agregar nueva publicación." placement="bottom">
+      			<i class="fas fa-plus fa-2x"></i>
+  			</button>
+        </div>
+        <hr>
+
+        <div class="container-fluid">
+    		<div class="notice notice-info notice-lg">
+        		<strong>Título de Publicación</strong> notice-success
+        		<div class="text-right">
+	        		&nbsp;
+	        		<button type="button" class="btn btn-info btn-modify" [routerLink]="['/']"
+				   tooltip="Ver detalles de la publicación." placement="bottom">
+			      	<i class="far fa-eye"></i>
+			  		</button>
+			  		&nbsp;
+				   <button type="button" class="btn btn-primary btn-modify" (click)="modify(template2)"
+				   tooltip="Modificar la publicación." placement="bottom">
+			      	<i class="fas fa-pencil-alt"></i>
+			  		</button>
+			  		&nbsp;
+			  		<button type="button" class="btn btn-danger btn-delete" (click)="delet(template3)"
+			  		tooltip="Eliminar la publicación." placement="bottom">
+			      	<i class="fas fa-trash-alt"></i>
+			  		</button>
+        		</div>
+    		</div>
+		</div>
+ 	
+ 	<!--Modal para crear la publicación-->
+	<ng-template #template1>
+	  <div class="modal-header">
+	    <h4 class="modal-title pull-left">Crear nueva publicación</h4>
+	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef1.hide()">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+			<form (ngSubmit)="addpost(f)" #f="ngForm" novalidate="" method="POST" >
+
+				<!-- Nombre de post -->           
+						<input type="text"  name="title" class="form-control"  placeholder="Nombre del Post" [(ngModel)]="credentials.title" >
+					
+				<hr>            
+
+				<!--descripcion-->
+				<input type="text" name="description" placeholder="Descripcion del Post" [(ngModel)]="credentials.description" >
+				
+			
+				<hr>
+				
+				<input type="text" class="form-control"  name="image" placeholder="imagen" [(ngModel)]="credentials.image" >
+		      
+				<hr>
+
+
+				<input class="btn btn-primary btn-block"  value="POST"  type="submit" >
+				
+				<hr>
+
+
+			</form>
+	  </div>
+	</ng-template>
+
+	<!--Modal para modificar la publicación-->
+	<ng-template #template2>
+	  <div class="modal-header">
+	    <h4 class="modal-title pull-left">Modificar publicación</h4>
+	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+	    This is a modal.
+	  </div>
+	</ng-template>
+
+	<!--Modal para eliminar la publicación-->
+	<ng-template #template3>
+	  <div class="modal-header">
+	    <h4 class="modal-title pull-left">Eliminar publicación</h4>
+	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef3.hide()">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+	    This is a modal.
+	  </div>
+	</ng-template>
+</div>

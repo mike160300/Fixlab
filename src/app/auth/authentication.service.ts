@@ -5,8 +5,7 @@ import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
 
 export interface UserDetails {
-  //id:number
-  id_user:number
+  id: number
   username: string
   email: string
   password: string
@@ -19,7 +18,7 @@ interface TokenResponse {
 }
 
 export interface TokenPayload {
-  id_user:number
+  id: number
   email: string
   username: string
   password: string
