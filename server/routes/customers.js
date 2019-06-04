@@ -88,4 +88,66 @@ users.get('/profile', (req, res) => {
     })
 })
 
-module.exports = users
+
+
+
+
+/*
+// Defined edit route 
+users.route('/edit/:id').get(function (req, res) {
+  let id = req.params.id;
+  User.findById(id, function (err, ppost){
+      res.json(ppost);
+  });
+});*/
+
+//  Defined update route
+/*
+users.route('/update/:id_user').post(function (req, res) {
+    User.findById(req.params.id_user, function(err, next, User) {
+    if (!User)
+      return next(new Error('Could not load Document'));
+    else {
+        User.description = req.body.description
+        User.description = req.params.description
+        User.save().then(User => {
+          res.json('Update complete');
+      })
+      .catch(err => {
+            res.status(400).send("unable to update the database");
+      });
+    }
+  });
+});
+*/
+users.route('/update/:id_user').post(function (req, res)  {
+
+  const { id_user }= req.params;
+  User.update(
+      {  description : req.body.description},
+      { where: { id_user: [id_user] } }
+    )
+     // .then(result =>
+        //  res.redirect('/dashboard/profile'),
+        //  console.log("user updated successfully!")
+          
+    //  )
+      //.catch(err =>
+      //    console.log("Project update failed !")
+     // )
+});
+
+/*
+
+users.route.put('/update/:id_user', function (req, res, next) {
+  User.update(
+    {description: req.body.description},
+    {where: req.params.id_user}
+  )
+  .then(function(rowsUpdated) {
+    res.json(rowsUpdated)
+  })
+  .catch(next)
+ })*/
+
+module.exports = users;
