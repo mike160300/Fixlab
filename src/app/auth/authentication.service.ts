@@ -5,20 +5,28 @@ import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
 
 export interface UserDetails {
-  id_user: number
+  id_user:number
   username: string
   email: string
   password: string
+  description:string
   exp: number
   iat: number
 }
+
+export interface UserProfile {
+  description:string
+
+}
+
+
 
 interface TokenResponse {
   token: string
 }
 
 export interface TokenPayload {
-  id_user: number
+  id_user:number
   email: string
   username: string
   password: string
@@ -92,5 +100,9 @@ export class AuthenticationService {
     this.token = ''
     window.localStorage.removeItem('usertoken')
     this.router.navigateByUrl('/')
+  }
+
+  public editprofile(prof:UserProfile,id_user): Observable<any> {
+    return this.http.post('http://localhost:3000/users/update/'+id_user, prof)
   }
 }
