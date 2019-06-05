@@ -19,8 +19,6 @@ export interface UserProfile {
 
 }
 
-
-
 interface TokenResponse {
   token: string
 }
@@ -36,7 +34,8 @@ export interface TokenPayload {
 export class AuthenticationService {
   private token: string
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   private saveToken(token: string): void {
     localStorage.setItem('usertoken', token)

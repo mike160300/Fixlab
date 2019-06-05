@@ -3,8 +3,10 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {AuthenticationService} from '../../auth/authentication.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import {PostsService, PostDetails} from '../../services/posts.service';
+import {AnswersService, AnswerDetails} from '../../services/answers.service';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
+import { post } from 'selenium-webdriver/http';
 
 @Component({
   selector: 'app-home',
@@ -23,11 +25,23 @@ export class HomeComponent implements OnInit {
     id_owner: this.auth.getUserDetails().id_user
   };
 
+ solutions: AnswerDetails = {
+    id_answer: 0,
+    text: '',
+    price: 0,
+    unlocked: true,
+    valorated: false,
+    id_owner: this.auth.getUserDetails().id_user,
+    id_inpost:2
+  };
+
   modalRef1: BsModalRef;
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
+  modalRef4: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private auth: AuthenticationService) {}
+  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService) 
+  {  }
  
   create(template: TemplateRef<any>) 
   {
@@ -47,6 +61,12 @@ export class HomeComponent implements OnInit {
     this.modalRef3.hide();
   }
 
+  answer(template: TemplateRef<any>) 
+  {
+    this.modalRef4= this.modalService.show(template);
+    this.modalRef4.hide();
+  }
+
   addpost(form: NgForm) {
     this.posts.addpost(this.credentials).subscribe(
       () => {
@@ -58,7 +78,20 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  ngOnInit() {
+  addanswer(form: NgForm) {
+    this.answers.addanswer(this.solutions).subscribe(
+      () => {
+        this.router.navigateByUrl("/dashboard/home");
+      },
+      err => {
+        console.error(err);
+      }
+    );
+  }
+
+
+
+  ngOnInit(){
   }
 
 }

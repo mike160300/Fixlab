@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../../auth/authentication.service';
+import {AuthenticationService, UserProfile} from '../../auth/authentication.service';
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 
@@ -14,7 +14,8 @@ export class ProfileComponent implements OnInit {
     description: ''
   };
 
-  constructor(private auth: AuthenticationService,private router: Router) { }
+  constructor(private auth: AuthenticationService,private router: Router) { 
+  }
 
 
   editprofile(form: NgForm) {

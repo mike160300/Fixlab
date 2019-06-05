@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container box">
 
     <!--Imagen de Perfil-->
     <div class="img-profile">
@@ -43,37 +43,28 @@
                         <div class="form-group">
                             <div class="col-xs-6">
                                	<label for="first_name"><h4>Nombre de Usuario</h4></label>
-                                <input #name type="text" class="form-control" name="name" id="name" placeholder="{{auth.getUserDetails()?.username  | titlecase}}">
+                                <input type="text" disabled
+                                placeholder="{{auth.getUserDetails()?.username  | titlecase}}">
                           	</div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="email"><h4>Email</h4></label>
-                                <input #email type="text" class="form-control" name="email" id="email" placeholder="{{auth.getUserDetails()?.email}}">
+                                <input type="text" disabled 
+                                placeholder="{{auth.getUserDetails()?.email}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="description"><h4>Descripcion</h4></label>
-                                <input #description type="text" class="form-control" name="description" id="description" placeholder="{{auth.getUserDetails()?.description}}" [(ngModel)]="credentials.description" >
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="password"><h4>Contraseña Actual</h4></label>
-                                <input #pass type="password" class="form-control" name="password" id="password" placeholder="password">
-                           	</div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="password2"><h4>Nueva Contraseña</h4></label>
-                                <input #confirm type="password" class="form-control" name="password2" id="password2" placeholder="nuevo password">
+                                <label for="description"><h4>Descripción</h4></label>
+                                <input #description type="text" class="form-control" name="description" 
+                                id="description" placeholder="{{auth.getUserDetails()?.description}}" [(ngModel)]="credentials.description" >
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button (click)="update(f)" class="btn btn-lg btn-success" type="submit">
+                                <button class="btn btn-lg btn-success" type="submit">
                                     Actualizar <i class="fas fa-sync-alt"></i>
                                	</button>
                             </div>

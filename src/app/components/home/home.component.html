@@ -16,11 +16,11 @@
         		<hr>
         		<div class="text-right">
 	        		&nbsp;
-	        		<button type="button" class="btn btn-info btn-modify" [routerLink]="['/']"
+	        		<button type="button" class="btn btn-info btn-modify" (click)="answer(template4)"
 				   tooltip="Ver detalles" placement="bottom">
 			      	<i class="far fa-eye"></i>
 			  		</button>
-			  		&nbsp;
+						&nbsp;
 				   <button type="button" class="btn btn-primary btn-modify" (click)="modify(template2)"
 				   tooltip="Modificar la publicación" placement="bottom">
 			      	<i class="fas fa-pencil-alt"></i>
@@ -215,4 +215,51 @@
 				<button (click)="modalRef3.hide()" class="btn btn-danger btn-cancelar" type="button">No</button>
 			</div>
 		</div>
+	</ng-template>
+
+	<!--Modal para crear la publicación-->
+	<ng-template #template4>
+	  <div class="modal-header">
+	    <h4 class="modal-title pull-left">Crear nueva publicación</h4>
+	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef4.hide()">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+
+			<div class="container">
+
+				<div class="row">
+						<div class="container-fluid text-center">
+							
+										<form (ngSubmit)="addanswer(f)" #f="ngForm" novalidate="" method="POST">
+												<div class="form-group">
+														<div class="col-xs-6">
+																<label for="name"><h4>Texto</h4></label>
+																<input type="text"  name="text" class="form-control"  placeholder="Escribe aquí..." [(ngModel)]="solutions.text">
+														</div>
+														<!--input type="text" class="form-control"  name="image" placeholder="imagen" [(ngModel)]="credentials.image" -->
+												</div>
+												<div class="form-group">
+														<div class="col-xs-6">
+																<label for="descripcion"><h4>Precio</h4></label><br>
+																<input type="number" name="number" placeholder="Precio de la solución" [(ngModel)]="solutions.price">
+														</div>
+												</div>
+
+												<div class="text-center">
+													<button class="btn btn-primary" value="POST"  type="submit">Responder a Publicación
+														<i class="fas fa-pencil-alt"></i>
+													</button>
+													<br><br>
+													<button class="btn btn-cancelar btn-danger" (click)="modalRef4.hide()">Cancelar
+														<i class="far fa-times-circle"></i>
+													</button>
+												</div>
+										</form>
+								</div>
+				</div>
+		</div>
+
+	  </div>
 	</ng-template>

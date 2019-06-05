@@ -11,7 +11,7 @@ import { NotifyComponent } from './components/notify/notify.component';
 import { AnswersComponent } from './components/answers/answers.component';
 
 const ROUTES: Routes = [
-    { path: 'dashboard', component: DashboardComponent, //canActivate: [AuthGuardService],
+    { path: 'dashboard', component: DashboardComponent, canActivate: [AuthGuardService],
       children: [
         {path: 'home', component: HomeComponent},
         { path: 'profile', component: ProfileComponent },
