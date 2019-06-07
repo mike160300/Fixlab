@@ -89,12 +89,6 @@ export class AuthenticationService {
     return request
   }
 
-  public profile(): Observable<any> {
-    return this.http.get(`/users/profile`, {
-      headers: { Authorization: ` ${this.getToken()}` }
-    })
-  }
-
   public logout(): void {
     this.token = ''
     window.localStorage.removeItem('usertoken')

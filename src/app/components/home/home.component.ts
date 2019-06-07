@@ -7,6 +7,7 @@ import {AnswersService, AnswerDetails} from '../../services/answers.service';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 import { post } from 'selenium-webdriver/http';
+import { Posts } from '../../../models/posts';
 
 @Component({
   selector: 'app-home',
@@ -14,6 +15,10 @@ import { post } from 'selenium-webdriver/http';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent implements OnInit {
+
+  pposts: Posts[];
+  message: string
+  //customer = new Posts() ;
 
   credentials: PostDetails = {
     id_post: 0,
@@ -41,7 +46,8 @@ export class HomeComponent implements OnInit {
   modalRef4: BsModalRef;
 
   constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService) 
-  {  }
+  { 
+  }
  
   create(template: TemplateRef<any>) 
   {
@@ -68,6 +74,7 @@ export class HomeComponent implements OnInit {
   }
 
   addpost(form: NgForm) {
+
     this.posts.addpost(this.credentials).subscribe(
       () => {
         this.router.navigateByUrl("/dashboard/home");
@@ -77,7 +84,7 @@ export class HomeComponent implements OnInit {
       }
     );
   }
-
+       
   addanswer(form: NgForm) {
     this.answers.addanswer(this.solutions).subscribe(
       () => {
@@ -89,9 +96,42 @@ export class HomeComponent implements OnInit {
     );
   }
 
+  /*getPosts() {
+    return this.posts.getposts()
+               .subscribe(
+                 customers => {
+                  console.log(customers);
+                  this.pposts = customers
+                 }
+  )
+  };*/
+
+/*update(): void {
+    this.submitted = true;
+    this.customerService.updateCustomer(this.customer)
+        .subscribe(result => this.message = "Customer Updated Successfully!");
+  }*/
+
+  delete(id: number){
+    console.log(id);
+    this.posts.deletePost(id).subscribe(
+      () => {
+        this.router.navigateByUrl("/dashboard/home");
+      },
+      err => {
+        console.error(err);
+      }
+    );
+  }  
 
 
-  ngOnInit(){
+  ngOnInit() {
+    //this.getPosts();
+    //Obtiene todas las publicaciones de usuario al inicio
+    const id = this.auth.getUserDetails().id_user
+    this.posts.getpostsOwner(id)
+      .subscribe(pposts => this.pposts = pposts)
   }
 
 }
+

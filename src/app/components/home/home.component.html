@@ -1,6 +1,10 @@
 <div class="container">
       <h1 class="text-center">Mis Publicaciones</h1>
 
+<!--div *ngFor="let post of pposts">
+  <a [routerLink]="['/dashboard/discovery', cust.id_owner]" style="color:black"><span class="badge badge-dark">{{post.title}}</span> -> {{ post.description }}</a>
+</div-->
+
       	<br>
         <div class="containet text-center">
         	<button type="button" class="btn btn-success btn-create" (click)="create(template1)"
@@ -10,10 +14,11 @@
         </div>
         <hr>
 
-        <div class="container-fluid">
+        <div class="container-fluid" *ngFor="let post of pposts">
     		<div class="notice notice-info notice-lg">
-        		<strong>Título de Publicación</strong>
+        		<strong>{{post.title}}</strong>
         		<hr>
+        		<p>{{ post.description }}</p>
         		<div class="text-right">
 	        		&nbsp;
 	        		<button type="button" class="btn btn-info btn-modify" (click)="answer(template4)"
@@ -32,10 +37,7 @@
 			  		</button>
         		</div>
     		</div>
-		</div>
-</div>
-
- 	<!--Modal para crear la publicación-->
+    		<!--Modal para crear la publicación-->
 	 <ng-template #template1>
 	  <div class="modal-header">
 	    <h4 class="modal-title pull-left">Crear nueva publicación</h4>
@@ -167,13 +169,13 @@
 												<div class="form-group">
 														<div class="col-xs-6">
 																<label for="name"><h4>Título</h4></label>
-																<input [(ngModel)]="nameValue" #name="ngModel" ngModel type="text" class="form-control" name="name" id="name" placeholder="Escribe un título...">
+																<input [(ngModel)]="nameValue" #name="ngModel" ngModel type="text" class="form-control" name="name" id="name" placeholder="{{post.title}}">
 														</div>
 												</div>
 												<div class="form-group">
 														<div class="col-xs-6">
 																<label for="descripcion"><h4>Descripción</h4></label>
-																<textarea [(ngModel)]="descriptionValue" #descripcion="ngModel" ngModel type="text" class="form-control" name="descripcion" id="descripcion" placeholder="Escribe aquí de qué trata tu problema..."></textarea>
+																<textarea [(ngModel)]="descriptionValue" #descripcion="ngModel" ngModel type="text" class="form-control" name="descripcion" id="descripcion" placeholder="{{post.description}}"></textarea>
 														</div>
 												</div>
 
@@ -210,7 +212,7 @@
 			¿Desea borrar de forma permanente la publicación seleccionada?
 			<br><br>
 			<div class="text-center">
-				<button (click)="delet()" class="btn btn-success" type="button">Sí</button>
+				<button (click)="delete(post.id_post)" class="btn btn-success" type="button">Sí</button>
 				&nbsp;
 				<button (click)="modalRef3.hide()" class="btn btn-danger btn-cancelar" type="button">No</button>
 			</div>
@@ -263,3 +265,6 @@
 
 	  </div>
 	</ng-template>
+		</div>
+</div>
+
