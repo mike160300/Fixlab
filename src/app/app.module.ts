@@ -8,6 +8,7 @@ import { AppComponent } from './app.component'
 
 //Servicios:
 import { PostsService } from './services/posts.service';
+import { AnswersService } from './services/answers.service';
 
 //Router:
 import { APP_ROUTING } from './app.routes';
@@ -69,7 +70,7 @@ import { AnswersComponent } from './components/answers/answers.component';
     CarouselModule.forRoot(),
     ProgressbarModule.forRoot()
   ],
-  providers: [PostsService],
+  providers: [PostsService, AnswersService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

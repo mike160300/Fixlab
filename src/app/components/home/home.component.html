@@ -1,10 +1,5 @@
 <div class="container">
       <h1 class="text-center">Mis Publicaciones</h1>
-
-<!--div *ngFor="let post of pposts">
-  <a [routerLink]="['/dashboard/discovery', cust.id_owner]" style="color:black"><span class="badge badge-dark">{{post.title}}</span> -> {{ post.description }}</a>
-</div-->
-
       	<br>
         <div class="containet text-center">
         	<button type="button" class="btn btn-success btn-create" (click)="create(template1)"
@@ -26,7 +21,7 @@
 			      	<i class="far fa-eye"></i>
 			  		</button>
 						&nbsp;
-				   <button type="button" class="btn btn-primary btn-modify" (click)="modify(template2)"
+				   <button type="button" class="btn btn-primary btn-modify" (click)="modify(template2, post)"
 				   tooltip="Modificar la publicación" placement="bottom">
 			      	<i class="fas fa-pencil-alt"></i>
 			  		</button>
@@ -37,6 +32,29 @@
 			  		</button>
         		</div>
     		</div>
+
+    			<!--Modal para eliminar la publicación-->
+	<ng-template #template3>
+	  <div class="modal-header">
+	    <h4 class="modal-title pull-left">Eliminar publicación</h4>
+	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef3.hide()">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+		<div class="modal-body">
+			¿Desea borrar de forma permanente la publicación seleccionada?
+			<br><br>
+			<div class="text-center">
+				<button (click)="delete(post.id_post)" class="btn btn-success" type="button">Sí</button>
+				&nbsp;
+				<button (click)="modalRef3.hide()" class="btn btn-danger btn-cancelar" type="button">No</button>
+			</div>
+		</div>
+	</ng-template>
+    		
+		</div>
+</div>
+
     		<!--Modal para crear la publicación-->
 	 <ng-template #template1>
 	  <div class="modal-header">
@@ -51,7 +69,11 @@
 
 				<div class="row">
 						<div class="col-sm-6">
-								<!--Foto-->
+						</div>
+						<div class="col-sm-6">
+								<div class="tab-content">
+										<form (ngSubmit)="addpost(f)" #f="ngForm" novalidate="" method="POST" enctype="multipart/form-data">
+																			<!--Foto-->
 								<div class="text-center">
 										<img class="img-fluid img-circle img-thumbnail profile-pic" *ngIf="auth.getUserDetails()?.image" src="{{auth.getUserDetails()?.image}}">
        									<img class="img-fluid profile-pic" *ngIf="!auth.getUserDetails()?.image" src="/assets/images/sin-perfil.png">
@@ -81,10 +103,7 @@
 										<hr>
 
 								</div>
-						</div>
-						<div class="col-sm-6">
-								<div class="tab-content">
-										<form (ngSubmit)="addpost(f)" #f="ngForm" novalidate="" method="POST">
+
 												<div class="form-group">
 														<div class="col-xs-6">
 																<label for="name"><h4>Título</h4></label>
@@ -111,6 +130,53 @@
 										</form>
 								</div>
 						</div>
+				</div>
+		</div>
+
+	  </div>
+	</ng-template>
+
+<!--Modal para crear la publicación-->
+	<ng-template #template4>
+	  <div class="modal-header">
+	    <h4 class="modal-title pull-left">Crear nueva publicación</h4>
+	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef4.hide()">
+	      <span aria-hidden="true">&times;</span>
+	    </button>
+	  </div>
+	  <div class="modal-body">
+
+			<div class="container">
+
+				<div class="row">
+						<div class="container-fluid text-center">
+							
+										<form (ngSubmit)="addanswer(f)" #f="ngForm" novalidate="" method="POST">
+												<div class="form-group">
+														<div class="col-xs-6">
+																<label for="name"><h4>Texto</h4></label>
+																<input type="text"  name="text" class="form-control"  placeholder="Escribe aquí..." [(ngModel)]="solutions.text">
+														</div>
+														<!--input type="text" class="form-control"  name="image" placeholder="imagen" [(ngModel)]="credentials.image" -->
+												</div>
+												<div class="form-group">
+														<div class="col-xs-6">
+																<label for="descripcion"><h4>Precio</h4></label><br>
+																<input type="number" name="number" placeholder="Precio de la solución" [(ngModel)]="solutions.price">
+														</div>
+												</div>
+
+												<div class="text-center">
+													<button class="btn btn-primary" value="POST"  type="submit">Responder a Publicación
+														<i class="fas fa-pencil-alt"></i>
+													</button>
+													<br><br>
+													<button class="btn btn-cancelar btn-danger" (click)="modalRef4.hide()">Cancelar
+														<i class="far fa-times-circle"></i>
+													</button>
+												</div>
+										</form>
+								</div>
 				</div>
 		</div>
 
@@ -169,20 +235,20 @@
 												<div class="form-group">
 														<div class="col-xs-6">
 																<label for="name"><h4>Título</h4></label>
-																<input [(ngModel)]="nameValue" #name="ngModel" ngModel type="text" class="form-control" name="name" id="name" placeholder="{{post.title}}">
+																<input [(ngModel)]="nameValue" #name="ngModel" ngModel type="text" class="form-control" name="name" id="name" placeholder="{{selectedPost.title}}">
 														</div>
 												</div>
 												<div class="form-group">
 														<div class="col-xs-6">
 																<label for="descripcion"><h4>Descripción</h4></label>
-																<textarea [(ngModel)]="descriptionValue" #descripcion="ngModel" ngModel type="text" class="form-control" name="descripcion" id="descripcion" placeholder="{{post.description}}"></textarea>
+																<textarea [(ngModel)]="descriptionValue" #descripcion="ngModel" ngModel type="text" class="form-control" name="descripcion" id="descripcion" placeholder="{{selectedPost.description}}"></textarea>
 														</div>
 												</div>
 
 												<div class="form-group text-center">
 														<div class="col-xs-12">
 																<br>
-																<button class="btn btn-primary" (click)="updateProduct(f)" type="submit">Actualizar
+																<button class="btn btn-primary" (click)="update(f)" type="submit">Actualizar
 																				<i class="fas fa-sync-alt"></i>
 																</button>
 																<br><br>
@@ -199,72 +265,3 @@
 
 	  </div>
 	</ng-template>
-
-	<!--Modal para eliminar la publicación-->
-	<ng-template #template3>
-	  <div class="modal-header">
-	    <h4 class="modal-title pull-left">Eliminar publicación</h4>
-	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef3.hide()">
-	      <span aria-hidden="true">&times;</span>
-	    </button>
-	  </div>
-		<div class="modal-body">
-			¿Desea borrar de forma permanente la publicación seleccionada?
-			<br><br>
-			<div class="text-center">
-				<button (click)="delete(post.id_post)" class="btn btn-success" type="button">Sí</button>
-				&nbsp;
-				<button (click)="modalRef3.hide()" class="btn btn-danger btn-cancelar" type="button">No</button>
-			</div>
-		</div>
-	</ng-template>
-
-	<!--Modal para crear la publicación-->
-	<ng-template #template4>
-	  <div class="modal-header">
-	    <h4 class="modal-title pull-left">Crear nueva publicación</h4>
-	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef4.hide()">
-	      <span aria-hidden="true">&times;</span>
-	    </button>
-	  </div>
-	  <div class="modal-body">
-
-			<div class="container">
-
-				<div class="row">
-						<div class="container-fluid text-center">
-							
-										<form (ngSubmit)="addanswer(f)" #f="ngForm" novalidate="" method="POST">
-												<div class="form-group">
-														<div class="col-xs-6">
-																<label for="name"><h4>Texto</h4></label>
-																<input type="text"  name="text" class="form-control"  placeholder="Escribe aquí..." [(ngModel)]="solutions.text">
-														</div>
-														<!--input type="text" class="form-control"  name="image" placeholder="imagen" [(ngModel)]="credentials.image" -->
-												</div>
-												<div class="form-group">
-														<div class="col-xs-6">
-																<label for="descripcion"><h4>Precio</h4></label><br>
-																<input type="number" name="number" placeholder="Precio de la solución" [(ngModel)]="solutions.price">
-														</div>
-												</div>
-
-												<div class="text-center">
-													<button class="btn btn-primary" value="POST"  type="submit">Responder a Publicación
-														<i class="fas fa-pencil-alt"></i>
-													</button>
-													<br><br>
-													<button class="btn btn-cancelar btn-danger" (click)="modalRef4.hide()">Cancelar
-														<i class="far fa-times-circle"></i>
-													</button>
-												</div>
-										</form>
-								</div>
-				</div>
-		</div>
-
-	  </div>
-	</ng-template>
-		</div>
-</div>
-

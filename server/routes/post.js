@@ -55,6 +55,20 @@ posts.route('/:id').get(function (req, res)
 		})
 });
 
+//Actualiza un post seleccionado:
+posts.route('/update').post(function (req, res)
+{
+
+	const id = req.body.id_post;
+	Publication.update( req.body, 
+			{ where: {id_post: id} }).then(() => {
+				res.json();
+			}).catch(err => {
+				console.log(err);
+				res.status(500).json({msg: "error", details: err});
+			});
+});
+
 //Borra un post seleccionado:
 posts.route('/delete/:id').delete(function (req, res)
 {
@@ -62,7 +76,7 @@ posts.route('/delete/:id').delete(function (req, res)
 	Publication.destroy({
 			where: { id_post : id }
 		}).then(() => {
-			res.status(200).json( { msg: 'Deleted Successfully -> Customer Id = ' + id } );
+			res.status(200).json( { msg: 'Deleted Successfully -> Post Id = ' + id } );
 		}).catch(err => {
 			console.log(err);
 			res.status(500).json({msg: "error", details: err});

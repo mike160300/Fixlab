@@ -46,8 +46,13 @@ export class PostsService {
   deletePost(id: number): Observable<any>{
     const url=` ${this.uri}/delete/${id}`
     return this.http.delete(url);
-
   }
 
+  updatePost(post: Posts): Observable<any>
+  {
+    console.log("servicio")
+    const url=` ${this.uri}/update`
+    return this.http.post(url, post)
+  }
 
 }

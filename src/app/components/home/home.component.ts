@@ -8,6 +8,8 @@ import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 import { post } from 'selenium-webdriver/http';
 import { Posts } from '../../../models/posts';
+import { HttpClient } from '@angular/common/http';
+
 
 @Component({
   selector: 'app-home',
@@ -17,8 +19,10 @@ import { Posts } from '../../../models/posts';
 export class HomeComponent implements OnInit {
 
   pposts: Posts[];
-  message: string
-  //customer = new Posts() ;
+  message: string;
+  selectedPost = new Posts();
+  nameValue;
+  descriptionValue;
 
   credentials: PostDetails = {
     id_post: 0,
@@ -45,7 +49,7 @@ export class HomeComponent implements OnInit {
   modalRef3: BsModalRef;
   modalRef4: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService) 
+  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient) 
   { 
   }
  
@@ -55,8 +59,11 @@ export class HomeComponent implements OnInit {
     this.modalRef1.hide();
   }
 
-  modify(template: TemplateRef<any>) 
+  modify(template: TemplateRef<any>, editPost: Posts) 
   {
+    this.selectedPost = editPost;
+    this.nameValue=this.selectedPost.title;
+    this.descriptionValue = this.selectedPost.description;
     this.modalRef2 = this.modalService.show(template);
     this.modalRef2.hide();
   }
@@ -106,31 +113,60 @@ export class HomeComponent implements OnInit {
   )
   };*/
 
-/*update(): void {
-    this.submitted = true;
-    this.customerService.updateCustomer(this.customer)
-        .subscribe(result => this.message = "Customer Updated Successfully!");
-  }*/
+  update(form: NgForm) {
 
-  delete(id: number){
+    if(form.value.name != ""){
+      this.selectedPost.title = form.value.name;
+    }
+    if(form.value.descripcion != ""){
+      this.selectedPost.description = form.value.descripcion;
+    }
+
+    this.posts.updatePost(this.selectedPost)
+        .subscribe(result => this.message = "Customer Updated Successfully!");
+  }
+
+  delete(id: number) {
     console.log(id);
     this.posts.deletePost(id).subscribe(
       () => {
-        this.router.navigateByUrl("/dashboard/home");
+        this.message = "Customer Updated Successfully!";
       },
       err => {
         console.error(err);
       }
     );
-  }  
+  }
 
+  upload(event) 
+  {
 
+    // Obtiene la imagen:
+    const file = event.target.files[0];
+    
+    // Genera un ID random para la imagen:
+    //const randomId = Math.random().toString(36).substring(2);
+    //const filepath = `assets/${randomId}`;
+    console.log(file)
+
+    if (event.target.files && event.target.files[0]) {
+      const foto = event.target.files[0];
+
+      const formData = new FormData();
+      formData.append('foto', foto);
+
+      this.http.post('assets/images', formData)
+        .subscribe(resposta => console.log('Upload ok.'));
+  }
+
+}
+  
   ngOnInit() {
     //this.getPosts();
     //Obtiene todas las publicaciones de usuario al inicio
-    const id = this.auth.getUserDetails().id_user
+    const id = this.auth.getUserDetails().id_user;
     this.posts.getpostsOwner(id)
-      .subscribe(pposts => this.pposts = pposts)
+      .subscribe(pposts => this.pposts = pposts);
   }
 
 }
