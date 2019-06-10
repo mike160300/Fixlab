@@ -19,7 +19,8 @@ posts.route('/add').post(function (req,res)
 				"publish_date": req.body.publish_date,
 				"resolved": req.body.resolved,
 				"id_owner": req.body.id_owner
-			}).then(ppost => {		
+			}).then(ppost => {
+			console.log(req.body.image);		
 			res.json(ppost);
 		}).catch(err => {
 			console.log(err);
@@ -28,7 +29,7 @@ posts.route('/add').post(function (req,res)
 });
 
 //Obtener TODAS las publicaciones:
-/*posts.route('/').get(function (req, res)
+posts.route('/').get(function (req, res)
 {
 	Publication.findAll().then(pposts => {
 		res.json(pposts.sort(function(c1, c2){return c1.id - c2.id}));
@@ -36,7 +37,7 @@ posts.route('/add').post(function (req,res)
 		console.log(err);
 		res.status(500).json({msg: "error", details: err});
 	})	
-});*/
+});
 
 //Muestra los post propios del usuario:
 posts.route('/:id').get(function (req, res)
@@ -73,6 +74,7 @@ posts.route('/update').post(function (req, res)
 posts.route('/delete/:id').delete(function (req, res)
 {
 	const id = req.params.id;
+	console.log(id);
 	Publication.destroy({
 			where: { id_post : id }
 		}).then(() => {

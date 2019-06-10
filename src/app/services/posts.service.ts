@@ -30,29 +30,29 @@ export class PostsService {
 
   addpost(post: PostDetails): Observable<any> {
     const url=` ${this.uri}/add`
-    return this.http.post(url, post)
+    return this.http.post(url, post);
   };
 
-  /*getposts(): Observable<Posts[]> {
+  getposts(): Observable<Posts[]> {
     const url=` ${this.uri}/`
     return this.http.get<Posts[]>(url)
-  };*/
+  };
 
   getpostsOwner(id: number): Observable<Posts[]> {
     const url = `${this.uri}/${id}`;
     return this.http.get<Posts[]>(url);
   }
 
-  deletePost(id: number): Observable<any>{
-    const url=` ${this.uri}/delete/${id}`
-    return this.http.delete(url);
+  deletePost(post: Posts): Observable<Posts>{
+    const url=` ${this.uri}/delete/${post.id_post}`
+    return this.http.delete<Posts>(url);
   }
 
   updatePost(post: Posts): Observable<any>
   {
     console.log("servicio")
     const url=` ${this.uri}/update`
-    return this.http.post(url, post)
+    return this.http.post(url, post);
   }
 
 }

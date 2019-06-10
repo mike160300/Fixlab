@@ -20,21 +20,24 @@ export class HomeComponent implements OnInit {
 
   pposts: Posts[];
   message: string;
-  selectedPost = new Posts();
+  selectedPost: Posts;
   nameValue;
   descriptionValue;
+  selecetdFile: File;
+  imageUrl: string = '';
+  oldimageUrl: string = null;  
 
   credentials: PostDetails = {
     id_post: 0,
     title: '',
     description: '',
-    image:  '',
+    image:  this.imageUrl,
     publish_date:Date(),
     resolved : false,
     id_owner: this.auth.getUserDetails().id_user
   };
 
- solutions: AnswerDetails = {
+ /*solutions: AnswerDetails = {
     id_answer: 0,
     text: '',
     price: 0,
@@ -42,7 +45,7 @@ export class HomeComponent implements OnInit {
     valorated: false,
     id_owner: this.auth.getUserDetails().id_user,
     id_inpost:2
-  };
+  };*/
 
   modalRef1: BsModalRef;
   modalRef2: BsModalRef;
@@ -51,6 +54,9 @@ export class HomeComponent implements OnInit {
 
   constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient) 
   { 
+    //Obtiene todas las publicaciones de usuario al inicio
+    const id = this.auth.getUserDetails().id_user;
+    this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
   }
  
   create(template: TemplateRef<any>) 
@@ -62,37 +68,46 @@ export class HomeComponent implements OnInit {
   modify(template: TemplateRef<any>, editPost: Posts) 
   {
     this.selectedPost = editPost;
-    this.nameValue=this.selectedPost.title;
+    this.nameValue= this.selectedPost.title;
     this.descriptionValue = this.selectedPost.description;
     this.modalRef2 = this.modalService.show(template);
     this.modalRef2.hide();
   }
 
-  delet(template: TemplateRef<any>) 
+  delet(template: TemplateRef<any>, deletePost: Posts) 
   {
+    this.selectedPost = deletePost;
+    console.log(this.selectedPost);
     this.modalRef3 = this.modalService.show(template);
     this.modalRef3.hide();
   }
 
-  answer(template: TemplateRef<any>) 
+  cancel(): void
+  {
+    this.modalRef1.hide();
+  }
+
+  /*answer(template: TemplateRef<any>) 
   {
     this.modalRef4= this.modalService.show(template);
     this.modalRef4.hide();
-  }
+  }*/
 
   addpost(form: NgForm) {
 
     this.posts.addpost(this.credentials).subscribe(
       () => {
-        this.router.navigateByUrl("/dashboard/home");
+        this.message = "Post Created Successfully!";
+        console.log(this.message);
       },
       err => {
         console.error(err);
       }
     );
+    this.modalRef1.hide();
   }
        
-  addanswer(form: NgForm) {
+  /*addanswer(form: NgForm) {
     this.answers.addanswer(this.solutions).subscribe(
       () => {
         this.router.navigateByUrl("/dashboard/home");
@@ -105,11 +120,11 @@ export class HomeComponent implements OnInit {
 
   /*getPosts() {
     return this.posts.getposts()
-               .subscribe(
-                 customers => {
-                  console.log(customers);
-                  this.pposts = customers
-                 }
+     .subscribe(
+       customers => {
+        console.log(customers);
+        this.pposts = customers
+       }
   )
   };*/
 
@@ -123,50 +138,45 @@ export class HomeComponent implements OnInit {
     }
 
     this.posts.updatePost(this.selectedPost)
-        .subscribe(result => this.message = "Customer Updated Successfully!");
+        .subscribe(result => this.message = "Post Updated Successfully!");
+    this.modalRef2.hide();
+
   }
 
-  delete(id: number) {
-    console.log(id);
-    this.posts.deletePost(id).subscribe(
+  delete() 
+  {
+    this.posts.deletePost(this.selectedPost).subscribe(
       () => {
-        this.message = "Customer Updated Successfully!";
+        this.message = "Post Deleted Successfully!";
+        console.log(this.message);
       },
       err => {
         console.error(err);
       }
     );
+    this.modalRef3.hide();
+
   }
 
+  //No funciona muy bien todavía
   upload(event) 
   {
 
     // Obtiene la imagen:
-    const file = event.target.files[0];
+    this.selecetdFile = event.target.files[0];
     
     // Genera un ID random para la imagen:
-    //const randomId = Math.random().toString(36).substring(2);
-    //const filepath = `assets/${randomId}`;
-    console.log(file)
+    const randomId = Math.random().toString(36).substring(2);
+    const filepath = `${randomId}`;
 
-    if (event.target.files && event.target.files[0]) {
-      const foto = event.target.files[0];
-
-      const formData = new FormData();
-      formData.append('foto', foto);
-
-      this.http.post('assets/images', formData)
-        .subscribe(resposta => console.log('Upload ok.'));
-  }
+    this.http.post('/assets/', this.selecetdFile)
+      .subscribe(resposta => console.log('Upload ok.'));
 
 }
   
-  ngOnInit() {
-    //this.getPosts();
-    //Obtiene todas las publicaciones de usuario al inicio
-    const id = this.auth.getUserDetails().id_user;
-    this.posts.getpostsOwner(id)
-      .subscribe(pposts => this.pposts = pposts);
+  ngOnInit() 
+  {
+    
   }
 
 }
