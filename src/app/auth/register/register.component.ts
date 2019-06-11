@@ -13,7 +13,6 @@ export class RegisterComponent {
     id_user: 0,
     email: "",
     username: "",
-    email: "",    
     password: ""
   };
   
