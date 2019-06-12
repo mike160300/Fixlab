@@ -4,28 +4,38 @@ const posts = express.Router();
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 
-// Require Business model in our routes module
+//Modelo de Post:
 let Publication = require('../models/post');
 posts.use(cors());
+
+//Modelo de Fotos:
+/*const cloudinary = require('cloudinary').v2;
+cloudinary.config(
+{
+	cloud_name: 'dbnynt7qi',
+	api_key: '473548356144881',
+	api_secret: 'd6rROYIPub6DXIsNT6mQoNS2yng'
+});*/
 
 //Crear Publicación:
 posts.route('/add').post(function (req,res)
 {
+
 	Publication.create({
-				"id_post": req.body.id_post,
-				"title": req.body.title, 
-				"description": req.body.description, 
-				"image": req.body.image,
-				"publish_date": req.body.publish_date,
-				"resolved": req.body.resolved,
-				"id_owner": req.body.id_owner
-			}).then(ppost => {
-			console.log(req.body.image);		
-			res.json(ppost);
+		"id_post": req.body.id_post,
+		"title": req.body.title, 
+		"description": req.body.description, 
+		"image": req.body.image,
+		"publish_date": req.body.publish_date,
+		"resolved": req.body.resolved,
+		"id_owner": req.body.id_owner
+	}).then(() => {
+			res.json();
 		}).catch(err => {
 			console.log(err);
 			res.status(500).json({msg: "error", details: err});
 		})
+
 });
 
 //Obtener TODAS las publicaciones:
@@ -64,6 +74,7 @@ posts.route('/update').post(function (req, res)
 	Publication.update( req.body, 
 			{ where: {id_post: id} }).then(() => {
 				res.json();
+				console.log(res);
 			}).catch(err => {
 				console.log(err);
 				res.status(500).json({msg: "error", details: err});
@@ -84,5 +95,6 @@ posts.route('/delete/:id').delete(function (req, res)
 			res.status(500).json({msg: "error", details: err});
 		})
 });
+
 
 module.exports = posts; 

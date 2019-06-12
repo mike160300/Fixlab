@@ -3,8 +3,13 @@ import { NgModule, Component } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
+import { environment } from '../environments/environment';
 
 import { AppComponent } from './app.component'
+
+//Firebase:
+import { AngularFireModule } from '@angular/fire';
+import {AngularFireStorageModule} from '@angular/fire/storage'
 
 //Servicios:
 import { PostsService } from './services/posts.service';
@@ -68,7 +73,9 @@ import { AnswersComponent } from './components/answers/answers.component';
     ModalModule.forRoot(),
     TabsModule.forRoot(),
     CarouselModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule
   ],
   providers: [PostsService, AnswersService],
   bootstrap: [AppComponent],

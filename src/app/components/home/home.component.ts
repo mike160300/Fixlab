@@ -2,14 +2,16 @@ import { Component, OnInit, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {AuthenticationService} from '../../auth/authentication.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
-import {PostsService, PostDetails} from '../../services/posts.service';
+import {PostsService} from '../../services/posts.service';
 import {AnswersService, AnswerDetails} from '../../services/answers.service';
+import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
+import { Observable } from 'rxjs';
+import { finalize } from 'rxjs/operators';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 import { post } from 'selenium-webdriver/http';
 import { Posts } from '../../../models/posts';
 import { HttpClient } from '@angular/common/http';
-
 
 @Component({
   selector: 'app-home',
@@ -23,19 +25,22 @@ export class HomeComponent implements OnInit {
   selectedPost: Posts;
   nameValue;
   descriptionValue;
-  selecetdFile: File;
-  imageUrl: string = '';
-  oldimageUrl: string = null;  
+  imageUrl: string = null;
+  oldimageUrl: string = null;
+  newPost: Posts = new Posts();
+  uploadProgress: Observable<number>; 
+  ref: AngularFireStorageReference;
+  downloadURL: Observable<string>;
 
-  credentials: PostDetails = {
+  /*credentials: PostDetails = {
     id_post: 0,
     title: '',
     description: '',
-    image:  this.imageUrl,
+    image: '',
     publish_date:Date(),
     resolved : false,
     id_owner: this.auth.getUserDetails().id_user
-  };
+  };*/
 
  /*solutions: AnswerDetails = {
     id_answer: 0,
@@ -52,7 +57,7 @@ export class HomeComponent implements OnInit {
   modalRef3: BsModalRef;
   modalRef4: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient) 
+  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
   { 
     //Obtiene todas las publicaciones de usuario al inicio
     const id = this.auth.getUserDetails().id_user;
@@ -61,6 +66,13 @@ export class HomeComponent implements OnInit {
  
   create(template: TemplateRef<any>) 
   {
+    this.newPost.id_post= 0;
+    this.newPost.title="";
+    this.newPost.description="";
+    this.newPost.image="";
+    this.newPost.id_owner= this.auth.getUserDetails().id_user;
+    this.newPost.publish_date= new Date();
+    this.newPost.resolved = false;
     this.modalRef1 = this.modalService.show(template);
     this.modalRef1.hide();
   }
@@ -68,6 +80,7 @@ export class HomeComponent implements OnInit {
   modify(template: TemplateRef<any>, editPost: Posts) 
   {
     this.selectedPost = editPost;
+    console.log(this.selectedPost);
     this.nameValue= this.selectedPost.title;
     this.descriptionValue = this.selectedPost.description;
     this.modalRef2 = this.modalService.show(template);
@@ -82,20 +95,50 @@ export class HomeComponent implements OnInit {
     this.modalRef3.hide();
   }
 
-  cancel(): void
-  {
-    this.modalRef1.hide();
-  }
-
   /*answer(template: TemplateRef<any>) 
   {
     this.modalRef4= this.modalService.show(template);
     this.modalRef4.hide();
   }*/
 
-  addpost(form: NgForm) {
+  addpost(form: NgForm) 
+  {
 
-    this.posts.addpost(this.credentials).subscribe(
+    if(form.value.title === "")
+    {
+      alert("Debe escribir un título");
+      return;
+    }
+    else if(form.value.description === "")
+    {
+      alert("Debe escribir una descripcion");
+      return;
+    }
+    else 
+    {
+      this.newPost.id_post: 0,
+      this.newPost.title: form.value.name,
+      this.newPost.description: form.value.descripcion,
+      this.newPost.image: "",
+      this.newPost.id_owner: this.auth.getUserDetails().id_user,
+      this.newPost.publish_date: new Date(),
+      this.newPost.resolved : false
+    }
+
+    if(this.imageUrl!=null)
+    {
+      this.newPost.id_post: 0,
+      this.newPost.title: form.value.name,
+      this.newPost.description: form.value.descripcion,
+      this.newPost.image: this.imageUrl,
+      this.newPost.id_owner: this.auth.getUserDetails().id_user,
+      this.newPost.publish_date: new Date(),
+      this.newPost.resolved : false
+    }
+    this.imageUrl=null;    
+    
+
+    this.posts.addpost(this.newPost).subscribe(
       () => {
         this.message = "Post Created Successfully!";
         console.log(this.message);
@@ -137,6 +180,16 @@ export class HomeComponent implements OnInit {
       this.selectedPost.description = form.value.descripcion;
     }
 
+    if(this.imageUrl!=null)
+    {
+      this.oldimageUrl=this.selectedPost.image;
+      this.selectedPost.image=this.imageUrl;
+      //this.deleteImage(this.oldimageUrl);
+      this.imageUrl=null;
+    }
+
+    console.log(this.selectedPost);
+
     this.posts.updatePost(this.selectedPost)
         .subscribe(result => this.message = "Post Updated Successfully!");
     this.modalRef2.hide();
@@ -158,21 +211,29 @@ export class HomeComponent implements OnInit {
 
   }
 
-  //No funciona muy bien todavía
-  upload(event) 
-  {
 
+ upload(event) 
+  {
     // Obtiene la imagen:
-    this.selecetdFile = event.target.files[0];
+    const file = event.target.files[0];
     
     // Genera un ID random para la imagen:
     const randomId = Math.random().toString(36).substring(2);
-    const filepath = `${randomId}`;
+    const filepath = `Posts_Images/${randomId}`;
+    // Cargar imagen:
+    const task = this.storage.upload(filepath, file);
+    this.ref = this.storage.ref(filepath);
+    // Observa los cambios en el % de la barra de progresos:
+    this.uploadProgress = task.percentageChanges();
+    // Notifica cuando la URL de descarga está disponible:
+    task.snapshotChanges().pipe(
+      finalize(() => {
+        this.downloadURL = this.ref.getDownloadURL();  
+        this.downloadURL.subscribe(url => {this.imageUrl = url} );
+      })
+    ).subscribe();
+  }
 
-    this.http.post('/assets/', this.selecetdFile)
-      .subscribe(resposta => console.log('Upload ok.'));
-
-}
   
   ngOnInit() 
   {

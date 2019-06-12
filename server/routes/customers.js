@@ -125,6 +125,7 @@ users.route('/update/:id_user').post(function (req, res)  {
   const { id_user }= req.params;
   User.update(
       {  description : req.body.description},
+      {  image : req.body.image},
       { where: { id_user: [id_user] } }
     )
      // .then(result =>

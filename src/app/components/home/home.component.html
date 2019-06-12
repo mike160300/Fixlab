@@ -16,7 +16,11 @@
     	<div class="notice notice-info notice-lg">
         	<strong>{{post.title}}</strong>
         	<hr>
+        	<img *ngIf="post.image!=null" src="{{post.image}}" class="img-fluid text-center avatar">
+        	<img *ngIf="post.image==null" src="/assets/images/no-image.png" class="img-fluid text-center avatar">
+        	<br>
         	<p>{{ post.description }}</p>
+
         	<div class="text-right">
 	        	<!--&nbsp;-->
 	        	<!--button type="button" class="btn btn-info btn-modify" (click)="answer(template4)"
@@ -52,11 +56,13 @@
 			<div class="tab-content">
 				
 				<div class="text-center">
-					<img [src]="!auth.getUserDetails()?.image ? '/assets/images/sin-perfil.png' : auth.getUserDetails()?.image" class="img-fluid img-circle img-thumbnail profile-pic">
+					<img *ngIf="this.imageUrl==null" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic avatar">
+                    <img *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-fluid img-circle img-thumbnail profile-pic avatar">
 					<h6>Seleccione la foto para el producto</h6>
 					<br>
-
+						
 					<div class="container">
+
 						<!--Barra de progreso-->
 						<progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>
 
@@ -65,6 +71,9 @@
 								Progress: {{ (uploadProgress | async) / 100 | percent }}
 						</div>
 						<br>
+						<div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+            			<p>La foto se cargó correctamente</p>
+        				</div>
 
 						<!--Se sube una nueva foto para el usuario-->
 						<div class="item">
@@ -79,17 +88,18 @@
 				</div>
 				<hr>
 								
-				<form #f="ngForm" novalidate="" method="POST">					
+				<form #f="ngForm" novalidate="" method="POST">
+					
 					<div class="form-group">
 						<div class="col-xs-6">
 								<label for="name"><h4>Título</h4></label>
-								<input type="text"  name="title" class="form-control"  placeholder="Nombre del Post" [(ngModel)]="credentials.title">
+								<input type="text"  name="title" class="form-control"  placeholder="Nombre del Post" [(ngModel)]="newPost.title">
 						</div>
 					</div>
 					<div class="form-group">
 						<div class="col-xs-6">
 								<label for="descripcion"><h4>Descripción</h4></label><br>
-								<textarea type="text" name="description" placeholder="Descripcion del Post" [(ngModel)]="credentials.description"></textarea>
+								<textarea type="text" name="description" placeholder="Descripcion del Post" [(ngModel)]="newPost.description"></textarea>
 						</div>
 					</div>
 					<hr>
@@ -99,7 +109,7 @@
 							<i class="fas fa-pencil-alt"></i>
 						</button>
 						<br><br>
-						<button class="btn btn-cancelar btn-danger" (click)="cancel()">Cancelar
+						<button class="btn btn-cancelar btn-danger" (click)="modalRef1.hide()">Cancelar
 							<i class="far fa-times-circle"></i>
 						</button>
 					</div>
@@ -124,7 +134,8 @@
 			<div class="tab-content">
 				
 				<form #f="ngForm" class="form" id="ProductForm">
-					<img [src]="!auth.getUserDetails()?.image ? '/assets/images/sin-perfil.png' : auth.getUserDetails()?.image" class="img-fluid img-circle img-thumbnail profile-pic">
+					<img *ngIf="selectedPost.image==null" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic avatar">
+                    <img *ngIf="selectedPost.image!=null" src={{selectedPost.image}} class="img-fluid img-circle img-thumbnail profile-pic avatar">
 					<h6>Seleccione la foto para el producto</h6>
 					<br>
 
@@ -137,7 +148,9 @@
 								Progress: {{ (uploadProgress | async) / 100 | percent }}
 						</div>
 						<br>
-
+						<div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+            			<p>La foto se cargó correctamente</p>
+        				</div>
 						<!--Se sube una nueva foto para el usuario-->
 						<div class="item">
 								<!--Selecciona un archivo .png o .jpg-->

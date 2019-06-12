@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import {AuthenticationService} from '../../auth/authentication.service';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
-import {PostsService, PostDetails} from '../../services/posts.service';
+import {PostsService} from '../../services/posts.service';
 import {AnswersService, AnswerDetails} from '../../services/answers.service';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";

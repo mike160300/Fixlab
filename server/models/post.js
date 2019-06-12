@@ -23,7 +23,7 @@ module.exports = db.sequelize.define(
           },
 
           image : {
-            type: Sequelize.BLOB,
+            type: Sequelize.STRING,
             allowNull: false,
             
         

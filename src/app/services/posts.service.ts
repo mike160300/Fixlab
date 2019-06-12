@@ -6,7 +6,7 @@ import { Observable, of } from 'rxjs'
 import { Posts } from '../../models/posts';
 
 
-export interface PostDetails {
+/*export interface PostDetails {
   id_post: number,
   title: string,
   description: string,
@@ -15,7 +15,7 @@ export interface PostDetails {
   id_owner: number,
   publish_date: string
 
-};
+};*/
 
 @Injectable({
   providedIn: 'root'
@@ -28,14 +28,15 @@ export class PostsService {
 
    }
 
-  addpost(post: PostDetails): Observable<any> {
+  addpost(post: Posts): Observable<any> {
     const url=` ${this.uri}/add`
+    console.log(post);
     return this.http.post(url, post);
   };
 
   getposts(): Observable<Posts[]> {
     const url=` ${this.uri}/`
-    return this.http.get<Posts[]>(url)
+    return this.http.get<Posts[]>(url);
   };
 
   getpostsOwner(id: number): Observable<Posts[]> {
@@ -50,9 +51,9 @@ export class PostsService {
 
   updatePost(post: Posts): Observable<any>
   {
-    console.log("servicio")
     const url=` ${this.uri}/update`
     return this.http.post(url, post);
   }
+
 
 }
