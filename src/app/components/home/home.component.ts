@@ -109,31 +109,34 @@ export class HomeComponent implements OnInit {
       alert("Debe escribir un título");
       return;
     }
-    else if(form.value.description === "")
+    else if(form.value.descripcion === "")
     {
       alert("Debe escribir una descripcion");
       return;
     }
     else 
     {
-      this.newPost.id_post: 0,
-      this.newPost.title: form.value.name,
-      this.newPost.description: form.value.descripcion,
-      this.newPost.image: "",
-      this.newPost.id_owner: this.auth.getUserDetails().id_user,
-      this.newPost.publish_date: new Date(),
-      this.newPost.resolved : false
+      var newPost = {
+      id_post: 0,
+      title: form.value.name,
+      description: form.value.descripcion,
+      image: "",
+      id_owner: this.auth.getUserDetails().id_user,
+      publish_date: new Date(),
+      resolved: false
+      };
     }
 
     if(this.imageUrl!=null)
     {
-      this.newPost.id_post: 0,
-      this.newPost.title: form.value.name,
-      this.newPost.description: form.value.descripcion,
-      this.newPost.image: this.imageUrl,
-      this.newPost.id_owner: this.auth.getUserDetails().id_user,
-      this.newPost.publish_date: new Date(),
-      this.newPost.resolved : false
+      var newPost = {
+      id_post : 0,
+      title : form.value.name,
+      description : form.value.descripcion,
+      image : this.imageUrl,
+      id_owner : this.auth.getUserDetails().id_user,
+      publish_date : new Date(),
+      resolved : false};
     }
     this.imageUrl=null;    
     

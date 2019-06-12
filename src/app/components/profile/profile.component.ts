@@ -14,7 +14,7 @@ import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/s
 export class ProfileComponent implements OnInit {
 
   credentials: UserProfile = {
-    description: ''
+    description: '',
     image: ''
   };
 

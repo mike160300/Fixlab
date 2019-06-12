@@ -56,8 +56,8 @@
 			<div class="tab-content">
 				
 				<div class="text-center">
-					<img *ngIf="this.imageUrl==null" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic avatar">
-                    <img *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-fluid img-circle img-thumbnail profile-pic avatar">
+					<img *ngIf="this.imageUrl==null" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic img-content">
+                    <img *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-fluid img-circle img-thumbnail profile-pic img-content">
 					<h6>Seleccione la foto para el producto</h6>
 					<br>
 						
@@ -134,8 +134,8 @@
 			<div class="tab-content">
 				
 				<form #f="ngForm" class="form" id="ProductForm">
-					<img *ngIf="selectedPost.image==null" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic avatar">
-                    <img *ngIf="selectedPost.image!=null" src={{selectedPost.image}} class="img-fluid img-circle img-thumbnail profile-pic avatar">
+					<img *ngIf="selectedPost.image==null" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic img-content">
+                    <img *ngIf="selectedPost.image!=null" src={{selectedPost.image}} class="img-fluid img-circle img-thumbnail profile-pic img-content">
 					<h6>Seleccione la foto para el producto</h6>
 					<br>
 

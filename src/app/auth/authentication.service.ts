@@ -16,6 +16,7 @@ export interface UserDetails {
 
 export interface UserProfile {
   description:string
+  image: string
 
 }
 
