@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService} from '../../auth/authentication.service';
+import {AuthenticationService, UserProfile} from '../../auth/authentication.service';
+import { Router } from "@angular/router";
+import { NgForm } from '@angular/forms';
 
 @Component({
   selector: 'app-profile',
@@ -8,13 +10,27 @@ import {AuthenticationService} from '../../auth/authentication.service';
 })
 export class ProfileComponent implements OnInit {
 
-  constructor(private auth: AuthenticationService) 
-  {
-   
+  credentials: UserProfile = {
+    description: ''
+  };
+
+  constructor(private auth: AuthenticationService,private router: Router) { 
   }
 
 
+  editprofile(form: NgForm) {
+    this.auth.editprofile(this.credentials,this.auth.getUserDetails().id_user).subscribe(
+      () => {
+        this.router.navigateByUrl("/dashboard/home");
+      },
+      err => {
+        console.error(err);
+      }
+    ); ;
+  }
+
   ngOnInit() {
+
   }
 
 }

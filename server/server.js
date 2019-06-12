@@ -14,9 +14,11 @@ app.use(
 
 var Users = require('./routes/customers')
 var Post = require('./routes/post')
+var Answers = require('./routes/answers')
 
 app.use('/users', Users)
 app.use('/posts', Post)
+app.use('/answers', Answers)
 
 app.listen(port, function() {
   console.log('Server is running on port: ' + port)

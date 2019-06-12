@@ -1,13 +1,16 @@
-.container-fluid{
+.container-fluid
+{
 	background-color: #151515;
 	color: #fff;
 }
 
-a{
+a
+{
 	color: grey;
 }
 
-img{
+img
+{
 	width: 200px;
 	height: 100px;
 }

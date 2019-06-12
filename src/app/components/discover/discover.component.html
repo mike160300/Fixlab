@@ -1,3 +1,21 @@
-<p>
-  discover works!
-</p>
+    <!--Visualización de tarjetas-->
+    <div class="container-fluid" *ngFor="let post of pposts">
+    	<div class="notice notice-info notice-lg">
+        	<strong>{{post.title}}</strong>
+        	<hr>
+        	<p>{{ post.description }}</p>
+        	<div class="text-right">
+	        	&nbsp;
+	        	<button type="button" class="btn btn-info btn-modify"
+				   tooltip="Ver detalles" placement="bottom">
+			      	<i class="far fa-eye"></i>
+			  	</button>
+				&nbsp;
+				<button type="button" class="btn btn-primary btn-modify"
+				   tooltip="Responder" placement="bottom">
+			      	<i class="fas fa-reply"></i>
+			  	</button>
+			  	&nbsp;
+        	</div>
+    	</div>	
+	</div>
