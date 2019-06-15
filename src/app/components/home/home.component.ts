@@ -3,7 +3,7 @@ import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {AuthenticationService} from '../../auth/authentication.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import {PostsService} from '../../services/posts.service';
-import {AnswersService, AnswerDetails} from '../../services/answers.service';
+import {AnswersService} from '../../services/answers.service';
 import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -32,32 +32,12 @@ export class HomeComponent implements OnInit {
   ref: AngularFireStorageReference;
   downloadURL: Observable<string>;
 
-  /*credentials: PostDetails = {
-    id_post: 0,
-    title: '',
-    description: '',
-    image: '',
-    publish_date:Date(),
-    resolved : false,
-    id_owner: this.auth.getUserDetails().id_user
-  };*/
-
- /*solutions: AnswerDetails = {
-    id_answer: 0,
-    text: '',
-    price: 0,
-    unlocked: true,
-    valorated: false,
-    id_owner: this.auth.getUserDetails().id_user,
-    id_inpost:2
-  };*/
-
   modalRef1: BsModalRef;
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
   modalRef4: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
+  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
   { 
     //Obtiene todas las publicaciones de usuario al inicio
     const id = this.auth.getUserDetails().id_user;
@@ -94,12 +74,6 @@ export class HomeComponent implements OnInit {
     this.modalRef3 = this.modalService.show(template);
     this.modalRef3.hide();
   }
-
-  /*answer(template: TemplateRef<any>) 
-  {
-    this.modalRef4= this.modalService.show(template);
-    this.modalRef4.hide();
-  }*/
 
   addpost(form: NgForm) 
   {
@@ -152,27 +126,6 @@ export class HomeComponent implements OnInit {
     );
     this.modalRef1.hide();
   }
-       
-  /*addanswer(form: NgForm) {
-    this.answers.addanswer(this.solutions).subscribe(
-      () => {
-        this.router.navigateByUrl("/dashboard/home");
-      },
-      err => {
-        console.error(err);
-      }
-    );
-  }
-
-  /*getPosts() {
-    return this.posts.getposts()
-     .subscribe(
-       customers => {
-        console.log(customers);
-        this.pposts = customers
-       }
-  )
-  };*/
 
   update(form: NgForm) {
 

@@ -20,12 +20,6 @@ const post = require('../models/post')
             allowNull: false,
             
           },
-      
-          answer_date : {
-            type: Sequelize.DATE,
-            defaultValue: Sequelize.NOW
-        
-          },
          
           valorated : {
             type: Sequelize.BOOLEAN,
@@ -70,4 +64,4 @@ const post = require('../models/post')
     );
     
   
-  module.exports = answer;
+  //module.exports = answer;

@@ -8,15 +8,6 @@ const jwt = require('jsonwebtoken')
 let Publication = require('../models/post');
 posts.use(cors());
 
-//Modelo de Fotos:
-/*const cloudinary = require('cloudinary').v2;
-cloudinary.config(
-{
-	cloud_name: 'dbnynt7qi',
-	api_key: '473548356144881',
-	api_secret: 'd6rROYIPub6DXIsNT6mQoNS2yng'
-});*/
-
 //Crear Publicación:
 posts.route('/add').post(function (req,res)
 {

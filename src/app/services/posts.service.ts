@@ -6,17 +6,6 @@ import { Observable, of } from 'rxjs'
 import { Posts } from '../../models/posts';
 
 
-/*export interface PostDetails {
-  id_post: number,
-  title: string,
-  description: string,
-  image:  string,
-  resolved : boolean,
-  id_owner: number,
-  publish_date: string
-
-};*/
-
 @Injectable({
   providedIn: 'root'
 })
