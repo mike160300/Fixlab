@@ -88,32 +88,23 @@ export class HomeComponent implements OnInit {
       alert("Debe escribir una descripcion");
       return;
     }
-    else 
-    {
-      var newPost = {
-      id_post: 0,
-      title: form.value.name,
-      description: form.value.descripcion,
-      image: "",
-      id_owner: this.auth.getUserDetails().id_user,
-      publish_date: new Date(),
-      resolved: false
-      };
-    }
-
-    if(this.imageUrl!=null)
+    else
     {
       var newPost = {
       id_post : 0,
       title : form.value.name,
       description : form.value.descripcion,
-      image : this.imageUrl,
       id_owner : this.auth.getUserDetails().id_user,
       publish_date : new Date(),
       resolved : false};
     }
-    this.imageUrl=null;    
-    
+
+    if(this.imageUrl!=null)
+    {
+      this.newPost.image = this.imageUrl;
+    }
+
+    this.imageUrl=null; 
 
     this.posts.addpost(this.newPost).subscribe(
       () => {
@@ -186,6 +177,7 @@ export class HomeComponent implements OnInit {
       finalize(() => {
         this.downloadURL = this.ref.getDownloadURL();  
         this.downloadURL.subscribe(url => {this.imageUrl = url} );
+        console.log(this.imageUrl);
       })
     ).subscribe();
   }

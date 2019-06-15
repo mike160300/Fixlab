@@ -25,8 +25,8 @@ users.post('/register', (req, res) => {
     //TODO bcrypt
     .then(user => {
       if (!user) {
-        //const hash = bcrypt.hashSync(userData.password,10)
-        //userData.password=hash
+        const hash = bcrypt.hashSync(userData.password,10)
+        userData.password=hash
         User.create(userData)
           .then(user => {
             let token = jwt.sign(user.dataValues, process.env.SECRET_KEY, {
