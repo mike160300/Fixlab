@@ -32,6 +32,35 @@ answers.route('/add').post(function (req,res)
 
 });
 
+answers.route('/:id').get(function (req, res)
+{
+	Answer.findAll({
+		where: {
+   		id_inpost: req.params.id  
+  	}}
+	)
+
+  	.then(aanswer => {
+			res.json(aanswer);
+		}).catch(err => {
+			console.log(err);
+			res.status(500).json({msg: "error", details: err});
+		})
+});
+
+answers.route('/update').post(function (req, res)
+{
+
+	const id = req.body.id_answer;
+	Answer.update( req.body, 
+			{ where: {id_answer: id} }).then(() => {
+				res.json();
+				console.log(res);
+			}).catch(err => {
+				console.log(err);
+				res.status(500).json({msg: "error", details: err});
+			});
+});
 
 
 
