@@ -11,6 +11,7 @@ import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 import { post } from 'selenium-webdriver/http';
 import { Posts } from '../../../models/posts';
+import { Answers } from '../../../models/answers';
 import { HttpClient } from '@angular/common/http';
 
 @Component({
@@ -21,8 +22,10 @@ import { HttpClient } from '@angular/common/http';
 export class HomeComponent implements OnInit {
 
   pposts: Posts[];
+  aanswer : Answers[];
   message: string;
   selectedPost: Posts;
+  selectedAnswer: Answers;
   nameValue;
   descriptionValue;
   imageUrl: string = null;
@@ -37,7 +40,7 @@ export class HomeComponent implements OnInit {
   modalRef3: BsModalRef;
   modalRef4: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
+  constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
   { 
     //Obtiene todas las publicaciones de usuario al inicio
     const id = this.auth.getUserDetails().id_user;
@@ -65,6 +68,21 @@ export class HomeComponent implements OnInit {
     this.descriptionValue = this.selectedPost.description;
     this.modalRef2 = this.modalService.show(template);
     this.modalRef2.hide();
+  }
+  valorate(resp :Answers)
+  {
+    this.selectedAnswer = resp;
+    this.selectedAnswer.valorated = true;
+    this.answers.valorateAnswer(this.selectedAnswer)
+        .subscribe(result => this.message = "answer valorated Successfully!");
+  }
+  viewans(template :TemplateRef<any>, viewans:Posts)
+  {
+    this.selectedPost = viewans;
+    //this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
+    this.answers.getanswerofpost(this.selectedPost.id_post).subscribe(aanswer => this.aanswer = aanswer)
+    this.modalRef4 = this.modalService.show(template);
+    this.modalRef4.hide();
   }
 
   delet(template: TemplateRef<any>, deletePost: Posts) 

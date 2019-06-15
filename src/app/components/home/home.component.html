@@ -28,6 +28,11 @@
 			      	<i class="far fa-eye"></i>
 			  	</button-->
 				&nbsp;
+				<button type="button" class="btn btn-info btn-modify" (click)="viewans(template4, post)"
+				tooltip="Ver respuestas" placement="bottom">
+				   <i class="far fa-eye"></i>
+			   </button>
+			   &nbsp;
 				<button type="button" class="btn btn-primary btn-modify" (click)="modify(template2, post)"
 				   tooltip="Modificar la publicación" placement="bottom">
 			      	<i class="fas fa-pencil-alt"></i>
@@ -210,5 +215,37 @@
 			&nbsp;
 			<button (click)="modalRef3.hide()" class="btn btn-danger btn-cancelar" type="button">No</button>
 		</div>
+	</div>
+</ng-template>
+
+
+
+
+<!--Modal para ver respuestas-->
+<ng-template #template4>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Respuestas de la publicación</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef4.hide()">
+	  		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+
+
+		<div class="container-fluid" *ngFor="let answer of aanswer">
+    	<div class="notice notice-info notice-lg">
+        	<strong>{{answer.text}}</strong>
+        	<br>
+			<p>precio : {{ answer.price }}</p>
+			<br>
+			<p>valorada: {{ answer.valorated }}</p>
+			
+			<button class="btn btn-success"  type="button" (click)="valorate(answer)" >Valorar Respuesta</button>
+
+
+        	
+    	</div>	
+	</div>
+
 	</div>
 </ng-template>
