@@ -23,5 +23,15 @@ export class AnswersService {
      return this.http.post(url, answer)
   };
 
+  getanswerofpost(id: number): Observable<Answers[]> {
+    const url = `${this.uri}/${id}`;
+    return this.http.get<Answers[]>(url);
+  }
+  valorateAnswer(ans: Answers): Observable<any>
+  {
+    const url=` ${this.uri}/update`
+    return this.http.post(url, ans);
+  }
+
 
 }
