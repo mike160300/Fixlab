@@ -3,6 +3,7 @@ import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
+import { Customers } from '../../models/customers';
 
 export interface UserDetails {
   id_user:number
@@ -34,6 +35,7 @@ export interface TokenPayload {
 @Injectable()
 export class AuthenticationService {
   private token: string
+  uri = 'http://localhost:3000/users'
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -99,4 +101,12 @@ export class AuthenticationService {
   public editprofile(prof:UserProfile,id_user): Observable<any> {
     return this.http.post('http://localhost:3000/users/update/'+id_user, prof)
   }
+
+  getuser(id: number): Observable<Customers[]> {
+     
+    const url = `${this.uri}/${id}`;
+    return this.http.get<Customers[]>(url);
+  }
+
+
 }
