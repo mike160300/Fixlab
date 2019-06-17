@@ -151,4 +151,26 @@ users.route.put('/update/:id_user', function (req, res, next) {
   .catch(next)
  })*/
 
+
+
+ users.route('/:id').get(function (req, res)
+ {
+   User.findAll({
+     where: {
+        id_user: req.params.id  
+     }}
+   )
+ 
+     .then(uuser => {
+       res.json(uuser);
+     }).catch(err => {
+       console.log(err);
+       res.status(500).json({msg: "error", details: err});
+     })
+ });
+
+
+
+
+
 module.exports = users;
