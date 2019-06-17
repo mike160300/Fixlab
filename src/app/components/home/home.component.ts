@@ -13,6 +13,7 @@ import { post } from 'selenium-webdriver/http';
 import { Posts } from '../../../models/posts';
 import { Answers } from '../../../models/answers';
 import { HttpClient } from '@angular/common/http';
+import { Customers } from '../../../models/customers';
 
 @Component({
   selector: 'app-home',
@@ -23,6 +24,7 @@ export class HomeComponent implements OnInit {
 
   pposts: Posts[];
   aanswer : Answers[];
+  uuser: Customers[];
   message: string;
   selectedPost: Posts;
   selectedAnswer: Answers;
@@ -39,6 +41,7 @@ export class HomeComponent implements OnInit {
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
   modalRef4: BsModalRef;
+  modalRef5: BsModalRef;
 
   constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
   { 
@@ -83,6 +86,14 @@ export class HomeComponent implements OnInit {
     this.answers.getanswerofpost(this.selectedPost.id_post).subscribe(aanswer => this.aanswer = aanswer)
     this.modalRef4 = this.modalService.show(template);
     this.modalRef4.hide();
+  }
+  viewans2(template :TemplateRef<any>, viewans:Answers)
+  {
+    this.selectedAnswer = viewans;
+    //this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
+    this.auth.getuser(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
+    this.modalRef5 = this.modalService.show(template);
+    this.modalRef5.hide();
   }
 
   delet(template: TemplateRef<any>, deletePost: Posts) 

@@ -241,11 +241,29 @@
 			<p>valorada: {{ answer.valorated }}</p>
 			
 			<button class="btn btn-success"  type="button" (click)="valorate(answer)" >Valorar Respuesta</button>
-
-
+			<button type="button" class="btn btn-info btn-modify" (click)="viewans2(template5, answer)"
+				tooltip="Ver Usuario" placement="bottom">
+				   <i class="far fa-eye"></i>
+			   </button>
         	
     	</div>	
 	</div>
+
+	</div>
+</ng-template>
+
+<ng-template #template5>
+	<div class="modal-body">
+
+		<div class="container-fluid" *ngFor="let user of uuser">
+			<div class="notice notice-info notice-lg">
+				
+				<strong>Username :{{user.username}}</strong>
+				<br>
+				<strong>Description :{{user.description}}</strong>
+				
+			</div>	
+		</div>
 
 	</div>
 </ng-template>
