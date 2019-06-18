@@ -4,77 +4,88 @@ const posts = express.Router();
 const cors = require('cors')
 const jwt = require('jsonwebtoken')
 
-// Require Business model in our routes module
-let post = require('../models/post');
-posts.use(cors())
+//Modelo de Post:
+let Publication = require('../models/post');
+posts.use(cors());
 
+//Crear Publicación:
+posts.route('/add').post(function (req,res)
+{
 
-// Defined store route
-posts.route('/add').post(function (req, res) {
+	Publication.create({
+		"id_post": req.body.id_post,
+		"title": req.body.title, 
+		"description": req.body.description, 
+		"image": req.body.image,
+		"publish_date": req.body.publish_date,
+		"resolved": req.body.resolved,
+		"id_owner": req.body.id_owner
+	}).then(() => {
+			res.json();
+		}).catch(err => {
+			console.log(err);
+			res.status(500).json({msg: "error", details: err});
+		})
 
-  let newpost = new post(req.body);
-  newpost.save()
-
-  /*const datapost = req.body;
- 
- 
-  post.create(datapost)
-  .then(post => res.redirect('/dashboard/home'))
- 
-  let ppost = new post(req.body);
-  ppost.save()
-    .then(ppost => {
-      res.status(200).json({'ppost': 'post in added successfully'});
-    })
-    .catch(err => {
-    res.status(400).send("unable to save to database");
-    });*/
 });
 
-// Defined get data(index or listing) route
-/*
-posts.route('/').get(function (req, res) {
-    psot.find(function (err, ppost){
-    if(err){
-      console.log(err);
-    }
-    else {
-      res.json(ppost);
-    }
-  });
-}); *?
-// Defined edit route
-posts.route('/edit/:id').get(function (req, res) {
-  let id = req.params.id;
-  post.findById(id, function (err, ppost){
-      res.json(ppost);
-  });
+//Obtener TODAS las publicaciones:
+posts.route('/').get(function (req, res)
+{
+	Publication.findAll().then(pposts => {
+		res.json(pposts.sort(function(c1, c2){return c1.id - c2.id}));
+	}).catch(err => {
+		console.log(err);
+		res.status(500).json({msg: "error", details: err});
+	})	
 });
-/*
-//  Defined update route
-businessRoutes.route('/update/:id').post(function (req, res) {
-    Business.findById(req.params.id, function(err, next, business) {
-    if (!business)
-      return next(new Error('Could not load Document'));
-    else {
-        business.person_name = req.body.person_name;
-        business.business_name = req.body.business_name;
-        business.business_gst_number = req.body.business_gst_number;
-        business.save().then(business => {
-          res.json('Update complete');
-      })
-      .catch(err => {
-            res.status(400).send("unable to update the database");
-      });
-    }
-  });
+
+//Muestra los post propios del usuario:
+posts.route('/:id').get(function (req, res)
+{
+	Publication.findAll({
+		where: {
+   		id_owner: req.params.id  
+  	}}
+	)
+
+  	.then(pposts => {
+			res.json(pposts);
+		}).catch(err => {
+			console.log(err);
+			res.status(500).json({msg: "error", details: err});
+		})
 });
-// Defined delete | remove | destroy route
-businessRoutes.route('/delete/:id').get(function (req, res) {
-    Business.findByIdAndRemove({_id: req.params.id}, function(err, business){
-        if(err) res.json(err);
-        else res.json('Successfully removed');
-    });
+
+//Actualiza un post seleccionado:
+posts.route('/update').post(function (req, res)
+{
+
+	const id = req.body.id_post;
+	Publication.update( req.body, 
+			{ where: {id_post: id} }).then(() => {
+				res.json();
+				console.log(res);
+			}).catch(err => {
+				console.log(err);
+				res.status(500).json({msg: "error", details: err});
+			});
 });
-*/
+
+//Borra un post seleccionado:
+posts.route('/delete/:id').delete(function (req, res)
+{
+	const id = req.params.id;
+	console.log(id);
+	Publication.destroy({
+			where: { id_post : id }
+		}).then(() => {
+			res.status(200).json( { msg: 'Deleted Successfully -> Post Id = ' + id } );
+		}).catch(err => {
+			console.log(err);
+			res.status(500).json({msg: "error", details: err});
+		})
+});
+
+
 module.exports = posts; 
