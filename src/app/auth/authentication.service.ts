@@ -3,14 +3,22 @@ import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
+import { Customers } from '../../models/customers';
 
 export interface UserDetails {
-  id_user: number
+  id_user:number
   username: string
   email: string
   password: string
+  description:string
   exp: number
   iat: number
+}
+
+export interface UserProfile {
+  description:string
+  image: string
+
 }
 
 interface TokenResponse {
@@ -18,7 +26,7 @@ interface TokenResponse {
 }
 
 export interface TokenPayload {
-  id_user: number
+  id_user:number
   email: string
   username: string
   password: string
@@ -27,8 +35,10 @@ export interface TokenPayload {
 @Injectable()
 export class AuthenticationService {
   private token: string
+  uri = 'http://localhost:3000/users'
 
-  constructor(private http: HttpClient, private router: Router) {}
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   private saveToken(token: string): void {
     localStorage.setItem('usertoken', token)
@@ -82,15 +92,21 @@ export class AuthenticationService {
     return request
   }
 
-  public profile(): Observable<any> {
-    return this.http.get(`/users/profile`, {
-      headers: { Authorization: ` ${this.getToken()}` }
-    })
-  }
-
   public logout(): void {
     this.token = ''
     window.localStorage.removeItem('usertoken')
     this.router.navigateByUrl('/')
   }
+
+  public editprofile(prof:UserProfile,id_user): Observable<any> {
+    return this.http.post('http://localhost:3000/users/update/'+id_user, prof)
+  }
+
+  getuser(id: number): Observable<Customers[]> {
+     
+    const url = `${this.uri}/${id}`;
+    return this.http.get<Customers[]>(url);
+  }
+
+
 }

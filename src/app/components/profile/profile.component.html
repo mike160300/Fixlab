@@ -1,9 +1,12 @@
 <div class="container box">
 
     <!--Imagen de Perfil-->
-        <img class="img-fluid img-circle img-thumbnail profile-pic" *ngIf="auth.getUserDetails()?.image" src="{{auth.getUserDetails()?.image}}">
-       	<img class="img-fluid profile-pic" *ngIf="!auth.getUserDetails()?.image" src="/assets/images/sin-perfil.png">
-        <!--img class="img-fluid profile-pic" *ngIf="auth.getUserDetails()?.image!=null" src={{this.imageUrl}} class="img-thumbnail" alt="avatar"-->
+    <div class="img-profile">
+        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.auth.getUserDetails().image && this.imageUrl==null" src="{{auth.getUserDetails().image}}">
+        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.auth.getUserDetails().image == null && this.imageUrl==null" src="/assets/images/sin-perfil.png">
+        <img class="img-fluid profile-pic" *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail img-circle img-fluid">
+
+    </div>
     <br>
 
     <!--Para actualizar/añadir imagen de perfil a un usuario-->
@@ -37,47 +40,38 @@
         <div class="tab-content">
             <div class="tab-pane active" id="home">
             	<hr>
-                   	<form #f="ngForm" class="form">
+                   	<form (ngSubmit)="editprofile(f)" #f="ngForm" novalidate="" method="POST">
                         <div class="form-group">
                             <div class="col-xs-6">
                                	<label for="first_name"><h4>Nombre de Usuario</h4></label>
-                                <input #name type="text" class="form-control" name="name" id="name"
-                                 placeholder="{{auth.getUserDetails()?.username  | titlecase}}">
+                                <input type="text" disabled
+                                placeholder="{{auth.getUserDetails()?.username  | titlecase}}">
                           	</div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="email"><h4>Email</h4></label>
-                                <input #email type="text" class="form-control" name="email" id="email" placeholder="{{auth.getUserDetails()?.email}}">
+                                <input type="text" disabled 
+                                placeholder="{{auth.getUserDetails()?.email}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
-                                <label for="email"><h4>Descripción del Usuario</h4></label>
-                                <textarea #description type="text" class="form-control" name="description" id="description" placeholder="{{auth.getUserDetails()?.description}}"></textarea>
-                            </div>
-                        </div>                        
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="password"><h4>Contraseña Actual</h4></label>
-                                <input #pass type="password" class="form-control" name="password" id="password" placeholder="password">
-                           	</div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="password2"><h4>Nueva Contraseña</h4></label>
-                                <input #confirm type="password" class="form-control" name="password2" id="password2" placeholder="nuevo password">
+                                <label for="description"><h4>Descripción</h4></label>
+                                <input #description type="text" class="form-control" name="description" 
+                                id="description" placeholder="{{auth.getUserDetails()?.description}}" [(ngModel)]="credentials.description" >
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-12">
                                 <br>
-                                <button (click)="update(f)" class="btn btn-lg btn-success" type="submit">
+                                <button class="btn btn-lg btn-success" type="submit">
                                     Actualizar <i class="fas fa-sync-alt"></i>
                                	</button>
                             </div>
                                 </div>
                     </form>
+                    <hr>
             </div>
         </div>
 </div>
