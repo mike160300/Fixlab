@@ -27,10 +27,17 @@ export class AnswersService {
     const url = `${this.uri}/${id}`;
     return this.http.get<Answers[]>(url);
   }
+
   valorateAnswer(ans: Answers): Observable<any>
   {
     const url=` ${this.uri}/update`
     return this.http.post(url, ans);
+  }
+
+  unlockAnswer(ans: Answers): Observable<any>
+  {
+    const url=` ${this.uri}/update`
+    return this.http.post(url, ans);   
   }
 
 

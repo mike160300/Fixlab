@@ -1,25 +1,27 @@
 <!--Visualización de tarjetas-->
 <div class="container-fluid" *ngFor="let post of pposts">
-	<div class="notice notice-info notice-lg">
-    	<strong>{{post.title}}</strong>
-    	<hr>
-    	<img *ngIf="post.image==null" src="/assets/images/no-image.png" class="img-fluid avatar">
-        <img *ngIf="post.image!=null" src={{post.image}} class="img-fluid avatar">
-    	<br>
-    	<p>{{ post.description }}</p>
-    	<div class="text-right">
-        	&nbsp;
-        	<button type="button" class="btn btn-info btn-modify"
-			   tooltip="Ver respuestas" placement="bottom">
-		      	<i class="far fa-eye"></i>
-		  	</button>
-			&nbsp;
-			<button type="button" class="btn btn-primary btn-modify" (click)="reply(template1, post)"
-			   tooltip="Responder" placement="bottom">
-		      	<i class="fas fa-reply"></i>
-		  	</button>
-		  	&nbsp;
-    	</div>
+	<div *ngIf="post.id_owner != this.auth.getUserDetails().id_user">
+		<div class="notice notice-info notice-lg">
+	    	<strong>{{post.title}}</strong>
+	    	<hr>
+	    	<img *ngIf="post.image==null" src="/assets/images/no-image.png" class="img-fluid avatar">
+	        <img *ngIf="post.image!=null" src={{post.image}} class="img-fluid avatar">
+	    	<br>
+	    	<p>{{ post.description }}</p>
+	    	<div class="text-right">
+	        	&nbsp;
+	        	<button type="button" class="btn btn-info btn-modify"
+				   tooltip="Ver respuestas" placement="bottom">
+			      	<i class="far fa-eye"></i>
+			  	</button>
+				&nbsp;
+				<button type="button" class="btn btn-primary btn-modify" (click)="reply(template1, post)"
+				   tooltip="Responder" placement="bottom">
+			      	<i class="fas fa-reply"></i>
+			  	</button>
+			  	&nbsp;
+	    	</div>
+		</div>
 	</div>	
 </div>
 

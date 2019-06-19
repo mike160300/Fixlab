@@ -23,7 +23,7 @@ import { Customers } from '../../../models/customers';
 export class HomeComponent implements OnInit {
 
   pposts: Posts[];
-  aanswer : Answers[];
+  aanswer: Answers[];
   uuser: Customers[];
   message: string;
   selectedPost: Posts;
@@ -72,6 +72,7 @@ export class HomeComponent implements OnInit {
     this.modalRef2 = this.modalService.show(template);
     this.modalRef2.hide();
   }
+
   valorate(resp :Answers)
   {
     this.selectedAnswer = resp;
@@ -79,22 +80,40 @@ export class HomeComponent implements OnInit {
     this.answers.valorateAnswer(this.selectedAnswer)
         .subscribe(result => this.message = "answer valorated Successfully!");
   }
-  viewans(template :TemplateRef<any>, viewans:Posts)
+
+  notvalorate(resp :Answers)
   {
-    this.selectedPost = viewans;
-    //this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
-    this.answers.getanswerofpost(this.selectedPost.id_post).subscribe(aanswer => this.aanswer = aanswer)
-    this.modalRef4 = this.modalService.show(template);
-    this.modalRef4.hide();
-  }
-  viewans2(template :TemplateRef<any>, viewans:Answers)
+    this.selectedAnswer = resp;
+    this.selectedAnswer.valorated = false;
+    this.answers.valorateAnswer(this.selectedAnswer)
+        .subscribe(result => this.message = "answer valorated Successfully!");
+  }  
+
+  unlocked(viewans:Answers)
   {
     this.selectedAnswer = viewans;
-    //this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
+    this.selectedAnswer.unlocked = true;
+    this.answers.valorateAnswer(this.selectedAnswer)
+        .subscribe(result => this.message = "Answer unlocked Successfully!"); 
+  }
+
+  viewAnswer(template: TemplateRef<any>, viewans:Answers)
+  {
+    this.selectedAnswer = viewans;
     this.auth.getuser(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
     this.modalRef5 = this.modalService.show(template);
-    this.modalRef5.hide();
+    this.modalRef5.hide();   
   }
+
+  viewAnswers(template: TemplateRef<any>, viewans:Posts)
+  {
+     this.selectedPost = viewans;
+     this.answers.getanswerofpost(this.selectedPost.id_post).subscribe(aanswer => this.aanswer = aanswer);
+     this.modalRef4 = this.modalService.show(template);
+     this.modalRef4.hide();
+     console.log(this.aanswer);
+  }
+
 
   delet(template: TemplateRef<any>, deletePost: Posts) 
   {
@@ -214,7 +233,7 @@ export class HomeComponent implements OnInit {
   
   ngOnInit() 
   {
-    
+
   }
 
 }
