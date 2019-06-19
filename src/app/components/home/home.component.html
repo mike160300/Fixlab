@@ -298,15 +298,21 @@
 					<div *ngIf="selectedAnswer.valorated">
 						<button class="btn btn-success disabled btn-unlock">Esta respuesta resolvió tu problema</button>
 						<br><br>
-						<p>¡Hazle saber a <b>{{ user.username }}</b> lo útil que te fue su respuesta!</p>
-						<br>
-						<div>
+
+						<div *ngIf="!done">
+							<p>¡Hazle saber a <b>{{ user.username }}</b> lo útil que te fue su respuesta!</p>
+							<br>	
 						  <rating [max]="5" [(ngModel)]="y" [customTemplate]="tt"></rating>
 						  <ng-template #tt let-i="index" let-v="value">
-						    <button class="btn btn-{{i < v ? 'warning' : 'default'}}">
+						    <button class="btn btn-answer btn-{{i < v ? 'warning' : 'default'}}"
+						    	(click)="rateUser(i+1)">
 						      {{i < v ? '&#9733;' : '&#9734;'}}
 						    </button>
 						  </ng-template>
+						</div>
+
+						<div *ngIf="done">
+						  <strong>¡Has calificado a {{user.username}} con {{x}} estrellas!</strong>
 						</div>
 
 					</div>

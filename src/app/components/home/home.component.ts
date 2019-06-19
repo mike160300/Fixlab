@@ -32,6 +32,7 @@ export class HomeComponent implements OnInit {
   message: string;
   selectedPost: Posts;
   selectedAnswer: Answers;
+  selectedRate: Rates;
   nameValue;
   descriptionValue;
   imageUrl: string = null;
@@ -41,6 +42,8 @@ export class HomeComponent implements OnInit {
   ref: AngularFireStorageReference;
   downloadURL: Observable<string>;
   y: number = 0;
+  x: number = 0;
+  done: boolean = false;
 
 
   modalRef1: BsModalRef;
@@ -92,9 +95,29 @@ export class HomeComponent implements OnInit {
         .subscribe(result => this.message = "answer valorated Successfully!");
   }
 
-  rateUser()
+  rateUser(y)
   {
-    
+    console.log(y);
+    this.newRate = {
+      id_user1: this.selectedAnswer.id_owner,
+      id_user2: this.auth.getUserDetails().id_user,
+      value: y
+    }
+
+    this.x=y;
+    console.log(this.newRate);
+
+    this.rates.addrate(this.newRate).subscribe(
+      () => {
+        this.message = "Rate Created Successfully!";
+        console.log(this.message);
+      },
+      err => {
+        console.error(err);
+      }
+    );
+
+    this.done = true;
   }
 
   notvalorate(resp :Answers)
@@ -116,6 +139,11 @@ export class HomeComponent implements OnInit {
   viewAnswer(template: TemplateRef<any>, viewans:Answers)
   {
     this.selectedAnswer = viewans;
+
+
+
+    //this.selectedRate=this.newRate;
+
     this.auth.getuser(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
     this.modalRef5 = this.modalService.show(template);
     this.modalRef5.hide();   

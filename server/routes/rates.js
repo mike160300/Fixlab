@@ -6,7 +6,7 @@ const jwt = require('jsonwebtoken')
 const Rate = require('../models/rates')
 rates.use(cors())
 
-//Crear Publicación:
+//Crear Rating:
 rates.route('/add').post(function (req,res)
 {
 
@@ -21,6 +21,21 @@ rates.route('/add').post(function (req,res)
       res.status(500).json({msg: "error", details: err});
     })
 
+});
+
+rates.route('/update').post(function (req, res)
+{
+
+  const id = req.body.id_user1;
+  const id2 = req.body.id_user2;
+  Rate.update( req.body, 
+      { where: {id_user1: id, id_user2: id2 } }).then(() => {
+        res.json();
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+        res.status(500).json({msg: "error", details: err});
+      });
 });
 
 
