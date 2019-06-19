@@ -8,7 +8,7 @@ const customer = require('../models/customer')
             type: Sequelize.INTEGER,
             primaryKey: true,
             allowNull: false,
-            autoIncrement: true,
+            autoIncrement: false,
             references:{
                 model:customer,
                 key:'id_user',
@@ -20,7 +20,7 @@ const customer = require('../models/customer')
             type: Sequelize.INTEGER,
             primaryKey: true,
             allowNull: false,
-            autoIncrement: true,
+            autoIncrement: false,
             references:{
                 model:customer,
                 key:'id_user',

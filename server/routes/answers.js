@@ -32,6 +32,16 @@ answers.route('/add').post(function (req,res)
 
 });
 
+answers.route('/').get(function (req, res)
+{
+	Answer.findAll().then(aanswers => {
+		res.json(aanswers.sort(function(c1, c2){return c1.id - c2.id}));
+	}).catch(err => {
+		console.log(err);
+		res.status(500).json({msg: "error", details: err});
+	})	
+});
+
 answers.route('/:id').get(function (req, res)
 {
 	Answer.findAll({
@@ -60,6 +70,19 @@ answers.route('/update').post(function (req, res)
 				console.log(err);
 				res.status(500).json({msg: "error", details: err});
 			});
+});
+
+//Borra un post seleccionado:
+answers.route('/delete/:id').delete(function (req, res)
+{
+	Answer.destroy({
+			where: { id_answer : req.params.id }
+		}).then(() => {
+			res.status(200).json();
+		}).catch(err => {
+			console.log(err);
+			res.status(500).json({msg: "error", details: err});
+		})
 });
 
 

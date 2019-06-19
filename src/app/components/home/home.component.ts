@@ -4,6 +4,7 @@ import {AuthenticationService} from '../../auth/authentication.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import {PostsService} from '../../services/posts.service';
 import {AnswersService} from '../../services/answers.service';
+import {RatesService} from '../../services/rates.service';
 import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -12,6 +13,7 @@ import { Router } from "@angular/router";
 import { post } from 'selenium-webdriver/http';
 import { Posts } from '../../../models/posts';
 import { Answers } from '../../../models/answers';
+import { Rates } from '../../../models/rates';
 import { HttpClient } from '@angular/common/http';
 import { Customers } from '../../../models/customers';
 
@@ -25,6 +27,8 @@ export class HomeComponent implements OnInit {
   pposts: Posts[];
   aanswer: Answers[];
   uuser: Customers[];
+  rrate: Rates[];
+  newRate: Rates = new Rates();
   message: string;
   selectedPost: Posts;
   selectedAnswer: Answers;
@@ -36,6 +40,8 @@ export class HomeComponent implements OnInit {
   uploadProgress: Observable<number>; 
   ref: AngularFireStorageReference;
   downloadURL: Observable<string>;
+  y: number = 0;
+
 
   modalRef1: BsModalRef;
   modalRef2: BsModalRef;
@@ -43,9 +49,14 @@ export class HomeComponent implements OnInit {
   modalRef4: BsModalRef;
   modalRef5: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
+  constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService, private rates: RatesService ,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
   { 
     //Obtiene todas las publicaciones de usuario al inicio
+    this.getPosts();
+  }
+
+  getPosts()
+  {
     const id = this.auth.getUserDetails().id_user;
     this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
   }
@@ -79,6 +90,11 @@ export class HomeComponent implements OnInit {
     this.selectedAnswer.valorated = true;
     this.answers.valorateAnswer(this.selectedAnswer)
         .subscribe(result => this.message = "answer valorated Successfully!");
+  }
+
+  rateUser()
+  {
+    
   }
 
   notvalorate(resp :Answers)

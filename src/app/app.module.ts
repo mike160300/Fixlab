@@ -14,6 +14,7 @@ import {AngularFireStorageModule} from '@angular/fire/storage'
 //Servicios:
 import { PostsService } from './services/posts.service';
 import { AnswersService } from './services/answers.service';
+import { RatesService } from './services/rates.service';
 
 //Router:
 import { APP_ROUTING } from './app.routes';
@@ -33,6 +34,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 //Componentes:
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -74,10 +76,11 @@ import { AnswersComponent } from './components/answers/answers.component';
     TabsModule.forRoot(),
     CarouselModule.forRoot(),
     ProgressbarModule.forRoot(),
+    RatingModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule
   ],
-  providers: [PostsService, AnswersService],
+  providers: [PostsService, AnswersService, RatesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

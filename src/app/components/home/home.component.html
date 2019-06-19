@@ -299,6 +299,16 @@
 						<button class="btn btn-success disabled btn-unlock">Esta respuesta resolvió tu problema</button>
 						<br><br>
 						<p>¡Hazle saber a <b>{{ user.username }}</b> lo útil que te fue su respuesta!</p>
+						<br>
+						<div>
+						  <rating [max]="5" [(ngModel)]="y" [customTemplate]="tt"></rating>
+						  <ng-template #tt let-i="index" let-v="value">
+						    <button class="btn btn-{{i < v ? 'warning' : 'default'}}">
+						      {{i < v ? '&#9733;' : '&#9734;'}}
+						    </button>
+						  </ng-template>
+						</div>
+
 					</div>
 					<div *ngIf="!selectedAnswer.valorated">
 						<button class="btn btn-danger disabled btn-unlock">Esta respuesta NO resolvió tu problema</button>

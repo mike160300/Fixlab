@@ -28,6 +28,11 @@ export class AnswersService {
     return this.http.get<Answers[]>(url);
   }
 
+  getAnswers(): Observable<Answers[]> {
+    const url = `${this.uri}/`;
+    return this.http.get<Answers[]>(url);
+  }  
+
   valorateAnswer(ans: Answers): Observable<any>
   {
     const url=` ${this.uri}/update`
@@ -38,6 +43,18 @@ export class AnswersService {
   {
     const url=` ${this.uri}/update`
     return this.http.post(url, ans);   
+  }
+
+  updateAnswer(ans: Answers): Observable<any>
+  {
+    const url=` ${this.uri}/update`
+    return this.http.post(url, ans);   
+  }
+
+  deleteAnswer(ans: Answers): Observable<Answers>
+  {
+    const url=` ${this.uri}/delete/${ans.id_answer}`
+    return this.http.delete<Answers>(url);
   }
 
 
