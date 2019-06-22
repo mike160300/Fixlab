@@ -19,7 +19,8 @@ posts.route('/add').post(function (req,res)
 		"image": req.body.image,
 		"publish_date": req.body.publish_date,
 		"resolved": req.body.resolved,
-		"id_owner": req.body.id_owner
+		"id_owner": req.body.id_owner,
+		"categoria" :req.body.categoria
 	}).then(() => {
 			res.json();
 		}).catch(err => {

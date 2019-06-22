@@ -6,4 +6,5 @@ export class Posts {
     publish_date: Date = new Date();;
     resolved? : boolean;
     id_owner? : number;
+    categoria? : string;
 }

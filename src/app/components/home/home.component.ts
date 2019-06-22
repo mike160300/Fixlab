@@ -45,6 +45,7 @@ export class HomeComponent implements OnInit {
   x: number = 0;
   done: boolean = false;
 
+
   modalRef1: BsModalRef;
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
@@ -72,6 +73,7 @@ export class HomeComponent implements OnInit {
     this.newPost.id_owner= this.auth.getUserDetails().id_user;
     this.newPost.publish_date= new Date();
     this.newPost.resolved = false;
+    this.newPost.categoria = "";
     this.modalRef1 = this.modalService.show(template);
     this.modalRef1.hide();
   }
@@ -156,6 +158,7 @@ export class HomeComponent implements OnInit {
      this.modalRef4.hide();
      console.log(this.aanswer);
   }
+
 
   delet(template: TemplateRef<any>, deletePost: Posts) 
   {
