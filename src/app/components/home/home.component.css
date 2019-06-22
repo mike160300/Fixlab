@@ -13,7 +13,6 @@
     box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);    
 }
 
-
 .notice {
     padding: 15px;
     background-color: #fafafa;
@@ -28,10 +27,12 @@
     padding: 35px;
     font-size: large;
 }
+
 .notice-md {
     padding: 25px;
     font-size: medium;
 }
+
 .notice-success {
     border-color: #80D651;
 }

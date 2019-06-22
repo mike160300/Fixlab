@@ -45,7 +45,6 @@ export class HomeComponent implements OnInit {
   x: number = 0;
   done: boolean = false;
 
-
   modalRef1: BsModalRef;
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
@@ -157,7 +156,6 @@ export class HomeComponent implements OnInit {
      this.modalRef4.hide();
      console.log(this.aanswer);
   }
-
 
   delet(template: TemplateRef<any>, deletePost: Posts) 
   {

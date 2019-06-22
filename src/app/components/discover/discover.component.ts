@@ -54,7 +54,6 @@ modalRef1: BsModalRef;
     this.newAnswer.valorated = false;
     this.newAnswer.id_owner= this.auth.getUserDetails().id_user;
     this.newAnswer.id_inpost = this.selectedPost.id_post;
-
     
     this.modalRef1 = this.modalService.show(template);
     this.modalRef1.hide();

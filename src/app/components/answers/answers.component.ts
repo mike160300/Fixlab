@@ -141,7 +141,6 @@ modalRef2: BsModalRef;
   }*/
 
 
-
   ngOnInit() {
   }
 

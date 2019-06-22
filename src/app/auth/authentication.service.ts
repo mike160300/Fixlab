@@ -13,6 +13,7 @@ interface TokenResponse {
 export class AuthenticationService {
   private token: string
   customer: Customers;
+
   uri = 'http://localhost:3000/users'
 
   constructor(private http: HttpClient, private router: Router) {
@@ -81,8 +82,7 @@ export class AuthenticationService {
     return this.http.post('http://localhost:3000/users/update/', prof)
   }
 
-  getUsers(id: number): Observable<Customers[]> {
-     
+  getUsers(id: number): Observable<Customers[]> {    
     const url = `${this.uri}/${id}`;
     return this.http.get<Customers[]>(url);
   }

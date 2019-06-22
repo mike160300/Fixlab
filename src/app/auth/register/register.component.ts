@@ -21,7 +21,7 @@ export class RegisterComponent {
     this.credentials.email= form.value.email;
     this.credentials.username= form.value.username;
     this.credentials.password= form.value.password;
-
+    
     this.auth.register(this.credentials).subscribe(
       () => {
         this.router.navigateByUrl("/home");

@@ -1,5 +1,6 @@
 <!--Visualización de tarjetas-->
 <div class="container-fluid" *ngFor="let post of pposts">
+
 		<div *ngIf="post.id_owner != this.auth.getUserDetails().id_user">
 			<div class="notice notice-info notice-lg">
 		    	<strong>{{post.title}}</strong>
@@ -19,6 +20,7 @@
 		    	</div>
 			</div>
 		</div>
+
 </div>
 
 	<!--Modal para responder a una publicación-->
