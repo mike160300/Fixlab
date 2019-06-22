@@ -41,6 +41,7 @@
     	</div>
 	<br><br>    		
 	</div>
+
 </div>
 
 <!--Modal para crear la publicación-->
@@ -103,6 +104,22 @@
 								<textarea type="text" name="description" placeholder="Descripcion del Post" [(ngModel)]="newPost.description"></textarea>
 						</div>
 					</div>
+
+					<div class="form-group">
+						<div class="col-xs-6">
+								<label for="descripcion"><h4>Categoria</h4></label><br>
+								<select class="browser-default custom-select" name="categoria" [(ngModel)]="newPost.categoria" >
+									<option value="Telefono">Telefono</option>
+									<option value="PC">PC</option>
+									<option value="Tableta">Tableta</option>
+									<option value="Laptop">Laptop</option>
+									<option value="Consola">Consola</option>
+									<option value="Otros">Otros</option>
+								  </select>
+						</div>
+					</div>
+
+
 					<hr>
 
 					<div class="text-center">
