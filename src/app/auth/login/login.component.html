@@ -9,9 +9,9 @@
           <form (ngSubmit)="login(f)" #f="ngForm" novalidate="">
 
             <!--Email-->
-              <input type="text" id="email" name="email" class="form-control" #email="ngModel"
-            [ngClass]= "{'is-invalid':email.errors!=null && email.touched, 'is-valid':email.errors==null}"
-            [(ngModel)]="credentials.email" required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Correo electrónico">
+              <input type="text" id="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="credentials.email"
+          [ngClass]= "{'is-invalid':email.errors!=null && email.touched, 'is-valid':email.errors==null}" 
+          required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Correo electrónico">
               
               <!--Si es válido-->
               <div *ngIf="email.valid" class="valid-feedback"></div>

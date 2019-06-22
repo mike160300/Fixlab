@@ -288,6 +288,7 @@
 				<!--Respuesta desbloqueada (pago realizado)-->
 				<div class="container-fluid text-center" *ngFor="let user of uuser">
 					<img *ngIf="user.image==null" src="/assets/images/sin-perfil.png" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">
+					<img *ngIf="user.image!=null" src="{{user.image}}" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">
 					<strong>{{ user.username }}</strong>
 					<hr>
 					<p>{{ selectedAnswer.text }}</p>

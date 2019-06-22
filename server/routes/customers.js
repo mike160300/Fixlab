@@ -68,90 +68,20 @@ users.post('/login', (req, res) => {
     })
 })
 
-users.get('/profile', (req, res) => {
-  var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+users.route('/update').post(function (req, res)
+{
 
-  User.findOne({
-    where: {
-      id: decoded.id
-    }
-  })
-    .then(user => {
-      if (user) {
-        res.json(user)
-      } else {
-        res.send('User does not exist')
-      }
-    })
-    .catch(err => {
-      res.send('error: ' + err)
-    })
-})
-
-
-
-
-
-/*
-// Defined edit route 
-users.route('/edit/:id').get(function (req, res) {
-  let id = req.params.id;
-  User.findById(id, function (err, ppost){
-      res.json(ppost);
-  });
-});*/
-
-//  Defined update route
-/*
-users.route('/update/:id_user').post(function (req, res) {
-    User.findById(req.params.id_user, function(err, next, User) {
-    if (!User)
-      return next(new Error('Could not load Document'));
-    else {
-        User.description = req.body.description
-        User.description = req.params.description
-        User.save().then(User => {
-          res.json('Update complete');
-      })
-      .catch(err => {
-            res.status(400).send("unable to update the database");
+  const id = req.body.id_user;
+  User.update( req.body, 
+      { where: {id_user: id} }).then(() => {
+        res.json();
+        res.redirect('/dashboard/profile');
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+        res.status(500).json({msg: "error", details: err});
       });
-    }
-  });
 });
-*/
-users.route('/update/:id_user').post(function (req, res)  {
-
-  const { id_user }= req.params;
-  User.update(
-      {  description : req.body.description},
-      {  image : req.body.image},
-      { where: { id_user: [id_user] } }
-    )
-     // .then(result =>
-        //  res.redirect('/dashboard/profile'),
-        //  console.log("user updated successfully!")
-          
-    //  )
-      //.catch(err =>
-      //    console.log("Project update failed !")
-     // )
-});
-
-/*
-
-users.route.put('/update/:id_user', function (req, res, next) {
-  User.update(
-    {description: req.body.description},
-    {where: req.params.id_user}
-  )
-  .then(function(rowsUpdated) {
-    res.json(rowsUpdated)
-  })
-  .catch(next)
- })*/
-
-
 
  users.route('/:id').get(function (req, res)
  {
@@ -168,6 +98,23 @@ users.route.put('/update/:id_user', function (req, res, next) {
        res.status(500).json({msg: "error", details: err});
      })
  });
+
+ users.route('/profile/:id').get(function (req, res)
+ {
+   User.findOne({
+     where: {
+        id_user: req.params.id  
+     }}
+   )
+ 
+     .then(uuser => {
+       res.json(uuser);
+     }).catch(err => {
+       console.log(err);
+       res.status(500).json({msg: "error", details: err});
+     })
+ });
+
 
 
 

@@ -5,36 +5,14 @@ import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
 import { Customers } from '../../models/customers';
 
-export interface UserDetails {
-  id_user:number
-  username: string
-  email: string
-  password: string
-  description:string
-  exp: number
-  iat: number
-}
-
-export interface UserProfile {
-  description:string
-  image: string
-
-}
-
 interface TokenResponse {
   token: string
-}
-
-export interface TokenPayload {
-  id_user:number
-  email: string
-  username: string
-  password: string
 }
 
 @Injectable()
 export class AuthenticationService {
   private token: string
+  customer: Customers;
   uri = 'http://localhost:3000/users'
 
   constructor(private http: HttpClient, private router: Router) {
@@ -52,7 +30,7 @@ export class AuthenticationService {
     return this.token
   }
 
-  public getUserDetails(): UserDetails {
+  public getUserDetails() {
     const token = this.getToken()
     let payload
     if (token) {
@@ -73,11 +51,12 @@ export class AuthenticationService {
     }
   }
 
-  public register(user: TokenPayload): Observable<any> {
+  public register(user: Customers): Observable<any> 
+  {
     return this.http.post(`/users/register`, user)
   }
 
-  public login(user: TokenPayload): Observable<any> {
+  public login(user: Customers): Observable<any> {
     const base = this.http.post(`/users/login`, user)
 
     const request = base.pipe(
@@ -98,14 +77,20 @@ export class AuthenticationService {
     this.router.navigateByUrl('/')
   }
 
-  public editprofile(prof:UserProfile,id_user): Observable<any> {
-    return this.http.post('http://localhost:3000/users/update/'+id_user, prof)
+  public editprofile(prof:Customers): Observable<any> {
+    return this.http.post('http://localhost:3000/users/update/', prof)
   }
 
-  getuser(id: number): Observable<Customers[]> {
+  getUsers(id: number): Observable<Customers[]> {
      
     const url = `${this.uri}/${id}`;
     return this.http.get<Customers[]>(url);
+  }
+
+  getUser(id: number): Observable<Customers>
+  {
+    const url = `${this.uri}/profile/${id}`;
+    return this.http.get<Customers>(url);
   }
 
 

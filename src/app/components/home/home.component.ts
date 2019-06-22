@@ -144,7 +144,7 @@ export class HomeComponent implements OnInit {
 
     //this.selectedRate=this.newRate;
 
-    this.auth.getuser(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
+    this.auth.getUsers(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
     this.modalRef5 = this.modalService.show(template);
     this.modalRef5.hide();   
   }
