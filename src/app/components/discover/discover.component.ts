@@ -7,6 +7,7 @@ import {AnswersService} from '../../services/answers.service';
 import { NgForm } from '@angular/forms';
 import { Router } from "@angular/router";
 import { Posts } from '../../../models/posts';
+import { Customers } from '../../../models/customers';
 import { Answers } from '../../../models/answers';
 import { HttpClient } from '@angular/common/http';
 
@@ -18,6 +19,7 @@ import { HttpClient } from '@angular/common/http';
 export class DiscoverComponent implements OnInit {
 
 pposts: Posts[];
+uuser: Customers[];
 newAnswer: Answers = new Answers();
 selectedPost: Posts;
 textValue;
@@ -36,7 +38,7 @@ modalRef1: BsModalRef;
     return this.posts.getposts()
       .subscribe(
           pposts => {
-            this.pposts = pposts
+            this.pposts = pposts;
           }
   )
   };

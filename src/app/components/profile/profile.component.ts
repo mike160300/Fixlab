@@ -1,9 +1,10 @@
 import { Component, OnInit } from '@angular/core';
-import {AuthenticationService, UserProfile} from '../../auth/authentication.service';
+import {AuthenticationService} from '../../auth/authentication.service';
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
+import { Customers } from '../../../models/customers';
 import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
 
 @Component({
@@ -13,35 +14,45 @@ import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/s
 })
 export class ProfileComponent implements OnInit {
 
-  credentials: UserProfile = {
-    description: '',
-    image: ''
-  };
-
   imageUrl: string = null;
   oldimageUrl: string = null;
   uploadProgress: Observable<number>; 
   ref: AngularFireStorageReference;
   downloadURL: Observable<string>;
+  selectedUser: Customers = new Customers();
+  descriptionValue;
 
-  constructor(private auth: AuthenticationService,private router: Router, private storage: AngularFireStorage) { 
+  constructor(private auth: AuthenticationService,private router: Router, private storage: AngularFireStorage) {
+    this.getUserProfile();
   }
 
+
+  getUserProfile()
+  {
+    this.auth.getUser(this.auth.getUserDetails().id_user).subscribe(user=>{
+      this.selectedUser = user;
+      this.descriptionValue = this.selectedUser.description;
+    });
+  }
 
   editprofile(form: NgForm) {
 
     if(this.imageUrl!=null)
     {
-      this.oldimageUrl=this.credentials.image;
-      this.credentials.image=this.imageUrl;
+      this.oldimageUrl=this.selectedUser.image;
+      this.selectedUser.image=this.imageUrl;
       //this.deleteImage(this.oldimageUrl);
       this.imageUrl=null;
     }
 
+    this.selectedUser.description = form.value.description;
 
-    this.auth.editprofile(this.credentials,this.auth.getUserDetails().id_user).subscribe(
+    console.log(this.selectedUser);
+
+
+    this.auth.editprofile(this.selectedUser).subscribe(
       () => {
-        this.router.navigateByUrl("/dashboard/home");
+        this.router.navigateByUrl("/dashboard/profile");
       },
       err => {
         console.error(err);

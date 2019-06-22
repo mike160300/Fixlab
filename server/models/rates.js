@@ -3,12 +3,12 @@ const db = require('../database/db.js')
 const customer = require('../models/customer')
 
 
-    const answer = db.sequelize.define('answer', {
+    const rate = db.sequelize.define('rate', {
         id_user1: {
             type: Sequelize.INTEGER,
             primaryKey: true,
             allowNull: false,
-            autoIncrement: true,
+            autoIncrement: false,
             references:{
                 model:customer,
                 key:'id_user',
@@ -20,7 +20,7 @@ const customer = require('../models/customer')
             type: Sequelize.INTEGER,
             primaryKey: true,
             allowNull: false,
-            autoIncrement: true,
+            autoIncrement: false,
             references:{
                 model:customer,
                 key:'id_user',
@@ -43,4 +43,4 @@ const customer = require('../models/customer')
     );
     
   
-  module.exports = answer;
+  module.exports = rate;

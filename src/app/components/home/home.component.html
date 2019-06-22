@@ -16,20 +16,15 @@
     	<div class="notice notice-info notice-lg">
         	<strong>{{post.title}}</strong>
         	<hr>
-        	<img *ngIf="post.image!=null" src="{{post.image}}" class="img-fluid text-center avatar">
-        	<img *ngIf="post.image==null" src="/assets/images/no-image.png" class="img-fluid text-center avatar">
+        	<img *ngIf="post.image!=''" src="{{post.image}}" class="img-fluid text-center avatar">
+        	<img *ngIf="post.image==''" src="/assets/images/no-image.png" class="img-fluid text-center avatar">
         	<br>
         	<p>{{ post.description }}</p>
 
         	<div class="text-right">
-	        	<!--&nbsp;-->
-	        	<!--button type="button" class="btn btn-info btn-modify" (click)="answer(template4)"
-				   tooltip="Ver detalles" placement="bottom">
-			      	<i class="far fa-eye"></i>
-			  	</button-->
 				&nbsp;
-				<button type="button" class="btn btn-info btn-modify" (click)="viewans(template4, post)"
-				tooltip="Ver respuestas" placement="bottom">
+				<button type="button" class="btn btn-info btn-answer" 
+					(click)="viewAnswers(template4, post)" tooltip="Ver respuestas" placement="bottom">
 				   <i class="far fa-eye"></i>
 			   </button>
 			   &nbsp;
@@ -43,7 +38,8 @@
 			      	<i class="fas fa-trash-alt"></i>
 			  	</button>
         	</div>
-    	</div>	
+    	</div>
+	<br><br>    		
 	</div>
 </div>
 
@@ -139,8 +135,8 @@
 			<div class="tab-content">
 				
 				<form #f="ngForm" class="form" id="ProductForm">
-					<img *ngIf="selectedPost.image==null" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic img-content">
-                    <img *ngIf="selectedPost.image!=null" src={{selectedPost.image}} class="img-fluid img-circle img-thumbnail profile-pic img-content">
+					<img *ngIf="selectedPost.image==''" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic img-content">
+                    <img *ngIf="selectedPost.image!=''" src={{selectedPost.image}} class="img-fluid img-circle img-thumbnail profile-pic img-content">
 					<h6>Seleccione la foto para el producto</h6>
 					<br>
 
@@ -231,39 +227,102 @@
 	</div>
 	<div class="modal-body">
 
+		<div *ngIf="this.aanswer.length == 0" class="container-fluid text-center">
+			<strong>No existen respuestas para la publicación</strong>
+			<br><br>
+				<i class="fas fa-frown fa-5x"></i>
+		</div>
 
 		<div class="container-fluid" *ngFor="let answer of aanswer">
-    	<div class="notice notice-info notice-lg">
-        	<strong>{{answer.text}}</strong>
-        	<br>
-			<p>precio : {{ answer.price }}</p>
-			<br>
-			<p>valorada: {{ answer.valorated }}</p>
-			
-			<button class="btn btn-success"  type="button" (click)="valorate(answer)" >Valorar Respuesta</button>
-			<button type="button" class="btn btn-info btn-modify" (click)="viewans2(template5, answer)"
-				tooltip="Ver Usuario" placement="bottom">
-				   <i class="far fa-eye"></i>
-			   </button>
-        	
-    	</div>	
-	</div>
+	    	<div class="notice notice-success notice-md">
 
-	</div>
-</ng-template>
-
-<ng-template #template5>
-	<div class="modal-body">
-
-		<div class="container-fluid" *ngFor="let user of uuser">
-			<div class="notice notice-info notice-lg">
-				
-				<strong>Username :{{user.username}}</strong>
-				<br>
-				<strong>Description :{{user.description}}</strong>
-				
-			</div>	
+				<!--Respuesta bloqueda (pago con Paypal)-->
+				<div *ngIf="!answer.unlocked">
+					<button class="btn btn-danger btn-unlock" 
+						(click)="unlocked(answer)">
+						<i class="fas fa-lock"></i>&nbsp;
+						<strong>
+							No se puede acceder a la respuesta, por favor asegúrese de desbloquearla.
+						</strong>
+					</button>
+				</div>
+				<div *ngIf="answer.unlocked">
+					<strong>{{answer.text | slice:0:20}} ...</strong>
+					<div class="text-right">
+						<button class="btn btn-success btn-answer" 
+							(click)="viewAnswer(template5,answer)" tooltip="Ver en detalle" 
+							placement="bottom">
+							<i class="fas fa-eye"></i>
+						</button>&nbsp;
+						<button class="btn btn-primary btn-answer" *ngIf="!answer.valorated"
+							(click)="valorate(answer)" tooltip="¡Solucionó el problema!" 
+							placement="bottom">
+							<i class="fas fa-heart"></i>
+						</button>&nbsp;
+						<button class="btn btn-danger btn-answer" *ngIf="answer.valorated"
+							(click)="notvalorate(answer)" tooltip="¡No me sirvió!" 
+							placement="bottom">
+							<i class="fas fa-heart-broken"></i>
+						</button>						
+					</div>
+				</div>	
+	    	</div>
+	    	<hr>	
 		</div>
 
 	</div>
 </ng-template>
+
+<!--Modal para detallar respuestas-->
+<ng-template #template5>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Detalles de la publicación</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef5.hide()">
+	  		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+
+	    	<div class="notice notice-success notice-md">
+				<!--Respuesta desbloqueada (pago realizado)-->
+				<div class="container-fluid text-center" *ngFor="let user of uuser">
+					<img *ngIf="user.image==null" src="/assets/images/sin-perfil.png" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">
+					<img *ngIf="user.image!=null" src="{{user.image}}" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">
+					<strong>{{ user.username }}</strong>
+					<hr>
+					<p>{{ selectedAnswer.text }}</p>
+					<hr>
+					<strong>Precio pagado:</strong>
+					<p>{{ selectedAnswer.price | currency: 'USD'}}</p>
+					<hr>
+					<div *ngIf="selectedAnswer.valorated">
+						<button class="btn btn-success disabled btn-unlock">Esta respuesta resolvió tu problema</button>
+						<br><br>
+
+						<div *ngIf="!done">
+							<p>¡Hazle saber a <b>{{ user.username }}</b> lo útil que te fue su respuesta!</p>
+							<br>	
+						  <rating [max]="5" [(ngModel)]="y" [customTemplate]="tt"></rating>
+						  <ng-template #tt let-i="index" let-v="value">
+						    <button class="btn btn-answer btn-{{i < v ? 'warning' : 'default'}}"
+						    	(click)="rateUser(i+1)">
+						      {{i < v ? '&#9733;' : '&#9734;'}}
+						    </button>
+						  </ng-template>
+						</div>
+
+						<div *ngIf="done">
+						  <strong>¡Has calificado a {{user.username}} con {{x}} estrellas!</strong>
+						</div>
+
+					</div>
+					<div *ngIf="!selectedAnswer.valorated">
+						<button class="btn btn-danger disabled btn-unlock">Esta respuesta NO resolvió tu problema</button>
+					</div>
+				</div>									    	
+	        	
+	    	</div>	
+
+	</div>
+</ng-template>
+

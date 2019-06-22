@@ -4,6 +4,7 @@ import {AuthenticationService} from '../../auth/authentication.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
 import {PostsService} from '../../services/posts.service';
 import {AnswersService} from '../../services/answers.service';
+import {RatesService} from '../../services/rates.service';
 import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
 import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
@@ -12,6 +13,7 @@ import { Router } from "@angular/router";
 import { post } from 'selenium-webdriver/http';
 import { Posts } from '../../../models/posts';
 import { Answers } from '../../../models/answers';
+import { Rates } from '../../../models/rates';
 import { HttpClient } from '@angular/common/http';
 import { Customers } from '../../../models/customers';
 
@@ -23,11 +25,14 @@ import { Customers } from '../../../models/customers';
 export class HomeComponent implements OnInit {
 
   pposts: Posts[];
-  aanswer : Answers[];
+  aanswer: Answers[];
   uuser: Customers[];
+  rrate: Rates[];
+  newRate: Rates = new Rates();
   message: string;
   selectedPost: Posts;
   selectedAnswer: Answers;
+  selectedRate: Rates;
   nameValue;
   descriptionValue;
   imageUrl: string = null;
@@ -36,6 +41,9 @@ export class HomeComponent implements OnInit {
   uploadProgress: Observable<number>; 
   ref: AngularFireStorageReference;
   downloadURL: Observable<string>;
+  y: number = 0;
+  x: number = 0;
+  done: boolean = false;
 
   modalRef1: BsModalRef;
   modalRef2: BsModalRef;
@@ -43,9 +51,14 @@ export class HomeComponent implements OnInit {
   modalRef4: BsModalRef;
   modalRef5: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
+  constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService, private rates: RatesService ,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
   { 
     //Obtiene todas las publicaciones de usuario al inicio
+    this.getPosts();
+  }
+
+  getPosts()
+  {
     const id = this.auth.getUserDetails().id_user;
     this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
   }
@@ -72,6 +85,7 @@ export class HomeComponent implements OnInit {
     this.modalRef2 = this.modalService.show(template);
     this.modalRef2.hide();
   }
+
   valorate(resp :Answers)
   {
     this.selectedAnswer = resp;
@@ -79,21 +93,68 @@ export class HomeComponent implements OnInit {
     this.answers.valorateAnswer(this.selectedAnswer)
         .subscribe(result => this.message = "answer valorated Successfully!");
   }
-  viewans(template :TemplateRef<any>, viewans:Posts)
+
+  rateUser(y)
   {
-    this.selectedPost = viewans;
-    //this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
-    this.answers.getanswerofpost(this.selectedPost.id_post).subscribe(aanswer => this.aanswer = aanswer)
-    this.modalRef4 = this.modalService.show(template);
-    this.modalRef4.hide();
+    console.log(y);
+    this.newRate = {
+      id_user1: this.selectedAnswer.id_owner,
+      id_user2: this.auth.getUserDetails().id_user,
+      value: y
+    }
+
+    this.x=y;
+    console.log(this.newRate);
+
+    this.rates.addrate(this.newRate).subscribe(
+      () => {
+        this.message = "Rate Created Successfully!";
+        console.log(this.message);
+      },
+      err => {
+        console.error(err);
+      }
+    );
+
+    this.done = true;
   }
-  viewans2(template :TemplateRef<any>, viewans:Answers)
+
+  notvalorate(resp :Answers)
+  {
+    this.selectedAnswer = resp;
+    this.selectedAnswer.valorated = false;
+    this.answers.valorateAnswer(this.selectedAnswer)
+        .subscribe(result => this.message = "answer valorated Successfully!");
+  }  
+
+  unlocked(viewans:Answers)
   {
     this.selectedAnswer = viewans;
-    //this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
-    this.auth.getuser(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
+    this.selectedAnswer.unlocked = true;
+    this.answers.valorateAnswer(this.selectedAnswer)
+        .subscribe(result => this.message = "Answer unlocked Successfully!"); 
+  }
+
+  viewAnswer(template: TemplateRef<any>, viewans:Answers)
+  {
+    this.selectedAnswer = viewans;
+
+
+
+    //this.selectedRate=this.newRate;
+
+    this.auth.getUsers(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
     this.modalRef5 = this.modalService.show(template);
-    this.modalRef5.hide();
+    this.modalRef5.hide();   
+  }
+
+  viewAnswers(template: TemplateRef<any>, viewans:Posts)
+  {
+     this.selectedPost = viewans;
+     this.answers.getanswerofpost(this.selectedPost.id_post).subscribe(aanswer => this.aanswer = aanswer);
+     this.modalRef4 = this.modalService.show(template);
+     this.modalRef4.hide();
+     console.log(this.aanswer);
   }
 
   delet(template: TemplateRef<any>, deletePost: Posts) 
@@ -214,7 +275,7 @@ export class HomeComponent implements OnInit {
   
   ngOnInit() 
   {
-    
+
   }
 
 }
