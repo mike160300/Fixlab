@@ -51,6 +51,10 @@ module.exports = db.sequelize.define(
                 key:'id_user',
                 deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
               }
+          },
+          categoria:{
+            type: Sequelize.STRING,
+            allowNull: false
           }
           
 
