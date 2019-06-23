@@ -7,4 +7,5 @@ export class Customers {
     description? : number;
     image?: string;
     rating?: number;
+    respuestas_valoradas?: number;
 }

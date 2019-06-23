@@ -44,7 +44,12 @@ module.exports = db.sequelize.define(
             type: Sequelize.INTEGER,
             allowNull: true,
         
-          }
+          },
+          respuestas_valoradas: {
+            type: Sequelize.INTEGER,
+            allowNull: true,
+        
+          },
 
     },
     
