@@ -122,7 +122,7 @@ modalRef1: BsModalRef;
     }
     else if(form.value.price <= 0)
     {
-      this.toastr.warning('Debe añadirse un precio a la respuesta mayor');
+      this.toastr.warning('Debe añadirse un precio mayor a la respuesta');
       return;
     }
     else 

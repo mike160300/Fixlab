@@ -11,10 +11,11 @@ import { Answers } from '../../models/answers';
 })
 export class AnswersService {
 
+  selectedAnswer: Answers;
+  payRealized: boolean;
   uri = 'http://localhost:3000/answers';
 
   constructor(private http: HttpClient, private router: Router) {
-
    }
 
   addreply(answer: Answers): Observable<any> {
@@ -56,5 +57,29 @@ export class AnswersService {
     const url=` ${this.uri}/delete/${ans.id_answer}`
     return this.http.delete<Answers>(url);
   }
+
+  saveAnswer(ans: Answers)
+  {
+    this.selectedAnswer=ans;
+  }
+
+  getSelectedAnswer()
+  {
+    return this.selectedAnswer;
+  }
+
+  savePay(pay: boolean)
+  {
+    this.payRealized=pay;
+  }
+
+  getPay()
+  {
+    var temp = this.payRealized;
+    this.payRealized = false;
+    return temp;
+  }
+
+
 
 }

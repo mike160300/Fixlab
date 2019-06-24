@@ -2,7 +2,7 @@
 
     <!--Imagen de Perfil-->
     <div class="img-profile">
-        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.auth.getUserDetails().image && this.imageUrl==null" src="{{auth.getUserDetails().image}}">
+        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.auth.getUserDetails().image && this.imageUrl==null" src="{{this.selectedUser.image}}">
         <img class="img-fluid img-circle img-thumbnail" *ngIf="this.auth.getUserDetails().image == null && this.imageUrl==null" src="/assets/images/sin-perfil.png">
         <img class="img-fluid profile-pic" *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail img-circle img-fluid">
 

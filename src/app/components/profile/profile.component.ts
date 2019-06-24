@@ -40,7 +40,10 @@ export class ProfileComponent implements OnInit {
     {
       this.oldimageUrl=this.selectedUser.image;
       this.selectedUser.image=this.imageUrl;
-      this.deleteImage(this.oldimageUrl);
+      if(this.oldimageUrl!=null)
+      {
+        this.deleteImage(this.oldimageUrl);
+      }
       this.imageUrl=null;
     }
 
