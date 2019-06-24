@@ -16,6 +16,7 @@ import { Answers } from '../../../models/answers';
 import { Rates } from '../../../models/rates';
 import { HttpClient } from '@angular/common/http';
 import { Customers } from '../../../models/customers';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-home',
@@ -52,10 +53,9 @@ export class HomeComponent implements OnInit {
   modalRef4: BsModalRef;
   modalRef5: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService, private rates: RatesService ,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage) 
+  constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService, private rates: RatesService ,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage, private toastr: ToastrService) 
   { 
-    //Obtiene todas las publicaciones de usuario al inicio
-    this.getPosts();
+
   }
 
   getPosts()
@@ -74,6 +74,7 @@ export class HomeComponent implements OnInit {
     this.newPost.publish_date= new Date();
     this.newPost.resolved = false;
     this.newPost.categoria = "";
+    
     this.modalRef1 = this.modalService.show(template);
     this.modalRef1.hide();
   }
@@ -81,7 +82,6 @@ export class HomeComponent implements OnInit {
   modify(template: TemplateRef<any>, editPost: Posts) 
   {
     this.selectedPost = editPost;
-    console.log(this.selectedPost);
     this.nameValue= this.selectedPost.title;
     this.descriptionValue = this.selectedPost.description;
     this.modalRef2 = this.modalService.show(template);
@@ -93,7 +93,7 @@ export class HomeComponent implements OnInit {
     this.selectedAnswer = resp;
     this.selectedAnswer.valorated = true;
     this.answers.valorateAnswer(this.selectedAnswer)
-        .subscribe(result => this.message = "answer valorated Successfully!");
+        .subscribe(() => {this.toastr.success('Esta respuesta resolvió tu problema');});
   }
 
   rateUser(y)
@@ -110,14 +110,12 @@ export class HomeComponent implements OnInit {
 
     this.rates.addrate(this.newRate).subscribe(
       () => {
-        this.message = "Rate Created Successfully!";
-        console.log(this.message);
+        this.toastr.success('Has calificado al usuario exitosamente');
       },
       err => {
-        console.error(err);
+         this.toastr.warning('Usuario ya calificado');
       }
     );
-
     this.done = true;
   }
 
@@ -126,7 +124,7 @@ export class HomeComponent implements OnInit {
     this.selectedAnswer = resp;
     this.selectedAnswer.valorated = false;
     this.answers.valorateAnswer(this.selectedAnswer)
-        .subscribe(result => this.message = "answer valorated Successfully!");
+        .subscribe(() => {this.toastr.warning('Esta respuesta no resolvió tu problema');});
   }  
 
   unlocked(viewans:Answers)
@@ -134,17 +132,13 @@ export class HomeComponent implements OnInit {
     this.selectedAnswer = viewans;
     this.selectedAnswer.unlocked = true;
     this.answers.valorateAnswer(this.selectedAnswer)
-        .subscribe(result => this.message = "Answer unlocked Successfully!"); 
+        .subscribe(() =>  {this.toastr.success('Respuesta desbloqueada exitosamente');}); 
   }
 
   viewAnswer(template: TemplateRef<any>, viewans:Answers)
   {
     this.selectedAnswer = viewans;
-
-
-
     //this.selectedRate=this.newRate;
-
     this.auth.getUsers(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
     this.modalRef5 = this.modalService.show(template);
     this.modalRef5.hide();   
@@ -156,14 +150,12 @@ export class HomeComponent implements OnInit {
      this.answers.getanswerofpost(this.selectedPost.id_post).subscribe(aanswer => this.aanswer = aanswer);
      this.modalRef4 = this.modalService.show(template);
      this.modalRef4.hide();
-     console.log(this.aanswer);
   }
 
 
   delet(template: TemplateRef<any>, deletePost: Posts) 
   {
     this.selectedPost = deletePost;
-    console.log(this.selectedPost);
     this.modalRef3 = this.modalService.show(template);
     this.modalRef3.hide();
   }
@@ -173,23 +165,29 @@ export class HomeComponent implements OnInit {
 
     if(form.value.title === "")
     {
-      alert("Debe escribir un título");
-      return;
+      this.toastr.warning('Debe añadirse un título');
+      return null;
     }
-    else if(form.value.descripcion === "")
+    else if(form.value.description === "")
     {
-      alert("Debe escribir una descripcion");
-      return;
+      this.toastr.warning('Debe añadirse una descripción');
+      return null;
+    }
+    else if(form.value.categoria === "")
+    {
+      this.toastr.warning('Debe añadirse una categoría');
+      return null;
     }
     else
     {
       var newPost = {
-      id_post : 0,
-      title : form.value.name,
-      description : form.value.descripcion,
-      id_owner : this.auth.getUserDetails().id_user,
-      publish_date : new Date(),
-      resolved : false};
+        id_post : 0,
+        title : form.value.name,
+        description : form.value.description,
+        id_owner : this.auth.getUserDetails().id_user,
+        publish_date : new Date(),
+        resolved : false
+      };
     }
 
     if(this.imageUrl!=null)
@@ -201,11 +199,11 @@ export class HomeComponent implements OnInit {
 
     this.posts.addpost(this.newPost).subscribe(
       () => {
-        this.message = "Post Created Successfully!";
-        console.log(this.message);
+        this.toastr.success('Publicación creada exitosamente');
+        this.ngOnInit();
       },
       err => {
-        console.error(err);
+        this.toastr.error('Error al crear publicación');
       }
     );
     this.modalRef1.hide();
@@ -213,25 +211,42 @@ export class HomeComponent implements OnInit {
 
   update(form: NgForm) {
 
-    if(form.value.name != ""){
+    if(form.value.name != "")
+    {
       this.selectedPost.title = form.value.name;
     }
-    if(form.value.descripcion != ""){
+    else
+    {
+      this.toastr.warning('Debe añadirse un título');
+      return null;      
+    }
+
+    if(form.value.descripcion != "")
+    {
       this.selectedPost.description = form.value.descripcion;
+    }
+    else
+    {
+      this.toastr.warning('Debe añadirse una descripción');
+      return null;        
     }
 
     if(this.imageUrl!=null)
     {
       this.oldimageUrl=this.selectedPost.image;
       this.selectedPost.image=this.imageUrl;
-      //this.deleteImage(this.oldimageUrl);
+      this.deleteImage(this.oldimageUrl);
       this.imageUrl=null;
     }
 
-    console.log(this.selectedPost);
-
     this.posts.updatePost(this.selectedPost)
-        .subscribe(result => this.message = "Post Updated Successfully!");
+      .subscribe(() => {
+        this.toastr.success('Publicación editada exitosamente')
+      },
+      err =>
+      {
+        this.toastr.error('Error al editar la publicación');
+      });
     this.modalRef2.hide();
 
   }
@@ -240,17 +255,21 @@ export class HomeComponent implements OnInit {
   {
     this.posts.deletePost(this.selectedPost).subscribe(
       () => {
-        this.message = "Post Deleted Successfully!";
-        console.log(this.message);
+        this.deleteImage(this.selectedPost.image);
+        this.toastr.success('Publicación borrada exitosamente');
+        this.ngOnInit();
       },
       err => {
-        console.error(err);
+        this.toastr.error('Error al borrar la publicación');
       }
     );
     this.modalRef3.hide();
-
   }
 
+  deleteImage(downloadUrl) 
+  {
+    return this.storage.storage.refFromURL(downloadUrl).delete();
+  } 
 
  upload(event) 
   {
@@ -260,11 +279,14 @@ export class HomeComponent implements OnInit {
     // Genera un ID random para la imagen:
     const randomId = Math.random().toString(36).substring(2);
     const filepath = `Posts_Images/${randomId}`;
+
     // Cargar imagen:
     const task = this.storage.upload(filepath, file);
     this.ref = this.storage.ref(filepath);
+
     // Observa los cambios en el % de la barra de progresos:
     this.uploadProgress = task.percentageChanges();
+
     // Notifica cuando la URL de descarga está disponible:
     task.snapshotChanges().pipe(
       finalize(() => {
@@ -275,10 +297,23 @@ export class HomeComponent implements OnInit {
     ).subscribe();
   }
 
-  
-  ngOnInit() 
+  cancelAdd()
   {
+    this.deleteImage(this.imageUrl);
+    this.imageUrl='';
+    this.modalRef1.hide();
+  }
 
+  cancelEdit()
+  {
+    this.deleteImage(this.imageUrl);
+    this.imageUrl='';
+    this.modalRef2.hide();
+  }
+  
+  ngOnInit() {
+    //Obtiene todas las publicaciones de usuario al inicio
+    this.getPosts();
   }
 
 }

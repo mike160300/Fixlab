@@ -6,8 +6,8 @@
 		    	<strong>{{post.title}}</strong>
 		    	<hr>
 		    	<br>
-		    	<img *ngIf="post.image==null" src="/assets/images/no-image.png" class="img-fluid avatar">
-		        <img *ngIf="post.image!=null" src={{post.image}} class="img-fluid avatar">
+		    	<img *ngIf="post.image==''" src="/assets/images/no-image.png" class="img-fluid avatar">
+		        <img *ngIf="post.image!=''" src={{post.image}} class="img-fluid avatar">
 		    	<br>
 		    	<p>{{ post.description }}</p>
 		    	<div class="text-right">

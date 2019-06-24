@@ -10,6 +10,7 @@ import { Posts } from '../../../models/posts';
 import { Customers } from '../../../models/customers';
 import { Answers } from '../../../models/answers';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-discover',
@@ -28,10 +29,9 @@ message: string;
 
 modalRef1: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient) 
+  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient, private toastr: ToastrService) 
   { 
-    //Obtiene todas las publicaciones de usuario al inicio
-    this.getPosts();
+  
   }
 
   getPosts() {
@@ -54,7 +54,7 @@ modalRef1: BsModalRef;
     this.newAnswer.valorated = false;
     this.newAnswer.id_owner= this.auth.getUserDetails().id_user;
     this.newAnswer.id_inpost = this.selectedPost.id_post;
-    
+  
     this.modalRef1 = this.modalService.show(template);
     this.modalRef1.hide();
   }
@@ -63,12 +63,12 @@ modalRef1: BsModalRef;
   {
     if(form.value.text === "")
     {
-      alert("Debe escribir una respuesta");
+      this.toastr.warning('Debe añadirse texto a la respuesta');
       return;
     }
-    else if(form.value.price === "")
+    else if(form.value.price <= 0)
     {
-      alert("Debe poner un precio");
+      this.toastr.warning('Debe añadirse un precio a la respuesta mayor');
       return;
     }
     else 
@@ -86,20 +86,20 @@ modalRef1: BsModalRef;
 
     this.answers.addreply(this.newAnswer).subscribe(
       () => {
-        this.message = "Answers Published Successfully!";
-        console.log(this.message);
+        this.toastr.success('Respuesta publicada exitosamente');
       },
       err => {
-        console.error(err);
+        this.toastr.error('Error al crear respuesta');
       }
     );
     this.modalRef1.hide();    
 
   }
 
-
-
-  ngOnInit() {
+  ngOnInit() 
+  {
+    //Obtiene todas las publicaciones de usuario al inicio
+    this.getPosts();
   }
 
 }
