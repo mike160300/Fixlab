@@ -1,13 +1,41 @@
 <!--Visualización de tarjetas-->
-<div class="container-fluid" *ngFor="let post of pposts">
+<div class="container-fluid text-center">
+	<button type="button" class="btn btn-info" (click)="this.getPhones()">
+        <b>Teléfonos/Tablet&nbsp;</b>
+        <i class="fas fa-mobile-alt"></i>   
+    </button>
+    &nbsp;
+    <button type="button" class="btn btn-danger" (click)="this.getPcs()">
+        <b>PC/Laptop&nbsp;</b>
+        <i class="fas fa-laptop"></i>   
+    </button>
+    &nbsp;
+    <button type="button" class="btn btn-info" (click)="this.getConsoles()">
+        <b>Consolas&nbsp;</b>
+        <i class="fas fa-gamepad"></i>
+    </button>
+    &nbsp;
+    <button type="button" class="btn btn-danger" (click)="this.getOthers()">
+        <b>Otros&nbsp;</b>
+        <i class="fas fa-microchip"></i>   
+    </button>
+    &nbsp;
+    <button type="button" class="btn btn-info" (click)="this.getAll()">
+        <b>Sin Filtro&nbsp;</b>
+        <i class="fas fa-ban"></i>   
+    </button>    
+</div>
+<br>
 
-		<div *ngIf="post.id_owner != this.auth.getUserDetails().id_user">
+<div class="container-fluid" *ngFor="let post of pposts">	
+	<div *ngIf="(!this.phone)&&(!this.console)&&(!this.pc)&&(!this.other)">
+		<div *ngIf="(post.id_owner != this.auth.getUserDetails().id_user)">
 			<div class="notice notice-info notice-lg">
 		    	<strong>{{post.title}}</strong>
 		    	<hr>
 		    	<br>
-		    	<img *ngIf="post.image==null" src="/assets/images/no-image.png" class="img-fluid avatar">
-		        <img *ngIf="post.image!=null" src={{post.image}} class="img-fluid avatar">
+		    	<img *ngIf="post.image==''" src="/assets/images/no-image.png" class="img-fluid avatar">
+		        <img *ngIf="post.image!=''" src={{post.image}} class="img-fluid avatar">
 		    	<br>
 		    	<p>{{ post.description }}</p>
 		    	<div class="text-right">
@@ -20,10 +48,95 @@
 		    	</div>
 			</div>
 		</div>
-
+	</div>		
+	<div *ngIf="this.phone">
+		<div *ngIf="(post.id_owner != this.auth.getUserDetails().id_user) && (post.categoria=='Telefono')">
+			<div class="notice notice-info notice-lg">
+		    	<strong>{{post.title}}</strong>
+		    	<hr>
+		    	<br>
+		    	<img *ngIf="post.image==''" src="/assets/images/no-image.png" class="img-fluid avatar">
+		        <img *ngIf="post.image!=''" src={{post.image}} class="img-fluid avatar">
+		    	<br>
+		    	<p>{{ post.description }}</p>
+		    	<div class="text-right">
+					&nbsp;
+					<button type="button" class="btn btn-primary btn-modify" (click)="reply(template1, post)"
+					   tooltip="Responder" placement="bottom">
+				      	<i class="fas fa-reply"></i>
+				  	</button>
+				  	&nbsp;
+		    	</div>
+			</div>
+		</div>
+	</div>	
+	<div *ngIf="this.console">
+		<div *ngIf="(post.id_owner != this.auth.getUserDetails().id_user) && (post.categoria=='Consola')">
+			<div class="notice notice-info notice-lg">
+		    	<strong>{{post.title}}</strong>
+		    	<hr>
+		    	<br>
+		    	<img *ngIf="post.image==''" src="/assets/images/no-image.png" class="img-fluid avatar">
+		        <img *ngIf="post.image!=''" src={{post.image}} class="img-fluid avatar">
+		    	<br>
+		    	<p>{{ post.description }}</p>
+		    	<div class="text-right">
+					&nbsp;
+					<button type="button" class="btn btn-primary btn-modify" (click)="reply(template1, post)"
+					   tooltip="Responder" placement="bottom">
+				      	<i class="fas fa-reply"></i>
+				  	</button>
+				  	&nbsp;
+		    	</div>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="this.pc">
+		<div *ngIf="(post.id_owner != this.auth.getUserDetails().id_user) && (post.categoria=='PC')">
+			<div class="notice notice-info notice-lg">
+		    	<strong>{{post.title}}</strong>
+		    	<hr>
+		    	<br>
+		    	<img *ngIf="post.image==''" src="/assets/images/no-image.png" class="img-fluid avatar">
+		        <img *ngIf="post.image!=''" src={{post.image}} class="img-fluid avatar">
+		    	<br>
+		    	<p>{{ post.description }}</p>
+		    	<div class="text-right">
+					&nbsp;
+					<button type="button" class="btn btn-primary btn-modify" (click)="reply(template1, post)"
+					   tooltip="Responder" placement="bottom">
+				      	<i class="fas fa-reply"></i>
+				  	</button>
+				  	&nbsp;
+		    	</div>
+			</div>
+		</div>
+	</div>
+	<div *ngIf="this.other">
+		<div *ngIf="(post.id_owner != this.auth.getUserDetails().id_user) && (post.categoria=='Otros')">
+			<div class="notice notice-info notice-lg">
+		    	<strong>{{post.title}}</strong>
+		    	<hr>
+		    	<br>
+		    	<img *ngIf="post.image==''" src="/assets/images/no-image.png" class="img-fluid avatar">
+		        <img *ngIf="post.image!=''" src={{post.image}} class="img-fluid avatar">
+		    	<br>
+		    	<p>{{ post.description }}</p>
+		    	<div class="text-right">
+					&nbsp;
+					<button type="button" class="btn btn-primary btn-modify" (click)="reply(template1, post)"
+					   tooltip="Responder" placement="bottom">
+				      	<i class="fas fa-reply"></i>
+				  	</button>
+				  	&nbsp;
+		    	</div>
+			</div>
+		</div>
+	</div>								
 </div>
 
-	<!--Modal para responder a una publicación-->
+
+<!--Modal para responder a una publicación-->
 <ng-template #template1>
 	<div class="modal-header">
 	    <h4 class="modal-title pull-left">Crear nueva publicación</h4>

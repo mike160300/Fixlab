@@ -9,6 +9,8 @@ import { AuthRoutingModule } from './auth-routing.module';
 import { AuthenticationService } from './authentication.service'
 import { AuthGuardService } from './auth-guard.service';
 
+import { AlertModule } from 'ngx-bootstrap/alert'
+
 //Componentes:
 import { RegisterComponent } from './register/register.component';
 import { LoginComponent } from './login/login.component';
@@ -18,7 +20,8 @@ import { SignComponent } from './sign/sign.component';
   imports: [
     CommonModule,
     AuthRoutingModule,
-    FormsModule
+    FormsModule,
+    AlertModule.forRoot()
   ],
   declarations: [RegisterComponent, LoginComponent, SignComponent],
   providers: [AuthenticationService, AuthGuardService]

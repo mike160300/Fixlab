@@ -6,6 +6,7 @@ import { Observable } from 'rxjs';
 import { finalize } from 'rxjs/operators';
 import { Customers } from '../../../models/customers';
 import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-profile',
@@ -22,10 +23,8 @@ export class ProfileComponent implements OnInit {
   selectedUser: Customers = new Customers();
   descriptionValue;
 
-  constructor(private auth: AuthenticationService,private router: Router, private storage: AngularFireStorage) {
-    this.getUserProfile();
+  constructor(private auth: AuthenticationService,private router: Router, private storage: AngularFireStorage, private toastr: ToastrService) {
   }
-
 
   getUserProfile()
   {
@@ -41,21 +40,19 @@ export class ProfileComponent implements OnInit {
     {
       this.oldimageUrl=this.selectedUser.image;
       this.selectedUser.image=this.imageUrl;
-      //this.deleteImage(this.oldimageUrl);
+      this.deleteImage(this.oldimageUrl);
       this.imageUrl=null;
     }
 
     this.selectedUser.description = form.value.description;
 
-    console.log(this.selectedUser);
-
-
     this.auth.editprofile(this.selectedUser).subscribe(
       () => {
-        this.router.navigateByUrl("/dashboard/profile");
+        this.toastr.success('Se han editado los datos del usuario exitosamente');
+        this.ngOnInit();
       },
       err => {
-        console.error(err);
+        this.toastr.error('Error al editar los datos del usuario');
       }
     ); ;
   }
@@ -80,10 +77,16 @@ export class ProfileComponent implements OnInit {
         this.downloadURL.subscribe(url => {this.imageUrl = url} );
       })
     ).subscribe();
+  }
+
+  deleteImage(downloadUrl) 
+  {
+    return this.storage.storage.refFromURL(downloadUrl).delete();
   }  
 
-  ngOnInit() {
-
+  ngOnInit() 
+  {
+    this.getUserProfile();
   }
 
 }

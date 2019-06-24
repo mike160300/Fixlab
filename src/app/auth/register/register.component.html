@@ -13,10 +13,10 @@
                 <!--Si no es válido-->
                 <div class="invalid-feedback">
                     <div *ngIf="username.errors?.required">
-                        <small>Este campo es requerido.</small>
+                        <small><strong>Este campo es requerido</strong></small>
                     </div>
                     <div *ngIf="username.errors?.minlength">
-                        <small>El nombre debe tener al menos {{username.errors.minlength.requiredLength}} carácteres.</small>
+                        <small><strong>El nombre debe tener al menos {{username.errors.minlength.requiredLength}} carácteres</strong></small>
                     </div>
                 </div>
                 <!--Si es válido-->
@@ -33,10 +33,10 @@
             <!--Si es inválido-->
             <div class="invalid-feedback">
               <div *ngIf="email.errors?.required">
-                  <small>Este campo es requerido.</small>
+                  <small><strong>Este campo es requerido</strong></small>
               </div>
               <div *ngIf="email.errors?.pattern">
-                  <small>Se debe introducir un patrón de email válido.</small>
+                  <small><strong>Se debe introducir un patrón de email válido</strong></small>
               </div>
             </div>
             <hr>
@@ -47,10 +47,10 @@
             <!--Si es inválido-->
             <div class="invalid-feedback">
                 <div *ngIf="password.errors?.required">
-                    <small>Este campo es requerido.</small>
+                    <small><strong>Este campo es requerido</strong></small>
                 </div>
                 <div *ngIf="password.errors?.minlength">
-                    <small>El nombre debe tener al menos {{password.errors.minlength.requiredLength}} carácteres.</small>
+                    <small><strong>El nombre debe tener al menos {{password.errors.minlength.requiredLength}} carácteres</strong></small>
                 </div>
             </div>              
             <hr>

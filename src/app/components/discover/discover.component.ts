@@ -10,6 +10,7 @@ import { Posts } from '../../../models/posts';
 import { Customers } from '../../../models/customers';
 import { Answers } from '../../../models/answers';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-discover',
@@ -22,30 +23,83 @@ pposts: Posts[];
 uuser: Customers[];
 newAnswer: Answers = new Answers();
 selectedPost: Posts;
+phone: boolean = false;
+pc: boolean = false;
+console: boolean = false;
+other: boolean = false;
 textValue;
 priceValue;
-message: string;
 
 modalRef1: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient) 
+  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient, private toastr: ToastrService) 
   { 
-    //Obtiene todas las publicaciones de usuario al inicio
-    this.getPosts();
+  
   }
 
   getPosts() {
-    return this.posts.getposts()
+    return this.posts.getposts(this.phone, this.pc, this.console, this.other)
       .subscribe(
           pposts => {
             this.pposts = pposts;
           }
   )
-  };
+  }; 
+
+  getPhones()
+  {
+    this.toastr.info('Se muestran las etiquetas de la categoría: Teléfonos y Tablets');
+    this.phone=true;
+    this.pc=false;
+    this.console=false;
+    this.other=false;
+    this.ngOnInit();
+  }
+
+  getPcs()
+  {
+    this.toastr.info('Se muestran las etiquetas de la categoría: PCs y Laptops');
+    this.phone=false;
+    this.pc=true;
+    this.console=false;
+    this.other=false;
+    this.ngOnInit();
+  }
+
+  getConsoles()
+  {
+    this.toastr.info('Se muestran las etiquetas de la categoría: Consolas');
+    this.phone=false;
+    this.pc=false;
+    this.console=true;
+    this.other=false;
+    this.ngOnInit();
+  }
+
+  getOthers()
+  {
+    this.toastr.info('Se muestran las etiquetas de la categoría: Otros');
+    this.phone=false;
+    this.pc=false;
+    this.console=false;
+    this.other=true;
+    this.ngOnInit();
+  }
+
+  getAll()
+  {
+    this.toastr.info('Se muestran las etiquetas de todas las categoría');
+    this.phone=false;
+    this.pc=false;
+    this.console=false;
+    this.other=false;
+    this.ngOnInit();
+  }        
 
   reply(template: TemplateRef<any>, replyPost: Posts) 
   {
     this.selectedPost = replyPost;
+    console.log(this.selectedPost);
 
     this.newAnswer.id_answer= 0;
     this.newAnswer.text="";
@@ -54,7 +108,7 @@ modalRef1: BsModalRef;
     this.newAnswer.valorated = false;
     this.newAnswer.id_owner= this.auth.getUserDetails().id_user;
     this.newAnswer.id_inpost = this.selectedPost.id_post;
-    
+  
     this.modalRef1 = this.modalService.show(template);
     this.modalRef1.hide();
   }
@@ -63,12 +117,12 @@ modalRef1: BsModalRef;
   {
     if(form.value.text === "")
     {
-      alert("Debe escribir una respuesta");
+      this.toastr.warning('Debe añadirse texto a la respuesta');
       return;
     }
-    else if(form.value.price === "")
+    else if(form.value.price <= 0)
     {
-      alert("Debe poner un precio");
+      this.toastr.warning('Debe añadirse un precio a la respuesta mayor');
       return;
     }
     else 
@@ -86,20 +140,21 @@ modalRef1: BsModalRef;
 
     this.answers.addreply(this.newAnswer).subscribe(
       () => {
-        this.message = "Answers Published Successfully!";
-        console.log(this.message);
+        this.toastr.success('Respuesta publicada exitosamente');
       },
       err => {
-        console.error(err);
+        this.toastr.error('Error al crear respuesta');
       }
     );
     this.modalRef1.hide();    
 
   }
 
+  ngOnInit() 
+  {
+    //Obtiene todas las publicaciones de usuario al inicio
+    this.getPosts();
 
-
-  ngOnInit() {
   }
 
 }

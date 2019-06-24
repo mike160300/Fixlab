@@ -10,6 +10,7 @@ import { Posts } from '../../../models/posts';
 import { Customers } from '../../../models/customers';
 import { Answers } from '../../../models/answers';
 import { HttpClient } from '@angular/common/http';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-answers',
@@ -27,7 +28,7 @@ message: string;
 modalRef1: BsModalRef;
 modalRef2: BsModalRef;
 
-  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient) 
+  constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient, private toastr: ToastrService) 
   { 
     //Obtiene todas las publicaciones de usuario al inicio
     this.getAnswers();
@@ -58,15 +59,34 @@ modalRef2: BsModalRef;
 
   update(form: NgForm) {
 
-    if(form.value.text != ""){
+    if(form.value.text != "")
+    {
       this.selectedAnswer.text = form.value.text;
     }
-    if(form.value.price != ""){
+    else
+    {
+      this.toastr.warning('Debe añadirse texto a la respuesta');
+      return null;       
+    }
+
+
+    if(form.value.price != "")
+    {
       this.selectedAnswer.price = form.value.price;
+    }
+    else if(form.value.price <= 0)
+    {
+      this.toastr.warning('Debe añadirse un precio a la publicación');
+      return null;       
     }
 
     this.answers.updateAnswer(this.selectedAnswer)
-        .subscribe(result => this.message = "Answer Updated Successfully!");
+        .subscribe(() => { 
+          this.toastr.success('Respuesta editada exitosamente'); 
+        },
+          err =>{
+            this.toastr.error('Error al editar respuesta');
+          });
     this.modalRef1.hide();
 
   }
@@ -75,73 +95,15 @@ modalRef2: BsModalRef;
   {
     this.answers.deleteAnswer(this.selectedAnswer).subscribe(
       () => {
-        this.message = "Answer Deleted Successfully!";
-        console.log(this.message);
+        this.toastr.success('Respuesta borrada exitosamente');
       },
       err => {
-        console.error(err);
+        this.toastr.error('Error al borrar la respuesta')
       }
     );
     this.modalRef2.hide();
   }
 
-  /*reply(template: TemplateRef<any>, replyPost: Posts) 
-  {
-    this.selectedPost = replyPost;
-
-    this.newAnswer.id_answer= 0;
-    this.newAnswer.text="";
-    this.newAnswer.price=0;
-    this.newAnswer.unlocked = false;
-    this.newAnswer.valorated = false;
-    this.newAnswer.id_owner= this.auth.getUserDetails().id_user;
-    this.newAnswer.id_inpost = this.selectedPost.id_post;
-
-    
-    this.modalRef1 = this.modalService.show(template);
-    this.modalRef1.hide();
-  }*/
-
-  /*addreply(form: NgForm)
-  {
-    if(form.value.text === "")
-    {
-      alert("Debe escribir una respuesta");
-      return;
-    }
-    else if(form.value.price === "")
-    {
-      alert("Debe poner un precio");
-      return;
-    }
-    else 
-    {
-      var newAnswer = {
-        id_answer: 0,
-        text: form.value.text,
-        price : form.value.price,
-        unlocked: false,
-        valorated: false,
-        id_owner : this.auth.getUserDetails().id_user,
-        id_inpost: this.selectedPost.id_post        
-      };
-    }
-
-    this.answers.addreply(this.newAnswer).subscribe(
-      () => {
-        this.message = "Answers Published Successfully!";
-        console.log(this.message);
-      },
-      err => {
-        console.error(err);
-      }
-    );
-    this.modalRef1.hide();    
-
-  }*/
-
-
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

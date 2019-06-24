@@ -4,6 +4,8 @@ import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
 import { environment } from '../environments/environment';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { ToastrModule } from 'ngx-toastr';
 
 import { AppComponent } from './app.component'
 
@@ -79,7 +81,9 @@ import { AnswersComponent } from './components/answers/answers.component';
     ProgressbarModule.forRoot(),
     RatingModule.forRoot(),
     AngularFireModule.initializeApp(environment.firebase),
-    AngularFireStorageModule
+    AngularFireStorageModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot()
   ],
   providers: [PostsService, AnswersService, RatesService],
   bootstrap: [AppComponent],
