@@ -3,6 +3,7 @@ import { AuthenticationService} from "./../authentication.service";
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
 import { Customers } from '../../../models/customers';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-login',
@@ -14,7 +15,7 @@ export class LoginComponent {
   credentials: Customers = new Customers();
 
 
-  constructor(private auth: AuthenticationService, private router: Router) {}
+  constructor(private auth: AuthenticationService, private router: Router, private toastr: ToastrService) {}
 
   login(form: NgForm) 
   {
@@ -23,11 +24,11 @@ export class LoginComponent {
 
     this.auth.login(this.credentials).subscribe(
       () => {
-        console.log("Iniciaste sesión")
+        this.toastr.success('Inicio de sesión exitoso');
         this.router.navigateByUrl('/dashboard/home')
       },
       err => {
-        console.error(err)
+        this.toastr.error('Compruebe los datos introducidos','Error al iniciar sesión');
       }
     );
   }

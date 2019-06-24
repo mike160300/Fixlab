@@ -23,9 +23,12 @@ pposts: Posts[];
 uuser: Customers[];
 newAnswer: Answers = new Answers();
 selectedPost: Posts;
+phone: boolean = false;
+pc: boolean = false;
+console: boolean = false;
+other: boolean = false;
 textValue;
 priceValue;
-message: string;
 
 modalRef1: BsModalRef;
 
@@ -35,17 +38,68 @@ modalRef1: BsModalRef;
   }
 
   getPosts() {
-    return this.posts.getposts()
+    return this.posts.getposts(this.phone, this.pc, this.console, this.other)
       .subscribe(
           pposts => {
             this.pposts = pposts;
           }
   )
-  };
+  }; 
+
+  getPhones()
+  {
+    this.toastr.info('Se muestran las etiquetas de la categoría: Teléfonos y Tablets');
+    this.phone=true;
+    this.pc=false;
+    this.console=false;
+    this.other=false;
+    this.ngOnInit();
+  }
+
+  getPcs()
+  {
+    this.toastr.info('Se muestran las etiquetas de la categoría: PCs y Laptops');
+    this.phone=false;
+    this.pc=true;
+    this.console=false;
+    this.other=false;
+    this.ngOnInit();
+  }
+
+  getConsoles()
+  {
+    this.toastr.info('Se muestran las etiquetas de la categoría: Consolas');
+    this.phone=false;
+    this.pc=false;
+    this.console=true;
+    this.other=false;
+    this.ngOnInit();
+  }
+
+  getOthers()
+  {
+    this.toastr.info('Se muestran las etiquetas de la categoría: Otros');
+    this.phone=false;
+    this.pc=false;
+    this.console=false;
+    this.other=true;
+    this.ngOnInit();
+  }
+
+  getAll()
+  {
+    this.toastr.info('Se muestran las etiquetas de todas las categoría');
+    this.phone=false;
+    this.pc=false;
+    this.console=false;
+    this.other=false;
+    this.ngOnInit();
+  }        
 
   reply(template: TemplateRef<any>, replyPost: Posts) 
   {
     this.selectedPost = replyPost;
+    console.log(this.selectedPost);
 
     this.newAnswer.id_answer= 0;
     this.newAnswer.text="";
@@ -100,6 +154,7 @@ modalRef1: BsModalRef;
   {
     //Obtiene todas las publicaciones de usuario al inicio
     this.getPosts();
+
   }
 
 }

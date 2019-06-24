@@ -23,7 +23,7 @@ export class PostsService {
     return this.http.post(url, post);
   };
 
-  getposts(): Observable<Posts[]> {
+  getposts(phone, pc, consola, other): Observable<Posts[]> {
     const url=` ${this.uri}/`
     return this.http.get<Posts[]>(url);
   };
