@@ -244,7 +244,7 @@ export class HomeComponent implements OnInit {
     if(this.imageUrl!=null)
     {
       this.oldimageUrl=this.selectedPost.image;
-      if(this.oldimageUrl!=null || this.oldimageUrl!="")
+      if(this.oldimageUrl!="")
       {
         this.deleteImage(this.oldimageUrl);
       }
