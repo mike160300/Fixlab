@@ -1,3 +1,11 @@
-<p>
-  notify works!
-</p>
+<div *ngFor="let post of pposts">
+	<div *ngFor="let answer of aanswers">
+		<div *ngIf="(post.id_owner == this.auth.getUserDetails().id_user)">
+			<div class="container-fluid"> 
+				<div class="notice notice-success notice-lg">
+				<i class="fas fa-info-circle fa-2x info"></i>&nbsp;Tienes una nueva respuesta en: <strong>{{post.title}}</strong>
+				</div>
+			</div>
+		</div>		
+	</div>	
+</div>

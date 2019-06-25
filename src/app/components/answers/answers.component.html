@@ -1,43 +1,42 @@
-
 <!--Visualización de tarjetas-->
-<div class="container-fluid" *ngFor="let answer of aanswers">
-		<div *ngIf="aanswers.length <= 0">
-			<strong>No existen respuestas para la publicación</strong>
-			<br><br>
-			<i class="fas fa-frown fa-5x"></i>
-		</div>
-	<div *ngIf="aanswers.length > 0">
-		<div *ngIf="answer.id_owner == this.auth.getUserDetails().id_user">
-		<div class="notice notice-success notice-lg">
-						<p>{{ answer.text }}</p>
-						<hr>
-						<strong>Precio acordado:</strong>
-						<p>{{ answer.price | currency: 'USD'}}</p>
-						<hr>
-						<div *ngIf="answer.valorated">
-							<button class="btn btn-success disabled btn-unlock">Esta respuesta ha sido marcada como útil</button>
-						</div>
-						<div *ngIf="!answer.valorated">
-							<button class="btn btn-danger disabled btn-unlock">Esta respuesta NO fue útil</button>
-						</div>
-						<hr>
-						<div class="text-right">
+<div *ngIf="this.aanswers <=0" class="text-center">
+	<h2>No existen respuestas hechas por el usuario</h2>
+	<br><br>
+	<i class="fas fa-frown fa-5x"></i>
+	<br><br>
+</div>		
 
-							   &nbsp;
-								<button type="button" class="btn btn-primary btn-modify" (click)="modify(template1, answer)"
-								   tooltip="Modificar la respuesta" placement="bottom">
-									  <i class="fas fa-pencil-alt"></i>
-								  </button>
-								  &nbsp;
-								  <button type="button" class="btn btn-danger btn-delete" (click)="delet(template2, answer)"
-									  tooltip="Eliminar la respuesta" placement="bottom">
-									  <i class="fas fa-trash-alt"></i>
-								  </button>
-							</div>
-				</div>
-		</div>		
+<div class="container-fluid" *ngFor="let answer of aanswers">
+	<div *ngIf="answer.id_owner == this.auth.getUserDetails().id_user">
+		<div class="notice notice-success notice-lg">
+			<p>{{ answer.text }}</p>
+			<hr>
+			<strong>Precio acordado:</strong>
+			<p>{{ answer.price | currency: 'USD'}}</p>
+			<hr>
+			<div *ngIf="answer.valorated">
+				<button class="btn btn-success disabled btn-unlock">Esta respuesta ha sido marcada como útil</button>
+			</div>
+			<div *ngIf="!answer.valorated">
+				<button class="btn btn-danger disabled btn-unlock">Esta respuesta NO fue útil</button>
+			</div>
+			<hr>
+			<div class="text-right">
+
+			   	&nbsp;
+				<button type="button" class="btn btn-primary btn-modify" (click)="modify(template1, answer)"
+				   tooltip="Modificar la respuesta" placement="bottom">
+					  <i class="fas fa-pencil-alt"></i>
+				  </button>
+				  &nbsp;
+				  <button type="button" class="btn btn-danger btn-delete" (click)="delet(template2, answer)"
+					  tooltip="Eliminar la respuesta" placement="bottom">
+					  <i class="fas fa-trash-alt"></i>
+				  </button>
+			</div>
+		</div>
 	</div>		
-</div>
+</div>		
 
 <!--Modal para modificar la respuesta-->
 <ng-template #template1>

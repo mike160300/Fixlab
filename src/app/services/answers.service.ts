@@ -32,7 +32,12 @@ export class AnswersService {
   getAnswers(): Observable<Answers[]> {
     const url = `${this.uri}/`;
     return this.http.get<Answers[]>(url);
-  }  
+  }
+
+  getAnswersUser(id): Observable<Answers[]> {
+    const url = `${this.uri}/user/${id}`;
+    return this.http.get<Answers[]>(url);
+  }
 
   valorateAnswer(ans: Answers): Observable<any>
   {

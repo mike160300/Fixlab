@@ -48,7 +48,8 @@
 		    	</div>
 			</div>
 		</div>
-	</div>		
+	</div>
+
 	<div *ngIf="this.phone">
 		<div *ngIf="(post.id_owner != this.auth.getUserDetails().id_user) && (post.categoria=='Telefono')">
 			<div class="notice notice-info notice-lg">
@@ -134,6 +135,14 @@
 		</div>
 	</div>								
 </div>
+<!--ng-template #elseBlock>
+	<div class="text-center">
+		<h2>No existen posts en la categoría</h2>
+		<br><br>
+		<i class="fas fa-frown fa-5x"></i>
+		<br><br>
+	</div>
+</ng-template-->
 
 
 <!--Modal para responder a una publicación-->
