@@ -58,6 +58,22 @@ answers.route('/:id').get(function (req, res)
 		})
 });
 
+answers.route('/user/:id').get(function (req, res)
+{
+	Answer.findAll({
+		where: {
+   		id_owner: req.params.id  
+  	}}
+	)
+
+  	.then(aanswer => {
+			res.json(aanswer);
+		}).catch(err => {
+			console.log(err);
+			res.status(500).json({msg: "error", details: err});
+		})
+});
+
 answers.route('/update').post(function (req, res)
 {
 

@@ -34,7 +34,7 @@ modalRef2: BsModalRef;
   }
 
   getAnswers() {
-    return this.answers.getAnswers()
+    return this.answers.getAnswersUser(this.auth.getUserDetails().id_user)
       .subscribe(
           answers => {
             this.aanswers = answers
