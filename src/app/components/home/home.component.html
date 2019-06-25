@@ -243,7 +243,7 @@
 	</div>
 	<div class="modal-body">
 
-		<div *ngIf="this.aanswer.length == 0" class="container-fluid text-center">
+		<div *ngIf="aanswer<=0" class="container-fluid text-center">
 			<strong>No existen respuestas para la publicación</strong>
 			<br><br>
 				<i class="fas fa-frown fa-5x"></i>
@@ -255,7 +255,7 @@
 				<!--Respuesta bloqueda (pago con Paypal)-->
 				<div *ngIf="!answer.unlocked">
 					<button class="btn btn-danger btn-unlock" 
-						(click)="unlocked(answer)">
+						(click)="pay(template6, answer);">
 						<i class="fas fa-lock"></i>&nbsp;
 						<strong>
 							No se puede acceder a la respuesta, por favor asegúrese de desbloquearla.
@@ -306,17 +306,14 @@
 					<img *ngIf="user.image!=null" src="{{user.image}}" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">
 					<strong>{{ user.username }}</strong>
 					<hr>
-					<strong>Respuestas Valoradas: {{ user.respuestas_valoradas }}</strong>
-					<hr>
-					<strong>Rating general: {{ user.rating }} de 5 estrellas</strong>
-					<hr>
 					<p>{{ selectedAnswer.text }}</p>
 					<hr>
 					<strong>Precio pagado:</strong>
 					<p>{{ selectedAnswer.price | currency: 'USD'}}</p>
 					<hr>
+					
 					<div *ngIf="selectedAnswer.valorated">
-						<button class="btn btn-success disabled btn-unlock">Esta respuesta resolvió tu problema</button>
+						<alert type="success">Esta respuesta resolvió tu problema</alert>
 						<br><br>
 
 						<div *ngIf="!done">
@@ -337,7 +334,7 @@
 
 					</div>
 					<div *ngIf="!selectedAnswer.valorated">
-						<button class="btn btn-danger disabled btn-unlock">Esta respuesta NO resolvió tu problema</button>
+						<alert type="danger">Esta respuesta NO resolvió tu problema</alert>
 					</div>
 				</div>									    	
 	        	
@@ -345,4 +342,47 @@
 
 	</div>
 </ng-template>
+
+<ng-template #template6>
+	<div class="modal-header">
+		<h4 class="modal-title pull-left">Detalles de la publicación</h4>
+		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef6.hide()">
+	  		<span aria-hidden="true">&times;</span>
+		</button>
+	</div>
+	<div class="modal-body">
+
+	    	<div class="notice notice-success notice-md">
+				<!--Respuesta bloqueada, pago por realizar-->
+				<div class="container-fluid text-center" *ngFor="let user of uuser">
+					<img *ngIf="user.image==null" src="/assets/images/sin-perfil.png" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">
+					<img *ngIf="user.image!=null" src="{{user.image}}" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">
+					<strong>{{ user.username }}</strong>
+					<hr>
+					<strong>Respuestas Valoradas: {{ user.respuestas_valoradas }}</strong>
+					<hr>
+					<strong>Rating general:</strong>
+					<br>
+					<rating [max]="5" [(ngModel)]="user.rating"></rating>
+					<alert type="info">Guíese por los ratings y valoraciones antes de pagar una respuesta</alert>
+					<hr>
+					<p>{{ selectedAnswer.text |  slice:0:150}}...</p>
+					<alert type="danger">Para ver el resto de la respuesta pagué el precio indicado abajo.</alert>
+					<hr>
+					<strong>Precio a pagar:</strong>
+					<p>{{ selectedAnswer.price | currency: 'USD'}}</p>
+					<hr>
+					<app-pays></app-pays>
+					<br><br>
+					<button class="btn btn-primary btn-unlock" (click)="comprobar()" type="submit">Comprobar pago
+						<i class="fas fa-sync-alt"></i>
+					</button>
+
+				</div>									    	
+	        	
+	    	</div>	
+
+	</div>
+</ng-template>
+
 

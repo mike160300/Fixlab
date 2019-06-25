@@ -48,6 +48,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DiscoverComponent } from './components/discover/discover.component';
 import { NotifyComponent } from './components/notify/notify.component';
 import { AnswersComponent } from './components/answers/answers.component';
+import { PaysComponent } from './components/pays/pays.component';
 
 
 @NgModule({
@@ -60,7 +61,8 @@ import { AnswersComponent } from './components/answers/answers.component';
     FooterComponent,
     DiscoverComponent,
     NotifyComponent,
-    AnswersComponent
+    AnswersComponent,
+    PaysComponent
   ],
   imports: [
     BrowserModule,

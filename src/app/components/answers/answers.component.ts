@@ -30,8 +30,7 @@ modalRef2: BsModalRef;
 
   constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient, private toastr: ToastrService) 
   { 
-    //Obtiene todas las publicaciones de usuario al inicio
-    this.getAnswers();
+
   }
 
   getAnswers() {
@@ -69,8 +68,7 @@ modalRef2: BsModalRef;
       return null;       
     }
 
-
-    if(form.value.price != "")
+    if(form.value.price > 0)
     {
       this.selectedAnswer.price = form.value.price;
     }
@@ -98,12 +96,17 @@ modalRef2: BsModalRef;
         this.toastr.success('Respuesta borrada exitosamente');
       },
       err => {
-        this.toastr.error('Error al borrar la respuesta')
+        this.toastr.error('Error al borrar la respuesta');
       }
     );
     this.modalRef2.hide();
+    this.ngOnInit();
   }
 
-  ngOnInit() {}
+  ngOnInit() 
+  {
+    //Obtiene todas las publicaciones de usuario al inicio
+    this.getAnswers();
+  }
 
 }

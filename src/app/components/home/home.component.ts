@@ -1,4 +1,4 @@
-import { Component, OnInit, TemplateRef } from '@angular/core';
+import { Component, OnInit, AfterViewChecked, TemplateRef } from '@angular/core';
 import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {AuthenticationService} from '../../auth/authentication.service';
 import { FormGroup,  FormBuilder,  Validators } from '@angular/forms';
@@ -30,7 +30,6 @@ export class HomeComponent implements OnInit {
   uuser: Customers[];
   rrate: Rates[];
   newRate: Rates = new Rates();
-  message: string;
   selectedPost: Posts;
   selectedAnswer: Answers;
   selectedRate: Rates;
@@ -46,12 +45,12 @@ export class HomeComponent implements OnInit {
   x: number = 0;
   done: boolean = false;
 
-
   modalRef1: BsModalRef;
   modalRef2: BsModalRef;
   modalRef3: BsModalRef;
   modalRef4: BsModalRef;
   modalRef5: BsModalRef;
+  modalRef6: BsModalRef;
 
   constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService, private rates: RatesService ,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage, private toastr: ToastrService) 
   { 
@@ -88,6 +87,15 @@ export class HomeComponent implements OnInit {
     this.modalRef2.hide();
   }
 
+  pay(template: TemplateRef<any>, ans: Answers) 
+  {
+    this.selectedAnswer = ans;
+    this.answers.saveAnswer(this.selectedAnswer);
+    this.auth.getUsers(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
+    this.modalRef6 = this.modalService.show(template);
+    this.modalRef6.hide();
+  }
+
   valorate(resp :Answers)
   {
     this.selectedAnswer = resp;
@@ -113,7 +121,7 @@ export class HomeComponent implements OnInit {
         this.toastr.success('Has calificado al usuario exitosamente');
       },
       err => {
-         this.toastr.warning('Usuario ya calificado');
+         this.toastr.warning('Usuario ya calificado con anterioridad');
       }
     );
     this.done = true;
@@ -132,7 +140,9 @@ export class HomeComponent implements OnInit {
     this.selectedAnswer = viewans;
     this.selectedAnswer.unlocked = true;
     this.answers.valorateAnswer(this.selectedAnswer)
-        .subscribe(() =>  {this.toastr.success('Respuesta desbloqueada exitosamente');}); 
+        .subscribe(() =>  {
+          this.toastr.success('Respuesta desbloqueada exitosamente');  
+      });   
   }
 
   viewAnswer(template: TemplateRef<any>, viewans:Answers)
@@ -140,7 +150,7 @@ export class HomeComponent implements OnInit {
     this.selectedAnswer = viewans;
     //this.selectedRate=this.newRate;
     this.auth.getUsers(this.selectedAnswer.id_owner).subscribe(uuser => this.uuser = uuser);
-    this.modalRef5 = this.modalService.show(template);
+    this.modalRef5 = this.modalService.show(template); 
     this.modalRef5.hide();   
   }
 
@@ -234,8 +244,11 @@ export class HomeComponent implements OnInit {
     if(this.imageUrl!=null)
     {
       this.oldimageUrl=this.selectedPost.image;
+      if(this.oldimageUrl!="")
+      {
+        this.deleteImage(this.oldimageUrl);
+      }
       this.selectedPost.image=this.imageUrl;
-      this.deleteImage(this.oldimageUrl);
       this.imageUrl=null;
     }
 
@@ -300,15 +313,28 @@ export class HomeComponent implements OnInit {
   cancelAdd()
   {
     this.deleteImage(this.imageUrl);
-    this.imageUrl='';
+    this.imageUrl=null;
     this.modalRef1.hide();
   }
 
   cancelEdit()
   {
     this.deleteImage(this.imageUrl);
-    this.imageUrl='';
+    this.imageUrl=null;
     this.modalRef2.hide();
+  }
+
+  comprobar()
+  {
+    if(this.answers.getPay()==true)
+    {
+      this.unlocked(this.selectedAnswer);
+    }
+    else
+    {
+      this.toastr.warning('Todavía no se ha concretado el pago');
+    }
+    this.modalRef6.hide();
   }
   
   ngOnInit() {
