@@ -6,6 +6,7 @@ import { Router } from "@angular/router";
 import { Posts } from '../../../models/posts';
 import { Customers } from '../../../models/customers';
 import { Answers } from '../../../models/answers';
+import { ToastrService } from 'ngx-toastr';
 
 @Component({
   selector: 'app-notify',
@@ -18,7 +19,7 @@ export class NotifyComponent implements OnInit {
 	pposts: Posts[];
 	Totalnotificatios: number;	
 
-  constructor(private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService) { }
+  constructor(private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private toastr: ToastrService) { }
 
   getAnswers()
   {
@@ -30,11 +31,6 @@ export class NotifyComponent implements OnInit {
   )   
   }
 
-  /*getNotify()
-  {
-  	this.
-  }*/
-
   getPosts()
   {
     const id = this.auth.getUserDetails().id_user;
@@ -45,7 +41,6 @@ export class NotifyComponent implements OnInit {
   ngOnInit() {
   	this.getPosts();
   	this.getAnswers();
-  	//this.Totalnotificatios=this.getNotify();
   }
 
 }
