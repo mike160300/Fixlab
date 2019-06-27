@@ -35,7 +35,7 @@ module.exports = db.sequelize.define(
         
           },
           image : {
-            type: Sequelize.BLOB,
+            type: Sequelize.STRING,
             allowNull: true,
         
           },
@@ -44,7 +44,12 @@ module.exports = db.sequelize.define(
             type: Sequelize.INTEGER,
             allowNull: true,
         
-          }
+          },
+          respuestas_valoradas: {
+            type: Sequelize.INTEGER,
+            allowNull: true,
+        
+          },
 
     },
     

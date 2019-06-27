@@ -3,8 +3,22 @@ import { NgModule, Component } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
+import { environment } from '../environments/environment'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { ToastrModule } from 'ngx-toastr'
 
 import { AppComponent } from './app.component'
+
+//Firebase:
+import { AngularFireModule } from '@angular/fire';
+import {AngularFireStorageModule} from '@angular/fire/storage'
+
+//Servicios:
+import { PostsService } from './services/posts.service';
+import { AnswersService } from './services/answers.service';
+import { RatesService } from './services/rates.service';
+
 
 //Router:
 import { APP_ROUTING } from './app.routes';
@@ -24,6 +38,7 @@ import { CarouselModule } from 'ngx-bootstrap/carousel';
 import { ProgressbarModule } from 'ngx-bootstrap/progressbar';
 import { TooltipModule } from 'ngx-bootstrap/tooltip';
 import { AccordionModule } from 'ngx-bootstrap/accordion';
+import { RatingModule } from 'ngx-bootstrap/rating';
 
 //Componentes:
 import { DashboardComponent } from './components/dashboard/dashboard.component';
@@ -34,6 +49,7 @@ import { FooterComponent } from './components/footer/footer.component';
 import { DiscoverComponent } from './components/discover/discover.component';
 import { NotifyComponent } from './components/notify/notify.component';
 import { AnswersComponent } from './components/answers/answers.component';
+import { PaysComponent } from './components/pays/pays.component';
 
 
 @NgModule({
@@ -46,7 +62,8 @@ import { AnswersComponent } from './components/answers/answers.component';
     FooterComponent,
     DiscoverComponent,
     NotifyComponent,
-    AnswersComponent
+    AnswersComponent,
+    PaysComponent
   ],
   imports: [
     BrowserModule,
@@ -64,9 +81,15 @@ import { AnswersComponent } from './components/answers/answers.component';
     ModalModule.forRoot(),
     TabsModule.forRoot(),
     CarouselModule.forRoot(),
-    ProgressbarModule.forRoot()
+    ProgressbarModule.forRoot(),
+    RatingModule.forRoot(),
+    AngularFireModule.initializeApp(environment.firebase),
+    AngularFireStorageModule,
+    BrowserAnimationsModule,
+    ToastrModule.forRoot(),
+    ServiceWorkerModule.register('ngsw-worker.js',{enabled: environment.production})
   ],
-  providers: [],
+  providers: [PostsService, AnswersService, RatesService],
   bootstrap: [AppComponent],
 })
 export class AppModule {}

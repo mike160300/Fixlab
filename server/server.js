@@ -13,8 +13,14 @@ app.use(
 )
 
 var Users = require('./routes/customers')
+var Post = require('./routes/post')
+var Answers = require('./routes/answers')
+var Rates = require('./routes/rates')
 
 app.use('/users', Users)
+app.use('/posts', Post)
+app.use('/answers', Answers)
+app.use('/rates', Rates)
 
 app.listen(port, function() {
   console.log('Server is running on port: ' + port)

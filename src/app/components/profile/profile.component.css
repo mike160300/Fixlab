@@ -7,13 +7,16 @@ img
     border-radius: 70%;
 }
 
-.container
+.box
 {
     text-align: center;
-    background: #151515;
-    color: #fff;
+    color: #151515;
     box-sizing: border-box;
-    border-radius: 20px;
+    background-color: #fafafa;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    padding: 15px;
 }
 
 input 
@@ -24,12 +27,8 @@ input
 
 input[type="text"], input[type="password"] 
 {
-    border: none;
-    border-bottom: 1px solid azure;
-    background: transparent;
     outline: none;
     height: 40px;
-    color: #fff;
     font-size: 16px;
 }
   
@@ -40,7 +39,11 @@ input[type="submit"], input[type="button"]
     height: 40px;
     color: azure;
     font-size: 18px;
-    border-radius: 20px;
+}
+
+hr
+{
+    background-color: azure;
 }
 
 

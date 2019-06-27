@@ -9,9 +9,12 @@
   
 .login-box .avatar 
 {
-    height: 120px;
-    position: static;
-    top: 24px;
+    height: 160px;
+    width: 220px;
+    /*position: static;*/
+    text-align: center;
+    position: absolute;
+    top: -90px;
     left: calc(50% - 107px);
 }
   
@@ -32,8 +35,7 @@
   
 .login-box input 
 {
-    width: 50%;
-    text-align: center;
+    width: 100%;
     margin-bottom: 20px;
 }
   

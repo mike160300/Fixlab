@@ -38,7 +38,7 @@ users.post('/register', (req, res) => {
             res.send('error: ' + err)
           })
       } else {
-        res.json({ error: 'User already exists' })
+        res.send ('User already exists')
       }
     })
     .catch(err => {
@@ -68,24 +68,67 @@ users.post('/login', (req, res) => {
     })
 })
 
-users.get('/profile', (req, res) => {
-  var decoded = jwt.verify(req.headers['authorization'], process.env.SECRET_KEY)
+users.route('/update').post(function (req, res)
+{
 
-  User.findOne({
-    where: {
-      id: decoded.id
-    }
-  })
-    .then(user => {
-      if (user) {
-        res.json(user)
-      } else {
-        res.send('User does not exist')
-      }
-    })
-    .catch(err => {
-      res.send('error: ' + err)
-    })
-})
+  const id = req.body.id_user;
+  User.update( req.body, 
+      { where: {id_user: id} }).then(() => {
+        res.json();
+        res.redirect('/dashboard/profile');
+        console.log(res);
+      }).catch(err => {
+        console.log(err);
+        res.status(500).json({msg: "error", details: err});
+      });
+});
 
-module.exports = users
+ users.route('/:id').get(function (req, res)
+ {
+   User.findAll({
+     where: {
+        id_user: req.params.id  
+     }}
+   )
+ 
+     .then(uuser => {
+       res.json(uuser);
+     }).catch(err => {
+       console.log(err);
+       res.status(500).json({msg: "error", details: err});
+     })
+ });
+
+ users.route('/profile/:id').get(function (req, res)
+ {
+   User.findOne({
+     where: {
+        id_user: req.params.id  
+     }}
+   )
+ 
+     .then(uuser => {
+       res.json(uuser);
+     }).catch(err => {
+       console.log(err);
+       res.status(500).json({msg: "error", details: err});
+     })
+ });
+
+ users.route('/:id').get(function (req, res)
+ {
+   User.findAll({
+     where: {
+        id_user: req.params.id  
+     }}
+   )
+ 
+     .then(uuser => {
+       res.json(uuser);
+     }).catch(err => {
+       console.log(err);
+       res.status(500).json({msg: "error", details: err});
+     })
+ });
+
+module.exports = users;

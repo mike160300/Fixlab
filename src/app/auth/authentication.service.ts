@@ -3,32 +3,21 @@ import { HttpClient } from '@angular/common/http'
 import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
-
-export interface UserDetails {
-  id: number
-  username: string
-  email: string
-  password: string
-  exp: number
-  iat: number
-}
+import { Customers } from '../../models/customers';
 
 interface TokenResponse {
   token: string
 }
 
-export interface TokenPayload {
-  id: number
-  email: string
-  username: string
-  password: string
-}
-
 @Injectable()
 export class AuthenticationService {
   private token: string
+  customer: Customers;
 
-  constructor(private http: HttpClient, private router: Router) {}
+  uri = 'http://localhost:3000/users'
+
+  constructor(private http: HttpClient, private router: Router) {
+  }
 
   private saveToken(token: string): void {
     localStorage.setItem('usertoken', token)
@@ -42,7 +31,7 @@ export class AuthenticationService {
     return this.token
   }
 
-  public getUserDetails(): UserDetails {
+  public getUserDetails() {
     const token = this.getToken()
     let payload
     if (token) {
@@ -63,11 +52,12 @@ export class AuthenticationService {
     }
   }
 
-  public register(user: TokenPayload): Observable<any> {
+  public register(user: Customers): Observable<any> 
+  {
     return this.http.post(`/users/register`, user)
   }
 
-  public login(user: TokenPayload): Observable<any> {
+  public login(user: Customers): Observable<any> {
     const base = this.http.post(`/users/login`, user)
 
     const request = base.pipe(
@@ -82,15 +72,26 @@ export class AuthenticationService {
     return request
   }
 
-  public profile(): Observable<any> {
-    return this.http.get(`/users/profile`, {
-      headers: { Authorization: ` ${this.getToken()}` }
-    })
-  }
-
   public logout(): void {
     this.token = ''
     window.localStorage.removeItem('usertoken')
     this.router.navigateByUrl('/')
   }
+
+  public editprofile(prof:Customers): Observable<any> {
+    return this.http.post('http://localhost:3000/users/update/', prof)
+  }
+
+  getUsers(id: number): Observable<Customers[]> {    
+    const url = `${this.uri}/${id}`;
+    return this.http.get<Customers[]>(url);
+  }
+
+  getUser(id: number): Observable<Customers>
+  {
+    const url = `${this.uri}/profile/${id}`;
+    return this.http.get<Customers>(url);
+  }
+
+
 }

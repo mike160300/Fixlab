@@ -3,7 +3,8 @@ const db = require('../database/db.js')
 const customer = require('../models/customer')
 const post = require('../models/post')
 
-    const answer = db.sequelize.define('answer', {
+  module.exports = db.sequelize.define(
+    'answer', {
         id_answer: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -19,12 +20,6 @@ const post = require('../models/post')
             type: Sequelize.INTEGER,
             allowNull: false,
             
-          },
-      
-          answer_date : {
-            type: Sequelize.DATE,
-            defaultValue: Sequelize.NOW
-        
           },
          
           valorated : {
@@ -60,8 +55,6 @@ const post = require('../models/post')
               }
           }
           
-
-
     },
     
     {
@@ -70,4 +63,4 @@ const post = require('../models/post')
     );
     
   
-  module.exports = answer;
+  //module.exports = answers;

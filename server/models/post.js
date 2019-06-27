@@ -2,7 +2,9 @@ const Sequelize = require('sequelize')
 const db = require('../database/db.js')
 const customer = require('../models/customer')
 
-    const post = db.sequelize.define('post', {
+module.exports = db.sequelize.define(
+  'post',
+   {
         id_post: {
             type: Sequelize.INTEGER,
             primaryKey: true,
@@ -19,6 +21,13 @@ const customer = require('../models/customer')
             allowNull: false,
             
           },
+
+          image : {
+            type: Sequelize.STRING,
+            allowNull: false,
+            
+        
+          },
       
           publish_date : {
             type: Sequelize.DATE,
@@ -26,12 +35,7 @@ const customer = require('../models/customer')
         
           },
          
-          image : {
-            type: Sequelize.BLOB,
-            allowNull: false,
-            
-        
-          },
+          
           
           resolved : {
             type: Sequelize.BOOLEAN,
@@ -47,6 +51,10 @@ const customer = require('../models/customer')
                 key:'id_user',
                 deferrable: Sequelize.Deferrable.INITIALLY_IMMEDIATE
               }
+          },
+          categoria:{
+            type: Sequelize.STRING,
+            allowNull: false
           }
           
 
@@ -59,4 +67,4 @@ const customer = require('../models/customer')
     );
     
   
-  module.exports = post;
+  //module.exports = post;
