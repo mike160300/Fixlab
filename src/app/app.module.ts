@@ -87,7 +87,7 @@ import { PaysComponent } from './components/pays/pays.component';
     AngularFireStorageModule,
     BrowserAnimationsModule,
     ToastrModule.forRoot(),
-    ServiceWorkerModule.register('ngsw-worker.js',{enabled: environment.production})
+    ServiceWorkerModule.register('/ngsw-worker.js',{enabled: environment.production})
   ],
   providers: [PostsService, AnswersService, RatesService],
   bootstrap: [AppComponent],
