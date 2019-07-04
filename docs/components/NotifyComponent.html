@@ -1,0 +1,768 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>fix-lab documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/laravel.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">fix-lab documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>NotifyComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/components/notify/notify.component.ts</code>
+</p>
+
+
+
+    <p class="comment">
+        <h3>Implements</h3>
+    </p>
+    <p class="comment">
+                    <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+    </p>
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-notify</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>../home/home.component.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./notify.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#aanswers">aanswers</a>
+                            </li>
+                            <li>
+                                <a href="#pposts">pposts</a>
+                            </li>
+                            <li>
+                                <a href="#Totalnotificatios">Totalnotificatios</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#getAnswers">getAnswers</a>
+                            </li>
+                            <li>
+                                <a href="#getPosts">getPosts</a>
+                            </li>
+                            <li>
+                                <a href="#ngOnInit">ngOnInit</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, posts: <a href="../injectables/PostsService.html">PostsService</a>, answers: <a href="../injectables/AnswersService.html">AnswersService</a>, auth: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, toastr: ToastrService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/notify/notify.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>posts</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/PostsService.html" target="_self" >PostsService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>answers</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AnswersService.html" target="_self" >AnswersService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getAnswers"></a>
+                    <span class="name">
+                        <b>
+                            getAnswers
+                        </b>
+                        <a href="#getAnswers"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getAnswers()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="24"
+                            class="link-to-prism">src/app/components/notify/notify.component.ts:24</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="getPosts"></a>
+                    <span class="name">
+                        <b>
+                            getPosts
+                        </b>
+                        <a href="#getPosts"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>getPosts()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="34"
+                            class="link-to-prism">src/app/components/notify/notify.component.ts:34</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnInit"></a>
+                    <span class="name">
+                        <b>
+                            ngOnInit
+                        </b>
+                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnInit()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="41"
+                            class="link-to-prism">src/app/components/notify/notify.component.ts:41</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="aanswers"></a>
+                        <span class="name">
+                            <b>
+                            aanswers</b>
+                            <a href="#aanswers"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Answers.html" target="_self" >Answers[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/notify/notify.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="pposts"></a>
+                        <span class="name">
+                            <b>
+                            pposts</b>
+                            <a href="#pposts"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Posts.html" target="_self" >Posts[]</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="19" class="link-to-prism">src/app/components/notify/notify.component.ts:19</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="Totalnotificatios"></a>
+                        <span class="name">
+                            <b>
+                            Totalnotificatios</b>
+                            <a href="#Totalnotificatios"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
+
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/notify/notify.component.ts:20</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
+import {AuthenticationService} from &#x27;../../auth/authentication.service&#x27;;
+import {PostsService} from &#x27;../../services/posts.service&#x27;;
+import {AnswersService} from &#x27;../../services/answers.service&#x27;;
+import { Router } from &quot;@angular/router&quot;;
+import { Posts } from &#x27;../../../models/posts&#x27;;
+import { Customers } from &#x27;../../../models/customers&#x27;;
+import { Answers } from &#x27;../../../models/answers&#x27;;
+import { ToastrService } from &#x27;ngx-toastr&#x27;;
+
+@Component({
+  selector: &#x27;app-notify&#x27;,
+  templateUrl: &#x27;./notify.component.html&#x27;,
+  styleUrls: [&#x27;../home/home.component.css&#x27;]
+})
+export class NotifyComponent implements OnInit {
+
+	aanswers: Answers[];
+	pposts: Posts[];
+	Totalnotificatios: number;	
+
+  constructor(private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private toastr: ToastrService) { }
+
+  getAnswers()
+  {
+    return this.answers.getAnswers()
+      .subscribe(
+          answers &#x3D;&gt; {
+            this.aanswers &#x3D; answers
+          }
+  )   
+  }
+
+  getPosts()
+  {
+    const id &#x3D; this.auth.getUserDetails().id_user;
+    this.posts.getpostsOwner(id).subscribe(pposts &#x3D;&gt; this.pposts &#x3D; pposts);
+  }
+
+
+  ngOnInit() {
+  	this.getPosts();
+  	this.getAnswers();
+  }
+
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;div *ngFor&#x3D;&quot;let post of pposts&quot;&gt;
+	&lt;div *ngFor&#x3D;&quot;let answer of aanswers&quot;&gt;
+		&lt;div *ngIf&#x3D;&quot;(post.id_owner &#x3D;&#x3D; this.auth.getUserDetails().id_user)&quot;&gt;
+			&lt;div class&#x3D;&quot;container-fluid&quot;&gt; 
+				&lt;div class&#x3D;&quot;notice notice-success notice-lg&quot;&gt;
+				&lt;i class&#x3D;&quot;fas fa-info-circle fa-2x info&quot;&gt;&lt;/i&gt;&amp;nbsp;Tienes una nueva respuesta en: &lt;strong&gt;{{post.title}}&lt;/strong&gt;
+				&lt;/div&gt;
+			&lt;/div&gt;
+		&lt;/div&gt;		
+	&lt;/div&gt;	
+&lt;/div&gt;
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>../home/home.component.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.btn-create, .btn-modify, .btn-delete, .btn-answer, .btn-sad
+{
+	border-radius: 60%;
+	-webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+}
+
+.btn-unlock
+{
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+    box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);    
+}
+
+.notice {
+    padding: 15px;
+    background-color: #fafafa;
+    border-left: 6px solid #7f7f84;
+    margin-bottom: 10px;
+    -webkit-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+       -moz-box-shadow: 0 5px 8px -6px rgba(0,0,0,.2);
+            box-shadow: #202123;
+}
+
+.notice-lg {
+    padding: 35px;
+    font-size: large;
+}
+
+.notice-md {
+    padding: 25px;
+    font-size: medium;
+}
+
+.notice-success {
+    border-color: #80D651;
+}
+.notice-success&gt;strong {
+    color: #80D651;
+}
+.notice-info {
+    /*border-color: #45ABCD;*/
+    border-color: #ac45cd;
+}
+.notice-info&gt;strong {
+    /*color: #45ABCD;*/
+    color: #ac45cd;
+}
+
+.modal-header
+{
+    background: url(&#x27;/assets/images/fondo.jpg&#x27;) center top;
+    color: white;
+}
+
+.hidden 
+{  
+    display: none;
+}
+
+hr 
+{
+    background-color: azure;
+}
+
+.row 
+{
+    padding: 20px;
+}
+
+
+/*Prop. para imágenes*/
+
+.img-content {
+    display: block;
+    width: 200px;
+    height: 200px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+.img-content-user {
+    display: block;
+    width: 100px;
+    height: 100px;
+    margin-left: auto;
+    margin-right: auto;
+    border-radius: 50%;
+}
+
+.avatar
+{
+    display: block;
+    width: 300px;
+    height: 300px;
+    margin-left: auto;
+    margin-right: auto;    
+}
+
+.modal-body
+{
+    color: #151515;
+}
+
+.info
+{
+    color: #80D651;   
+}
+
+
+
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><div *ngFor="let post of pposts">	<div *ngFor="let answer of aanswers">		<div *ngIf="(post.id_owner == this.auth.getUserDetails().id_user)">			<div class="container-fluid"> 				<div class="notice notice-success notice-lg">				<i class="fas fa-info-circle fa-2x info"></i>&nbsp;Tienes una nueva respuesta en: <strong>{{post.title}}</strong>				</div>			</div>		</div>			</div>	</div></div>'
+    var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'NotifyComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'NotifyComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>
