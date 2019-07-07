@@ -94,13 +94,13 @@ modalRef2: BsModalRef;
     this.answers.deleteAnswer(this.selectedAnswer).subscribe(
       () => {
         this.toastr.success('Respuesta borrada exitosamente');
+        this.ngOnInit();
       },
       err => {
         this.toastr.error('Error al borrar la respuesta');
       }
     );
     this.modalRef2.hide();
-    this.ngOnInit();
   }
 
   ngOnInit() 
