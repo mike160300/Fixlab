@@ -60,6 +60,9 @@ export class ProfileComponent implements OnInit {
     ); ;
   }
 
+  /**
+  *Carga la imagen de perfil en Firebase Storage.
+  */ 
  upload(event) 
   {
     // Obtiene la imagen:

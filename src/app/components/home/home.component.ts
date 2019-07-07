@@ -57,6 +57,9 @@ export class HomeComponent implements OnInit {
 
   }
 
+  /**
+  *Obtiene todas las publicaciones del usuario.
+  */
   getPosts()
   {
     const id = this.auth.getUserDetails().id_user;
@@ -308,7 +311,7 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-  *Borra una publicación existente, incluyendo las imágenes que esta tenga almacenadas en Firebase Storage.
+  *Borra una publicación existente.
   */
   delete() 
   {
@@ -326,7 +329,7 @@ export class HomeComponent implements OnInit {
   }
 
   /**
-  *Borra una imagen a partir de una URL de Firebase Storage.
+  *Borra una imagen de Firebase Storage a partir de una URL.
   */
   deleteImage(downloadUrl) 
   {
@@ -404,7 +407,8 @@ export class HomeComponent implements OnInit {
     this.modalRef6.hide();
   }
   
-  ngOnInit() {
+  ngOnInit() 
+  {
     //Obtiene todas las publicaciones de usuario al inicio
     this.getPosts();
   }

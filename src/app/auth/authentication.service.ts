@@ -14,24 +14,26 @@ export class AuthenticationService {
   private token: string
   customer: Customers;
 
-  uri = 'https://fixlab-backend.herokuapp.com'
+  uri = 'https://fixlab-backend.herokuapp.com/users'
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
-  private saveToken(token: string): void {
+  private saveToken(token: string): void 
+  {
     localStorage.setItem('usertoken', token)
     this.token = token
   }
 
-  private getToken(): string {
+  private getToken(): string 
+  {
     if (!this.token) {
       this.token = localStorage.getItem('usertoken')
     }
     return this.token
   }
 
-  public getUserDetails() {
+  public getUserDetails() 
+  {
     const token = this.getToken()
     let payload
     if (token) {
@@ -43,7 +45,8 @@ export class AuthenticationService {
     }
   }
 
-  public isLoggedIn(): boolean {
+  public isLoggedIn(): boolean 
+  {
     const user = this.getUserDetails()
     if (user) {
       return user.exp > Date.now() / 1000
@@ -54,11 +57,14 @@ export class AuthenticationService {
 
   public register(user: Customers): Observable<any> 
   {
-    return this.http.post(`https://fixlab-backend.herokuapp.com/users/register`, user)
+    const url=` ${this.uri}/register`;
+    return this.http.post(url, user)
   }
 
-  public login(user: Customers): Observable<any> {
-    const base = this.http.post(`https://fixlab-backend.herokuapp.com/users/login`, user)
+  public login(user: Customers): Observable<any> 
+  {
+    const url=` ${this.uri}/login`;
+    const base = this.http.post(url, user)
 
     const request = base.pipe(
       map((data: TokenResponse) => {
@@ -78,8 +84,10 @@ export class AuthenticationService {
     this.router.navigateByUrl('/')
   }
 
-  public editprofile(prof:Customers): Observable<any> {
-    return this.http.post('https://fixlab-backend.herokuapp.com/users/update/', prof)
+  public editprofile(prof:Customers): Observable<any> 
+  {
+    const url=` ${this.uri}/update`;
+    return this.http.post(url, prof)
   }
 
   getUsers(id: number): Observable<Customers[]> {    

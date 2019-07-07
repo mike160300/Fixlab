@@ -237,8 +237,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">src/app/auth/authentication.service.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="87"
+                            class="link-to-prism">src/app/auth/authentication.service.ts:87</a></div>
                 </td>
             </tr>
 
@@ -348,8 +348,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/app/auth/authentication.service.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="98"
+                            class="link-to-prism">src/app/auth/authentication.service.ts:98</a></div>
                 </td>
             </tr>
 
@@ -420,8 +420,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/app/auth/authentication.service.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/auth/authentication.service.ts:35</a></div>
                 </td>
             </tr>
 
@@ -459,8 +459,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/app/auth/authentication.service.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app/auth/authentication.service.ts:93</a></div>
                 </td>
             </tr>
 
@@ -531,8 +531,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="46"
-                            class="link-to-prism">src/app/auth/authentication.service.ts:46</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/auth/authentication.service.ts:48</a></div>
                 </td>
             </tr>
 
@@ -572,8 +572,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="60"
-                            class="link-to-prism">src/app/auth/authentication.service.ts:60</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="64"
+                            class="link-to-prism">src/app/auth/authentication.service.ts:64</a></div>
                 </td>
             </tr>
 
@@ -644,8 +644,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="75"
-                            class="link-to-prism">src/app/auth/authentication.service.ts:75</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="81"
+                            class="link-to-prism">src/app/auth/authentication.service.ts:81</a></div>
                 </td>
             </tr>
 
@@ -685,8 +685,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/app/auth/authentication.service.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/auth/authentication.service.ts:58</a></div>
                 </td>
             </tr>
 
@@ -757,8 +757,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="22"
-                            class="link-to-prism">src/app/auth/authentication.service.ts:22</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="21"
+                            class="link-to-prism">src/app/auth/authentication.service.ts:21</a></div>
                 </td>
             </tr>
 
@@ -886,7 +886,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;http://localhost:3000/users&#x27;</code>
+                            <i>Default value : </i><code>&#x27;https://fixlab-backend.herokuapp.com/users&#x27;</code>
                         </td>
                     </tr>
                         <tr>
@@ -920,24 +920,26 @@ export class AuthenticationService {
   private token: string
   customer: Customers;
 
-  uri &#x3D; &#x27;http://localhost:3000/users&#x27;
+  uri &#x3D; &#x27;https://fixlab-backend.herokuapp.com/users&#x27;
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
-  private saveToken(token: string): void {
+  private saveToken(token: string): void 
+  {
     localStorage.setItem(&#x27;usertoken&#x27;, token)
     this.token &#x3D; token
   }
 
-  private getToken(): string {
+  private getToken(): string 
+  {
     if (!this.token) {
       this.token &#x3D; localStorage.getItem(&#x27;usertoken&#x27;)
     }
     return this.token
   }
 
-  public getUserDetails() {
+  public getUserDetails() 
+  {
     const token &#x3D; this.getToken()
     let payload
     if (token) {
@@ -949,7 +951,8 @@ export class AuthenticationService {
     }
   }
 
-  public isLoggedIn(): boolean {
+  public isLoggedIn(): boolean 
+  {
     const user &#x3D; this.getUserDetails()
     if (user) {
       return user.exp &gt; Date.now() / 1000
@@ -960,11 +963,14 @@ export class AuthenticationService {
 
   public register(user: Customers): Observable&lt;any&gt; 
   {
-    return this.http.post(&#x60;/users/register&#x60;, user)
+    const url&#x3D;&#x60; ${this.uri}/register&#x60;;
+    return this.http.post(url, user)
   }
 
-  public login(user: Customers): Observable&lt;any&gt; {
-    const base &#x3D; this.http.post(&#x60;/users/login&#x60;, user)
+  public login(user: Customers): Observable&lt;any&gt; 
+  {
+    const url&#x3D;&#x60; ${this.uri}/login&#x60;;
+    const base &#x3D; this.http.post(url, user)
 
     const request &#x3D; base.pipe(
       map((data: TokenResponse) &#x3D;&gt; {
@@ -984,8 +990,10 @@ export class AuthenticationService {
     this.router.navigateByUrl(&#x27;/&#x27;)
   }
 
-  public editprofile(prof:Customers): Observable&lt;any&gt; {
-    return this.http.post(&#x27;http://localhost:3000/users/update/&#x27;, prof)
+  public editprofile(prof:Customers): Observable&lt;any&gt; 
+  {
+    const url&#x3D;&#x60; ${this.uri}/update&#x60;;
+    return this.http.post(url, prof)
   }
 
   getUsers(id: number): Observable&lt;Customers[]&gt; {    

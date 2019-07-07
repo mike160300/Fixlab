@@ -340,7 +340,7 @@
                     </tr>
                     <tr>
                         <td class="col-md-4">
-                            <i>Default value : </i><code>&#x27;http://localhost:3000/rates&#x27;</code>
+                            <i>Default value : </i><code>&#x27;https://fixlab-backend.herokuapp.com/rates&#x27;</code>
                         </td>
                     </tr>
                         <tr>
@@ -370,7 +370,7 @@ import { Rates } from &#x27;../../models/rates&#x27;;
 })
 export class RatesService {
 
- uri &#x3D; &#x27;http://localhost:3000/rates&#x27;;	
+ uri &#x3D; &#x27;https://fixlab-backend.herokuapp.com/rates&#x27;;	
 
   constructor(private http: HttpClient, private router: Router) { }
 

@@ -134,6 +134,9 @@
                                 <a href="#aanswers">aanswers</a>
                             </li>
                             <li>
+                                <a href="#objDate">objDate</a>
+                            </li>
+                            <li>
                                 <a href="#pposts">pposts</a>
                             </li>
                             <li>
@@ -183,7 +186,7 @@
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/app/components/notify/notify.component.ts:20</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/notify/notify.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -300,8 +303,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="24"
-                            class="link-to-prism">src/app/components/notify/notify.component.ts:24</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="25"
+                            class="link-to-prism">src/app/components/notify/notify.component.ts:25</a></div>
                 </td>
             </tr>
 
@@ -339,8 +342,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="34"
-                            class="link-to-prism">src/app/components/notify/notify.component.ts:34</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="35"
+                            class="link-to-prism">src/app/components/notify/notify.component.ts:35</a></div>
                 </td>
             </tr>
 
@@ -378,8 +381,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="41"
-                            class="link-to-prism">src/app/components/notify/notify.component.ts:41</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="42"
+                            class="link-to-prism">src/app/components/notify/notify.component.ts:42</a></div>
                 </td>
             </tr>
 
@@ -422,6 +425,32 @@
                         <tr>
                             <td class="col-md-4">
                                     <div class="io-line">Defined in <a href="" data-line="18" class="link-to-prism">src/app/components/notify/notify.component.ts:18</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="objDate"></a>
+                        <span class="name">
+                            <b>
+                            objDate</b>
+                            <a href="#objDate"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>Date.now()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/components/notify/notify.component.ts:21</a></div>
                             </td>
                         </tr>
 
@@ -507,7 +536,8 @@ export class NotifyComponent implements OnInit {
 
 	aanswers: Answers[];
 	pposts: Posts[];
-	Totalnotificatios: number;	
+	Totalnotificatios: number;
+  objDate &#x3D; Date.now();	
 
   constructor(private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private toastr: ToastrService) { }
 
@@ -544,6 +574,10 @@ export class NotifyComponent implements OnInit {
 			&lt;div class&#x3D;&quot;container-fluid&quot;&gt; 
 				&lt;div class&#x3D;&quot;notice notice-success notice-lg&quot;&gt;
 				&lt;i class&#x3D;&quot;fas fa-info-circle fa-2x info&quot;&gt;&lt;/i&gt;&amp;nbsp;Tienes una nueva respuesta en: &lt;strong&gt;{{post.title}}&lt;/strong&gt;
+					&lt;!--div class&#x3D;&quot;container text-right&quot;&gt;
+						&lt;i class&#x3D;&quot;far fa-clock&quot;&gt;&lt;/i&gt;&amp;nbsp;
+						&lt;small&gt;&lt;strong&gt;{{objDate | date :&#x27;short&#x27;}}&lt;/strong&gt;&lt;/small&gt;
+					&lt;/div--&gt;
 				&lt;/div&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;		
@@ -608,7 +642,9 @@ export class NotifyComponent implements OnInit {
 
 .modal-header
 {
-    background: url(&#x27;/assets/images/fondo.jpg&#x27;) center top;
+    background: #834d9b;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #d04ed6, #834d9b);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #d04ed6, #834d9b);
     color: white;
 }
 
@@ -626,7 +662,6 @@ hr
 {
     padding: 20px;
 }
-
 
 /*Prop. para imágenes*/
 
@@ -651,8 +686,8 @@ hr
 .avatar
 {
     display: block;
-    width: 300px;
-    height: 300px;
+    width: 640px;
+    height: 480px;
     margin-left: auto;
     margin-right: auto;    
 }
@@ -697,7 +732,7 @@ hr
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngFor="let post of pposts">	<div *ngFor="let answer of aanswers">		<div *ngIf="(post.id_owner == this.auth.getUserDetails().id_user)">			<div class="container-fluid"> 				<div class="notice notice-success notice-lg">				<i class="fas fa-info-circle fa-2x info"></i>&nbsp;Tienes una nueva respuesta en: <strong>{{post.title}}</strong>				</div>			</div>		</div>			</div>	</div></div>'
+        var COMPONENT_TEMPLATE = '<div><div *ngFor="let post of pposts">	<div *ngFor="let answer of aanswers">		<div *ngIf="(post.id_owner == this.auth.getUserDetails().id_user)">			<div class="container-fluid"> 				<div class="notice notice-success notice-lg">				<i class="fas fa-info-circle fa-2x info"></i>&nbsp;Tienes una nueva respuesta en: <strong>{{post.title}}</strong>					<!--div class="container text-right">						<i class="far fa-clock"></i>&nbsp;						<small><strong>{{objDate | date :\'short\'}}</strong></small>					</div-->				</div>			</div>		</div>			</div>	</div></div>'
     var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NotifyComponent'};

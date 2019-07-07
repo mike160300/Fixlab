@@ -306,8 +306,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="85"
-                            class="link-to-prism">src/app/components/profile/profile.component.ts:85</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="88"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:88</a></div>
                 </td>
             </tr>
 
@@ -481,8 +481,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/app/components/profile/profile.component.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="93"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:93</a></div>
                 </td>
             </tr>
 
@@ -520,14 +520,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/app/components/profile/profile.component.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="66"
+                            class="link-to-prism">src/app/components/profile/profile.component.ts:66</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Carga la imagen de perfil en Firebase Storage.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -836,6 +838,9 @@ export class ProfileComponent implements OnInit {
     ); ;
   }
 
+  /**
+  *Carga la imagen de perfil en Firebase Storage.
+  */ 
  upload(event) 
   {
     // Obtiene la imagen:
@@ -873,7 +878,7 @@ export class ProfileComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container box&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container-fluid box&quot;&gt;
 
     &lt;!--Imagen de Perfil--&gt;
     &lt;div class&#x3D;&quot;img-profile&quot;&gt;
@@ -1040,7 +1045,7 @@ hr
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container box">    <!--Imagen de Perfil-->    <div class="img-profile">        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image && this.imageUrl==null" src="{{this.selectedUser.image}}">        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image == null && this.imageUrl==null" src="/assets/images/sin-perfil.png">        <img class="img-fluid profile-pic" *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail img-circle img-fluid">    </div>    <br>    <!--Para actualizar/añadir imagen de perfil a un usuario-->    <div class="container">       <!--Barra de progreso-->       <progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>        <!--Muestra el progreso de la barra-->        <div class="container">            Progress: {{ (uploadProgress | async) / 100 | percent }}        </div>        <br>        <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">            <p>La foto se cargó correctamente</p>        </div>        <br>        <!--Se sube una nueva foto para el usuario-->        <div class="item">            <!--Selecciona un archivo .png o .jpg-->            <input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">            <!--Botón para poner en funcionamiento el input-->            <button type="button" class="btn btn-lg btn-success" (click)="inputFile.click()">                Subir foto                <i class="fas fa-upload"></i>            </button>        </div>    </div>    <!--Se muestran los otros datos del usuario-->    <div>        <div class="tab-content">            <div class="tab-pane active" id="home">            	<hr>                   	<form (ngSubmit)="editprofile(f)" #f="ngForm" novalidate="" method="POST">                        <div class="form-group">                            <div class="col-xs-6">                               	<label for="first_name"><h4>Nombre de Usuario</h4></label>                                <input type="text" disabled                                placeholder="{{this.selectedUser.username  | titlecase}}">                          	</div>                        </div>                        <div class="form-group">                            <div class="col-xs-6">                                <label for="email"><h4>Email</h4></label>                                <input type="text" disabled                                 placeholder="{{this.selectedUser.email}}">                            </div>                        </div>                        <div class="form-group">                            <div class="col-xs-6">                                <label for="description"><h4>Descripción</h4></label>                                <input #description type="text" class="form-control" name="description"                                 id="description" placeholder="{{this.selectedUser.description}}" [(ngModel)]="descriptionValue" >                            </div>                        </div>                        <div class="form-group">                            <div class="col-xs-12">                                <br>                                <button class="btn btn-lg btn-success" type="submit">                                    Actualizar <i class="fas fa-sync-alt"></i>                               	</button>                            </div>                                </div>                    </form>                    <hr>            </div>        </div></div></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container-fluid box">    <!--Imagen de Perfil-->    <div class="img-profile">        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image && this.imageUrl==null" src="{{this.selectedUser.image}}">        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image == null && this.imageUrl==null" src="/assets/images/sin-perfil.png">        <img class="img-fluid profile-pic" *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail img-circle img-fluid">    </div>    <br>    <!--Para actualizar/añadir imagen de perfil a un usuario-->    <div class="container">       <!--Barra de progreso-->       <progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>        <!--Muestra el progreso de la barra-->        <div class="container">            Progress: {{ (uploadProgress | async) / 100 | percent }}        </div>        <br>        <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">            <p>La foto se cargó correctamente</p>        </div>        <br>        <!--Se sube una nueva foto para el usuario-->        <div class="item">            <!--Selecciona un archivo .png o .jpg-->            <input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">            <!--Botón para poner en funcionamiento el input-->            <button type="button" class="btn btn-lg btn-success" (click)="inputFile.click()">                Subir foto                <i class="fas fa-upload"></i>            </button>        </div>    </div>    <!--Se muestran los otros datos del usuario-->    <div>        <div class="tab-content">            <div class="tab-pane active" id="home">            	<hr>                   	<form (ngSubmit)="editprofile(f)" #f="ngForm" novalidate="" method="POST">                        <div class="form-group">                            <div class="col-xs-6">                               	<label for="first_name"><h4>Nombre de Usuario</h4></label>                                <input type="text" disabled                                placeholder="{{this.selectedUser.username  | titlecase}}">                          	</div>                        </div>                        <div class="form-group">                            <div class="col-xs-6">                                <label for="email"><h4>Email</h4></label>                                <input type="text" disabled                                 placeholder="{{this.selectedUser.email}}">                            </div>                        </div>                        <div class="form-group">                            <div class="col-xs-6">                                <label for="description"><h4>Descripción</h4></label>                                <input #description type="text" class="form-control" name="description"                                 id="description" placeholder="{{this.selectedUser.description}}" [(ngModel)]="descriptionValue" >                            </div>                        </div>                        <div class="form-group">                            <div class="col-xs-12">                                <br>                                <button class="btn btn-lg btn-success" type="submit">                                    Actualizar <i class="fas fa-sync-alt"></i>                               	</button>                            </div>                                </div>                    </form>                    <hr>            </div>        </div></div></div>'
     var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'ProfileComponent'};

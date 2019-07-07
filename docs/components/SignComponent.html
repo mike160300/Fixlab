@@ -238,62 +238,21 @@ export class SignComponent implements OnInit {
     </div>
 
     <div class="tab-pane fade " id="c-templateData">
-        <pre class="line-numbers"><code class="language-html">
-&lt;div class&#x3D;&quot;container text-center&quot;&gt;
-&lt;img src&#x3D;&quot;/assets/images/logo.png&quot; class&#x3D;&quot;img text-center&quot; alt&#x3D;&quot;Logo FixLab&quot;&gt;
+        <pre class="line-numbers"><code class="language-html">&lt;div class&#x3D;&quot;container text-center&quot;&gt;
+	&lt;img src&#x3D;&quot;/assets/images/logo.png&quot; class&#x3D;&quot;img text-center&quot; alt&#x3D;&quot;Logo FixLab&quot;&gt;
 &lt;/div&gt;
 &lt;div class&#x3D;&quot;container-fluid&quot;&gt;  
   &lt;div class&#x3D;&quot;saludo&quot;&gt;
-    &lt;div class&#x3D;&quot;titulo text-*-center&quot;&gt;
-         &lt;/div&gt;
         &lt;div class&#x3D;&quot;botones&quot;&gt;
-        &lt;a class&#x3D;&quot;btn btn-lg btn-block btn-dark&quot; role&#x3D;&quot;button&quot; [routerLink]&#x3D;&quot;[&#x27;/login&#x27;]&quot;&gt;Inicia sesión&lt;/a&gt;
-        &lt;a class&#x3D;&quot;btn  btn-lg btn-light btn-block&quot; role&#x3D;&quot;button&quot; [routerLink]&#x3D;&quot;[&#x27;/register&#x27;]&quot;&gt;Regístrate&lt;/a&gt;         
-    &lt;/div&gt;
+	        &lt;a class&#x3D;&quot;btn btn-lg btn-block btn-dark&quot; role&#x3D;&quot;button&quot; [routerLink]&#x3D;&quot;[&#x27;/login&#x27;]&quot;&gt;
+	        	Inicia sesión
+	    	&lt;/a&gt;
+	        &lt;a class&#x3D;&quot;btn  btn-lg btn-light btn-block&quot; role&#x3D;&quot;button&quot; [routerLink]&#x3D;&quot;[&#x27;/register&#x27;]&quot;&gt;
+	        	Regístrate
+	        &lt;/a&gt;   
+    	&lt;/div&gt;
   &lt;/div&gt;
 &lt;/div&gt; 
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
-&lt;br&gt;
 
 </code></pre>
     </div>
@@ -320,7 +279,6 @@ export class SignComponent implements OnInit {
 }
 
 .botones{
-    width: 60%;
     margin: 0 auto;
     position: relative;
     display: block;
@@ -377,7 +335,7 @@ img
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div class="container text-center"><img src="/assets/images/logo.png" class="img text-center" alt="Logo FixLab"></div><div class="container-fluid">    <div class="saludo">    <div class="titulo text-*-center">         </div>        <div class="botones">        <a class="btn btn-lg btn-block btn-dark" role="button" [routerLink]="[\'/login\']">Inicia sesión</a>        <a class="btn  btn-lg btn-light btn-block" role="button" [routerLink]="[\'/register\']">Regístrate</a>             </div>  </div></div> <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br></div>'
+        var COMPONENT_TEMPLATE = '<div><div class="container text-center">	<img src="/assets/images/logo.png" class="img text-center" alt="Logo FixLab"></div><div class="container-fluid">    <div class="saludo">        <div class="botones">	        <a class="btn btn-lg btn-block btn-dark" role="button" [routerLink]="[\'/login\']">	        	Inicia sesión	    	</a>	        <a class="btn  btn-lg btn-light btn-block" role="button" [routerLink]="[\'/register\']">	        	Regístrate	        </a>       	</div>  </div></div> </div>'
     var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'SignComponent'};

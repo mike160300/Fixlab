@@ -345,14 +345,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="52"
-                            class="link-to-prism">src/app/components/answers/answers.component.ts:52</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="58"
+                            class="link-to-prism">src/app/components/answers/answers.component.ts:58</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Modal para borrar una respuesta.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -427,14 +429,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="92"
-                            class="link-to-prism">src/app/components/answers/answers.component.ts:92</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="104"
+                            class="link-to-prism">src/app/components/answers/answers.component.ts:104</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Elimina una respuesta.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -505,14 +509,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="45"
-                            class="link-to-prism">src/app/components/answers/answers.component.ts:45</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="48"
+                            class="link-to-prism">src/app/components/answers/answers.component.ts:48</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Modal para modificar una respuesta.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -587,8 +593,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="106"
-                            class="link-to-prism">src/app/components/answers/answers.component.ts:106</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="118"
+                            class="link-to-prism">src/app/components/answers/answers.component.ts:118</a></div>
                 </td>
             </tr>
 
@@ -626,14 +632,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">src/app/components/answers/answers.component.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="68"
+                            class="link-to-prism">src/app/components/answers/answers.component.ts:68</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Modifica una respuesta.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -910,15 +918,18 @@ modalRef2: BsModalRef;
 
   }
 
-  getAnswers() {
+  getAnswers() 
+  {
     return this.answers.getAnswersUser(this.auth.getUserDetails().id_user)
       .subscribe(
           answers &#x3D;&gt; {
             this.aanswers &#x3D; answers
-          }
-  )
+          })
   };
 
+  /**
+  *Modal para modificar una respuesta.
+  */
   modify(template: TemplateRef&lt;any&gt;, modifyAnswer: Answers) 
   {
     this.selectedAnswer &#x3D; modifyAnswer;  
@@ -926,6 +937,9 @@ modalRef2: BsModalRef;
     this.modalRef1.hide();
   }
 
+  /**
+  *Modal para borrar una respuesta.
+  */
   delet(template: TemplateRef&lt;any&gt;, delAnswer: Answers) 
   {
     this.selectedAnswer &#x3D; delAnswer;  
@@ -933,6 +947,9 @@ modalRef2: BsModalRef;
     this.modalRef2.hide();
   }
 
+  /**
+  *Modifica una respuesta.
+  */
   update(form: NgForm) {
 
     if(form.value.text !&#x3D; &quot;&quot;)
@@ -966,18 +983,21 @@ modalRef2: BsModalRef;
 
   }
 
+  /**
+  *Elimina una respuesta.
+  */
   delete() 
   {
     this.answers.deleteAnswer(this.selectedAnswer).subscribe(
       () &#x3D;&gt; {
         this.toastr.success(&#x27;Respuesta borrada exitosamente&#x27;);
+        this.ngOnInit();
       },
       err &#x3D;&gt; {
         this.toastr.error(&#x27;Error al borrar la respuesta&#x27;);
       }
     );
     this.modalRef2.hide();
-    this.ngOnInit();
   }
 
   ngOnInit() 
@@ -1147,7 +1167,9 @@ modalRef2: BsModalRef;
 
 .modal-header
 {
-    background: url(&#x27;/assets/images/fondo.jpg&#x27;) center top;
+    background: #834d9b;  /* fallback for old browsers */
+    background: -webkit-linear-gradient(to right, #d04ed6, #834d9b);  /* Chrome 10-25, Safari 5.1-6 */
+    background: linear-gradient(to right, #d04ed6, #834d9b);
     color: white;
 }
 
@@ -1165,7 +1187,6 @@ hr
 {
     padding: 20px;
 }
-
 
 /*Prop. para imágenes*/
 
@@ -1190,8 +1211,8 @@ hr
 .avatar
 {
     display: block;
-    width: 300px;
-    height: 300px;
+    width: 640px;
+    height: 480px;
     margin-left: auto;
     margin-right: auto;    
 }

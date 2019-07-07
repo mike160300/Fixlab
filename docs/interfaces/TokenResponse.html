@@ -143,24 +143,26 @@ export class AuthenticationService {
   private token: string
   customer: Customers;
 
-  uri &#x3D; &#x27;http://localhost:3000/users&#x27;
+  uri &#x3D; &#x27;https://fixlab-backend.herokuapp.com/users&#x27;
 
-  constructor(private http: HttpClient, private router: Router) {
-  }
+  constructor(private http: HttpClient, private router: Router) {}
 
-  private saveToken(token: string): void {
+  private saveToken(token: string): void 
+  {
     localStorage.setItem(&#x27;usertoken&#x27;, token)
     this.token &#x3D; token
   }
 
-  private getToken(): string {
+  private getToken(): string 
+  {
     if (!this.token) {
       this.token &#x3D; localStorage.getItem(&#x27;usertoken&#x27;)
     }
     return this.token
   }
 
-  public getUserDetails() {
+  public getUserDetails() 
+  {
     const token &#x3D; this.getToken()
     let payload
     if (token) {
@@ -172,7 +174,8 @@ export class AuthenticationService {
     }
   }
 
-  public isLoggedIn(): boolean {
+  public isLoggedIn(): boolean 
+  {
     const user &#x3D; this.getUserDetails()
     if (user) {
       return user.exp &gt; Date.now() / 1000
@@ -183,11 +186,14 @@ export class AuthenticationService {
 
   public register(user: Customers): Observable&lt;any&gt; 
   {
-    return this.http.post(&#x60;/users/register&#x60;, user)
+    const url&#x3D;&#x60; ${this.uri}/register&#x60;;
+    return this.http.post(url, user)
   }
 
-  public login(user: Customers): Observable&lt;any&gt; {
-    const base &#x3D; this.http.post(&#x60;/users/login&#x60;, user)
+  public login(user: Customers): Observable&lt;any&gt; 
+  {
+    const url&#x3D;&#x60; ${this.uri}/login&#x60;;
+    const base &#x3D; this.http.post(url, user)
 
     const request &#x3D; base.pipe(
       map((data: TokenResponse) &#x3D;&gt; {
@@ -207,8 +213,10 @@ export class AuthenticationService {
     this.router.navigateByUrl(&#x27;/&#x27;)
   }
 
-  public editprofile(prof:Customers): Observable&lt;any&gt; {
-    return this.http.post(&#x27;http://localhost:3000/users/update/&#x27;, prof)
+  public editprofile(prof:Customers): Observable&lt;any&gt; 
+  {
+    const url&#x3D;&#x60; ${this.uri}/update&#x60;;
+    return this.http.post(url, prof)
   }
 
   getUsers(id: number): Observable&lt;Customers[]&gt; {    
