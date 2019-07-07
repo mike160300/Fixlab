@@ -17,10 +17,8 @@ export class NavbarComponent implements OnInit {
   {
   	this.auth.logout();
   	this.toastr.info('Has cerrado la sesión');
-
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

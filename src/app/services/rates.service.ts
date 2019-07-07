@@ -10,7 +10,7 @@ import { Rates } from '../../models/rates';
 })
 export class RatesService {
 
- uri = 'http://localhost:3000/rates';	
+ uri = 'https://fixlab-backend.herokuapp.com/rates';	
 
   constructor(private http: HttpClient, private router: Router) { }
 

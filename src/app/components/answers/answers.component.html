@@ -1,11 +1,4 @@
 <!--Visualización de tarjetas-->
-<!--div *ngIf="this.aanswers == 0" class="text-center">
-	<h2>No existen respuestas hechas por el usuario</h2>
-	<br><br>
-	<i class="fas fa-frown fa-5x"></i>
-	<br><br>
-</div-->		
-
 <div class="container-fluid" *ngFor="let answer of aanswers">
 	<div *ngIf="answer.id_owner == this.auth.getUserDetails().id_user">
 		<div class="notice notice-success notice-lg">
@@ -34,8 +27,8 @@
 					  <i class="fas fa-trash-alt"></i>
 				  </button>
 			</div>
-		</div>
-	</div>		
+		</div>	
+	</div>
 </div>		
 
 <!--Modal para modificar la respuesta-->

@@ -17,7 +17,8 @@ export class NotifyComponent implements OnInit {
 
 	aanswers: Answers[];
 	pposts: Posts[];
-	Totalnotificatios: number;	
+	Totalnotificatios: number;
+  objDate = Date.now();	
 
   constructor(private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private toastr: ToastrService) { }
 

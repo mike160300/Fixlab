@@ -33,15 +33,18 @@ modalRef2: BsModalRef;
 
   }
 
-  getAnswers() {
+  getAnswers() 
+  {
     return this.answers.getAnswersUser(this.auth.getUserDetails().id_user)
       .subscribe(
           answers => {
             this.aanswers = answers
-          }
-  )
+          })
   };
 
+  /**
+  *Modal para modificar una respuesta.
+  */
   modify(template: TemplateRef<any>, modifyAnswer: Answers) 
   {
     this.selectedAnswer = modifyAnswer;  
@@ -49,6 +52,9 @@ modalRef2: BsModalRef;
     this.modalRef1.hide();
   }
 
+  /**
+  *Modal para borrar una respuesta.
+  */
   delet(template: TemplateRef<any>, delAnswer: Answers) 
   {
     this.selectedAnswer = delAnswer;  
@@ -56,6 +62,9 @@ modalRef2: BsModalRef;
     this.modalRef2.hide();
   }
 
+  /**
+  *Modifica una respuesta.
+  */
   update(form: NgForm) {
 
     if(form.value.text != "")
@@ -89,18 +98,21 @@ modalRef2: BsModalRef;
 
   }
 
+  /**
+  *Elimina una respuesta.
+  */
   delete() 
   {
     this.answers.deleteAnswer(this.selectedAnswer).subscribe(
       () => {
         this.toastr.success('Respuesta borrada exitosamente');
+        this.ngOnInit();
       },
       err => {
         this.toastr.error('Error al borrar la respuesta');
       }
     );
     this.modalRef2.hide();
-    this.ngOnInit();
   }
 
   ngOnInit() 

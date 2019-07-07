@@ -57,12 +57,18 @@ export class HomeComponent implements OnInit {
 
   }
 
+  /**
+  *Obtiene todas las publicaciones del usuario.
+  */
   getPosts()
   {
     const id = this.auth.getUserDetails().id_user;
     this.posts.getpostsOwner(id).subscribe(pposts => this.pposts = pposts);
   }
  
+  /**
+  *Modal para crear una publicación.
+  */
   create(template: TemplateRef<any>) 
   {
     this.newPost.id_post= 0;
@@ -78,6 +84,9 @@ export class HomeComponent implements OnInit {
     this.modalRef1.hide();
   }
 
+  /**
+  *Modal para modificar una publicación.
+  */
   modify(template: TemplateRef<any>, editPost: Posts) 
   {
     this.selectedPost = editPost;
@@ -87,6 +96,9 @@ export class HomeComponent implements OnInit {
     this.modalRef2.hide();
   }
 
+  /**
+  *Modal para realizar el pago.
+  */
   pay(template: TemplateRef<any>, ans: Answers) 
   {
     this.selectedAnswer = ans;
@@ -96,14 +108,24 @@ export class HomeComponent implements OnInit {
     this.modalRef6.hide();
   }
 
+  /**
+  *Califica la respuesta como útil y marca el post como resuelto.
+  */
   valorate(resp :Answers)
   {
     this.selectedAnswer = resp;
     this.selectedAnswer.valorated = true;
     this.answers.valorateAnswer(this.selectedAnswer)
         .subscribe(() => {this.toastr.success('Esta respuesta resolvió tu problema');});
+
+    this.selectedPost.resolved = true;    
+    this.posts.updatePost(this.selectedPost).subscribe(() => {});
+    console.log(this.selectedPost);
   }
 
+  /**
+  *Califica a un usuario.
+  */
   rateUser(y)
   {
     console.log(y);
@@ -127,14 +149,24 @@ export class HomeComponent implements OnInit {
     this.done = true;
   }
 
+  /**
+  *Califica la respuesta como no útil y marca el post como no resuelto.
+  */
   notvalorate(resp :Answers)
   {
     this.selectedAnswer = resp;
     this.selectedAnswer.valorated = false;
     this.answers.valorateAnswer(this.selectedAnswer)
         .subscribe(() => {this.toastr.warning('Esta respuesta no resolvió tu problema');});
+
+    this.selectedPost.resolved = false;    
+    this.posts.updatePost(this.selectedPost).subscribe(() => {});
+    console.log(this.selectedPost);        
   }  
 
+  /**
+  *Llama a opciones de pago para desbloquear una respuesta.
+  */
   unlocked(viewans:Answers)
   {
     this.selectedAnswer = viewans;
@@ -145,6 +177,9 @@ export class HomeComponent implements OnInit {
       });   
   }
 
+  /**
+  *Ver en detalle una respuesta individual.
+  */
   viewAnswer(template: TemplateRef<any>, viewans:Answers)
   {
     this.selectedAnswer = viewans;
@@ -154,6 +189,9 @@ export class HomeComponent implements OnInit {
     this.modalRef5.hide();   
   }
 
+  /**
+  *Ver todas las respuestas de una publicación.
+  */
   viewAnswers(template: TemplateRef<any>, viewans:Posts)
   {
      this.selectedPost = viewans;
@@ -162,7 +200,9 @@ export class HomeComponent implements OnInit {
      this.modalRef4.hide();
   }
 
-
+  /**
+  *Borrar una publicación
+  */
   delet(template: TemplateRef<any>, deletePost: Posts) 
   {
     this.selectedPost = deletePost;
@@ -170,6 +210,9 @@ export class HomeComponent implements OnInit {
     this.modalRef3.hide();
   }
 
+  /**
+  *Crear una nueva publicación.
+  */
   addpost(form: NgForm) 
   {
 
@@ -219,6 +262,9 @@ export class HomeComponent implements OnInit {
     this.modalRef1.hide();
   }
 
+  /**
+  *Actualiza una publicación existente.
+  */
   update(form: NgForm) {
 
     if(form.value.name != "")
@@ -264,6 +310,9 @@ export class HomeComponent implements OnInit {
 
   }
 
+  /**
+  *Borra una publicación existente.
+  */
   delete() 
   {
     this.posts.deletePost(this.selectedPost).subscribe(
@@ -279,28 +328,34 @@ export class HomeComponent implements OnInit {
     this.modalRef3.hide();
   }
 
+  /**
+  *Borra una imagen de Firebase Storage a partir de una URL.
+  */
   deleteImage(downloadUrl) 
   {
     return this.storage.storage.refFromURL(downloadUrl).delete();
   } 
 
- upload(event) 
+  /**
+  *Sube la imagen al servicio de Firebase Storage y obtiene la url de la misma.
+  */
+  upload(event) 
   {
-    // Obtiene la imagen:
+    //Obtiene la imagen:
     const file = event.target.files[0];
     
     // Genera un ID random para la imagen:
     const randomId = Math.random().toString(36).substring(2);
     const filepath = `Posts_Images/${randomId}`;
 
-    // Cargar imagen:
+    //Cargar imagen:
     const task = this.storage.upload(filepath, file);
     this.ref = this.storage.ref(filepath);
 
-    // Observa los cambios en el % de la barra de progresos:
+    //Observa los cambios en el % de la barra de progresos:
     this.uploadProgress = task.percentageChanges();
 
-    // Notifica cuando la URL de descarga está disponible:
+    //Notifica cuando la URL de descarga está disponible:
     task.snapshotChanges().pipe(
       finalize(() => {
         this.downloadURL = this.ref.getDownloadURL();  
@@ -310,20 +365,35 @@ export class HomeComponent implements OnInit {
     ).subscribe();
   }
 
+  /**
+  *Cancela la creación de una publicación.
+  */
   cancelAdd()
   {
-    this.deleteImage(this.imageUrl);
+    if(this.imageUrl!=null)
+    {
+      this.deleteImage(this.imageUrl);
+    }
     this.imageUrl=null;
     this.modalRef1.hide();
   }
 
+  /**
+  *Cancela la edición de una publicación.
+  */
   cancelEdit()
   {
-    this.deleteImage(this.imageUrl);
+    if(this.imageUrl!=null)
+    {
+      this.deleteImage(this.imageUrl);
+    }
     this.imageUrl=null;
     this.modalRef2.hide();
   }
 
+  /**
+  *Comprueba si se hizo efectivo el pago por la respuesta.
+  */
   comprobar()
   {
     if(this.answers.getPay()==true)
@@ -337,7 +407,8 @@ export class HomeComponent implements OnInit {
     this.modalRef6.hide();
   }
   
-  ngOnInit() {
+  ngOnInit() 
+  {
     //Obtiene todas las publicaciones de usuario al inicio
     this.getPosts();
   }

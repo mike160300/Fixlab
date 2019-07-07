@@ -1,0 +1,634 @@
+<!doctype html>
+<html class="no-js" lang="">
+    <head>
+        <meta charset="utf-8">
+        <meta http-equiv="x-ua-compatible" content="ie=edge">
+        <title>fix-lab documentation</title>
+        <meta name="description" content="">
+        <meta name="viewport" content="width=device-width, initial-scale=1">
+
+        <link rel="icon" type="image/x-icon" href="../images/favicon.ico">
+	      <link rel="stylesheet" href="../styles/style.css">
+        <link rel="stylesheet" href="../styles/laravel.css">
+    </head>
+    <body>
+
+        <div class="navbar navbar-default navbar-fixed-top visible-xs">
+            <a href="../" class="navbar-brand">fix-lab documentation</a>
+            <button type="button" class="btn btn-default btn-menu ion-ios-menu" id="btn-menu"></button>
+        </div>
+
+        <div class="xs-menu menu" id="mobile-menu">
+                <div id="book-search-input" role="search"><input type="text" placeholder="Type to search"></div>            <compodoc-menu></compodoc-menu>
+        </div>
+
+        <div class="container-fluid main">
+           <div class="row main">
+               <div class="hidden-xs menu">
+                   <compodoc-menu mode="normal"></compodoc-menu>
+               </div>
+               <!-- START CONTENT -->
+               <div class="content component">
+                   <div class="content-data">
+
+
+
+
+<ol class="breadcrumb">
+  <li>Components</li>
+  <li>LoginComponent</li>
+</ol>
+
+<ul class="nav nav-tabs" role="tablist">
+        <li class="active">
+            <a href="#info" role="tab" id="info-tab" data-toggle="tab" data-link="info">Info</a>
+        </li>
+        <li >
+            <a href="#source" role="tab" id="source-tab" data-toggle="tab" data-link="source">Source</a>
+        </li>
+        <li >
+            <a href="#templateData" role="tab" id="templateData-tab" data-toggle="tab" data-link="template">Template</a>
+        </li>
+        <li >
+            <a href="#styleData" role="tab" id="styleData-tab" data-toggle="tab" data-link="style">Styles</a>
+        </li>
+        <li >
+            <a href="#tree" role="tab" id="tree-tab" data-toggle="tab" data-link="dom-tree">DOM Tree</a>
+        </li>
+</ul>
+
+<div class="tab-content">
+    <div class="tab-pane fade active in" id="c-info"><p class="comment">
+    <h3>File</h3>
+</p>
+<p class="comment">
+    <code>src/app/auth/login/login.component.ts</code>
+</p>
+
+
+
+
+
+<section>
+    <h3>Metadata</h3>
+    <table class="table table-sm table-hover">
+        <tbody>
+
+
+
+
+
+
+
+
+
+
+
+            <tr>
+                <td class="col-md-3">selector</td>
+                <td class="col-md-9"><code>app-login</code></td>
+            </tr>
+
+            <tr>
+                <td class="col-md-3">styleUrls</td>
+                <td class="col-md-9"><code>../auth.styles.css</code></td>
+            </tr>
+
+
+
+            <tr>
+                <td class="col-md-3">templateUrl</td>
+                <td class="col-md-9"><code>./login.component.html</code></td>
+            </tr>
+
+
+
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="index">Index</h3>
+    <table class="table table-sm table-bordered index-table">
+        <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Properties</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#credentials">credentials</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                        <h6><b>Methods</b></h6>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <ul class="index-list">
+                            <li>
+                                <a href="#login">login</a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+
+
+
+
+
+        </tbody>
+    </table>
+</section>
+
+    <section>
+    <h3 id="constructor">Constructor</h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+<code>constructor(auth: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, toastr: ToastrService)</code>
+                    </td>
+                </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/auth/login/login.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+                <tr>
+                    <td class="col-md-4">
+                            <div>
+                                    <b>Parameters :</b>
+                                    <table class="params">
+                                        <thead>
+                                            <tr>
+                                                <td>Name</td>
+                                                    <td>Type</td>
+                                                <td>Optional</td>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                                <tr>
+                                                        <td>auth</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>router</td>
+                                                  
+                                                        <td>
+                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                                <tr>
+                                                        <td>toastr</td>
+                                                  
+                                                        <td>
+                                                                    <code>ToastrService</code>
+                                                        </td>
+                                                  
+                                                    <td>
+                                                            No
+                                                    </td>
+                                                    
+                                                </tr>
+                                        </tbody>
+                                    </table>
+                            </div>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+</section>
+
+
+
+
+
+    <section>
+    
+    <h3 id="methods">
+        Methods
+    </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="login"></a>
+                    <span class="name">
+                        <b>
+                            login
+                        </b>
+                        <a href="#login"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>login(form: <a href="https://angular.io/api/forms/NgForm" target="_blank">NgForm</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="20"
+                            class="link-to-prism">src/app/auth/login/login.component.ts:20</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>form</td>
+                                    <td>
+                                                <code><a href="https://angular.io/api/forms/NgForm" target="_blank" >NgForm</a></code>
+                                    </td>
+
+                                    <td>
+                                        No
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+    <section>
+    
+        <h3 id="inputs">
+            Properties
+        </h3>
+        <table class="table table-sm table-bordered">
+            <tbody>
+                <tr>
+                    <td class="col-md-4">
+                        <a name="credentials"></a>
+                        <span class="name">
+                            <b>
+                            credentials</b>
+                            <a href="#credentials"><span class="icon ion-ios-link"></span></a>
+                        </span>
+                    </td>
+                </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Type : </i>        <code><a href="../classes/Customers.html" target="_self" >Customers</a></code>
+
+                        </td>
+                    </tr>
+                    <tr>
+                        <td class="col-md-4">
+                            <i>Default value : </i><code>new Customers()</code>
+                        </td>
+                    </tr>
+                        <tr>
+                            <td class="col-md-4">
+                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/auth/login/login.component.ts:15</a></div>
+                            </td>
+                        </tr>
+
+
+            </tbody>
+        </table>
+</section>
+
+</div>
+
+
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component } from &quot;@angular/core&quot;;
+import { AuthenticationService} from &quot;./../authentication.service&quot;;
+import { Router } from &quot;@angular/router&quot;;
+import { NgForm } from &#x27;@angular/forms&#x27;;
+import { Customers } from &#x27;../../../models/customers&#x27;;
+import { ToastrService } from &#x27;ngx-toastr&#x27;;
+
+@Component({
+  selector: &#x27;app-login&#x27;,
+  templateUrl: &#x27;./login.component.html&#x27;,
+  styleUrls: [&#x27;../auth.styles.css&#x27;]
+})
+export class LoginComponent {
+
+  credentials: Customers &#x3D; new Customers();
+
+
+  constructor(private auth: AuthenticationService, private router: Router, private toastr: ToastrService) {}
+
+  login(form: NgForm) 
+  {
+      this.credentials.email&#x3D; form.value.email;
+      this.credentials.password&#x3D; form.value.password;
+
+    this.auth.login(this.credentials).subscribe(
+      () &#x3D;&gt; {
+        this.toastr.success(&#x27;Inicio de sesión exitoso&#x27;);
+        this.router.navigateByUrl(&#x27;/dashboard/home&#x27;)
+      },
+      err &#x3D;&gt; {
+        this.toastr.error(&#x27;Compruebe los datos introducidos&#x27;,&#x27;Error al iniciar sesión&#x27;);
+      }
+    );
+  }
+}
+</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-templateData">
+        <pre class="line-numbers"><code class="language-html">&lt;br&gt;&lt;br&gt;
+&lt;div class&#x3D;&quot;py-5 text-center text-white&quot;&gt;
+    &lt;div class&#x3D;&quot;container text-center&quot;&gt;
+      &lt;div class&#x3D;&quot;row&quot;&gt;
+        &lt;div class&#x3D;&quot;p-5 col-lg-6 col-10 mx-auto login-box&quot;&gt;
+          &lt;img src&#x3D;&quot;/assets/images/logo.png&quot; class&#x3D;&quot;avatar text-center&quot; alt&#x3D;&quot;Logo FixLab&quot;&gt;
+          &lt;br&gt;&lt;br&gt;
+          &lt;h1&gt;Accede a Fixlab&lt;/h1&gt;
+          &lt;form (ngSubmit)&#x3D;&quot;login(f)&quot; #f&#x3D;&quot;ngForm&quot; novalidate&#x3D;&quot;&quot;&gt;
+
+            &lt;!--Email--&gt;
+              &lt;input type&#x3D;&quot;text&quot; id&#x3D;&quot;email&quot; name&#x3D;&quot;email&quot; class&#x3D;&quot;form-control&quot; #email&#x3D;&quot;ngModel&quot; [(ngModel)]&#x3D;&quot;credentials.email&quot;
+          [ngClass]&#x3D; &quot;{&#x27;is-invalid&#x27;:email.errors!&#x3D;null &amp;&amp; email.touched, &#x27;is-valid&#x27;:email.errors&#x3D;&#x3D;null}&quot; 
+          required pattern&#x3D;&quot;[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$&quot; placeholder&#x3D;&quot;Correo electrónico&quot;&gt;
+              
+              &lt;!--Si es válido--&gt;
+              &lt;div *ngIf&#x3D;&quot;email.valid&quot; class&#x3D;&quot;valid-feedback&quot;&gt;&lt;/div&gt;
+              &lt;!--Si es inválido--&gt;
+              &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;
+                &lt;div *ngIf&#x3D;&quot;email.errors?.required&quot;&gt;
+                    &lt;small&gt;&lt;strong&gt;Este campo es requerido.&lt;/strong&gt;&lt;/small&gt;
+                &lt;/div&gt;
+                &lt;div *ngIf&#x3D;&quot;email.errors?.pattern&quot;&gt;
+                    &lt;small&gt;&lt;strong&gt;Se debe introducir un patrón de email válido.&lt;/strong&gt;&lt;/small&gt;
+                &lt;/div&gt;
+              &lt;/div&gt;
+            &lt;hr&gt;
+            
+            &lt;!--Password--&gt;
+              &lt;input type&#x3D;&quot;password&quot; class&#x3D;&quot;form-control&quot; id&#x3D;&quot;password&quot; name&#x3D;&quot;password&quot; 
+              #password&#x3D;&quot;ngModel&quot; [(ngModel)]&#x3D;&quot;credentials.password&quot; placeholder&#x3D;&quot;Password&quot; 
+              [ngClass]&#x3D; &quot;{&#x27;is-invalid&#x27;:password.errors!&#x3D;null &amp;&amp; password.touched, &#x27;is-valid&#x27;:password.errors&#x3D;&#x3D;null}&quot; required minlength&#x3D;&quot;8&quot;&gt;
+              &lt;!--Si es válido--&gt;
+              &lt;div *ngIf&#x3D;&quot;email.valid&quot; class&#x3D;&quot;valid-feedback&quot;&gt;&lt;/div&gt;
+              &lt;!--Si es inválido--&gt;
+              &lt;div class&#x3D;&quot;invalid-feedback&quot;&gt;
+                  &lt;div *ngIf&#x3D;&quot;password.errors?.required&quot;&gt;
+                      &lt;small&gt;&lt;strong&gt;Este campo es requerido.&lt;/strong&gt;&lt;/small&gt;
+                  &lt;/div&gt;
+                  &lt;div *ngIf&#x3D;&quot;password.errors?.minlength&quot;&gt;
+                      &lt;small&gt;&lt;strong&gt;El nombre debe tener al menos {{password.errors.minlength.requiredLength}} carácteres.&lt;/strong&gt;&lt;/small&gt;
+                  &lt;/div&gt;
+              &lt;/div&gt;           
+            &lt;hr&gt;
+
+            &lt;input class&#x3D;&quot;btn btn-primary btn-block&quot; type&#x3D;&quot;submit&quot; value&#x3D;&quot;Acceder&quot; [disabled]&#x3D;&quot;!f.valid&quot;&gt;
+            &lt;input class&#x3D;&quot;btn btn-danger btn-block&quot; type&#x3D;&quot;button&quot; value&#x3D;&quot;Volver&quot; [routerLink]&#x3D;&quot;[&#x27;/&#x27;]&quot;&gt;
+            &lt;hr&gt;
+
+            &lt;a [routerLink]&#x3D;&quot;[&#x27;/register&#x27;]&quot; routerLinkActive&#x3D;&quot;active&quot;&gt;¿No tienes una cuenta?&lt;/a&gt;
+          &lt;/form&gt;
+        &lt;/div&gt;
+      &lt;/div&gt;
+    &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;br&gt;&lt;br&gt;</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-styleData">
+                <p class="comment">
+                    <code>../auth.styles.css</code>
+                </p>
+                <pre class="line-numbers"><code class="language-scss">.login-box
+{
+    background: #151515ba;
+    color: #fff;
+    text-align: center;
+    box-sizing: border-box;
+    border-radius: 20px;
+}
+  
+.login-box .avatar 
+{
+    height: 160px;
+    width: 220px;
+    /*position: static;*/
+    text-align: center;
+    position: absolute;
+    top: -90px;
+    left: calc(50% - 107px);
+}
+  
+.login-box h1 
+{
+    margin: 0;
+    padding: 0 0 20px;
+    text-align: center;
+    font-size: 22px;
+}
+  
+.login-box label 
+{
+    margin: 0;
+    padding: 0;
+    display: block;
+}
+  
+.login-box input 
+{
+    width: 100%;
+    margin-bottom: 20px;
+}
+  
+.login-box input[type&#x3D;&quot;text&quot;], .login-box input[type&#x3D;&quot;password&quot;] 
+{
+    border: none;
+    border-bottom: 1px solid azure;
+    background: transparent;
+    outline: none;
+    height: 40px;
+    color: #fff;
+    font-size: 16px;
+}
+  
+.login-box input[type&#x3D;&quot;submit&quot;], input[type&#x3D;&quot;button&quot;] 
+{
+    border: none;
+    outline: none;
+    height: 40px;
+    color: azure;
+    font-size: 18px;
+    border-radius: 20px;
+}
+  
+.login-box input[type&#x3D;&quot;submit&quot;], input[type&#x3D;&quot;button&quot;]:hover
+{
+    cursor: pointer;
+    color: azure;
+}
+
+.login-box a 
+{
+    text-decoration: none;
+    font-size: 12px;
+    line-height: 20px;
+    color: darkgrey;
+}
+  
+.login-box a:hover
+{
+    color: azure;
+}
+
+.login-box hr
+{
+    color: #151515ba;
+}</code></pre>
+    </div>
+
+    <div class="tab-pane fade " id="c-tree">
+        <div id="tree-container"></div>
+        <div class="tree-legend">
+            <div class="title">
+                <b>Legend</b>
+            </div>
+            <div>
+                <div class="color htmlelement"></div><span>Html element</span>
+            </div>
+            <div>
+                <div class="color component"></div><span>Component</span>
+            </div>
+            <div>
+                <div class="color directive"></div><span>Html element with directive</span>
+            </div>
+        </div>
+    </div>
+
+    
+</div>
+
+<script src="../js/libs/vis.min.js"></script>
+<script src="../js/libs/htmlparser.js"></script>
+<script src="../js/libs/deep-iterator.js"></script>
+<script>
+        var COMPONENT_TEMPLATE = '<div><br><br><div class="py-5 text-center text-white">    <div class="container text-center">      <div class="row">        <div class="p-5 col-lg-6 col-10 mx-auto login-box">          <img src="/assets/images/logo.png" class="avatar text-center" alt="Logo FixLab">          <br><br>          <h1>Accede a Fixlab</h1>          <form (ngSubmit)="login(f)" #f="ngForm" novalidate="">            <!--Email-->              <input type="text" id="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="credentials.email"          [ngClass]= "{\'is-invalid\':email.errors!=null && email.touched, \'is-valid\':email.errors==null}"           required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Correo electrónico">                            <!--Si es válido-->              <div *ngIf="email.valid" class="valid-feedback"></div>              <!--Si es inválido-->              <div class="invalid-feedback">                <div *ngIf="email.errors?.required">                    <small><strong>Este campo es requerido.</strong></small>                </div>                <div *ngIf="email.errors?.pattern">                    <small><strong>Se debe introducir un patrón de email válido.</strong></small>                </div>              </div>            <hr>                        <!--Password-->              <input type="password" class="form-control" id="password" name="password"               #password="ngModel" [(ngModel)]="credentials.password" placeholder="Password"               [ngClass]= "{\'is-invalid\':password.errors!=null && password.touched, \'is-valid\':password.errors==null}" required minlength="8">              <!--Si es válido-->              <div *ngIf="email.valid" class="valid-feedback"></div>              <!--Si es inválido-->              <div class="invalid-feedback">                  <div *ngIf="password.errors?.required">                      <small><strong>Este campo es requerido.</strong></small>                  </div>                  <div *ngIf="password.errors?.minlength">                      <small><strong>El nombre debe tener al menos {{password.errors.minlength.requiredLength}} carácteres.</strong></small>                  </div>              </div>                       <hr>            <input class="btn btn-primary btn-block" type="submit" value="Acceder" [disabled]="!f.valid">            <input class="btn btn-danger btn-block" type="button" value="Volver" [routerLink]="[\'/\']">            <hr>            <a [routerLink]="[\'/register\']" routerLinkActive="active">¿No tienes una cuenta?</a>          </form>        </div>      </div>    </div>  </div>  <br><br></div>'
+    var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
+    var DIRECTIVES = [];
+    var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
+</script>
+<script src="../js/tree.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                   </div><div class="search-results">
+    <div class="has-results">
+        <h1 class="search-results-title"><span class='search-results-count'></span> result-matching "<span class='search-query'></span>"</h1>
+        <ul class="search-results-list"></ul>
+    </div>
+    <div class="no-results">
+        <h1 class="search-results-title">No results matching "<span class='search-query'></span>"</h1>
+    </div>
+</div>
+</div>
+               <!-- END CONTENT -->
+           </div>
+       </div>
+
+       <script>
+            var COMPODOC_CURRENT_PAGE_DEPTH = 1;
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'component';
+            var COMPODOC_CURRENT_PAGE_URL = 'LoginComponent.html';
+       </script>
+
+       <script src="../js/libs/custom-elements.min.js"></script>
+       <script src="../js/libs/lit-html.js"></script>
+       <!-- Required to polyfill modern browsers as code is ES5 for IE... -->
+       <script src="../js/libs/custom-elements-es5-adapter.js" charset="utf-8" defer></script>
+       <script src="../js/menu-wc.js" defer></script>
+
+       <script src="../js/libs/bootstrap-native.js"></script>
+
+       <script src="../js/libs/es6-shim.min.js"></script>
+       <script src="../js/libs/EventDispatcher.js"></script>
+       <script src="../js/libs/promise.min.js"></script>
+       <script src="../js/libs/zepto.min.js"></script>
+
+       <script src="../js/compodoc.js"></script>
+
+       <script src="../js/tabs.js"></script>
+       <script src="../js/menu.js"></script>
+       <script src="../js/libs/clipboard.min.js"></script>
+       <script src="../js/libs/prism.js"></script>
+       <script src="../js/sourceCode.js"></script>
+          <script src="../js/search/search.js"></script>
+          <script src="../js/search/lunr.min.js"></script>
+          <script src="../js/search/search-lunr.js"></script>
+          <script src="../js/search/search_index.js"></script>
+       <script src="../js/lazy-load-graphs.js"></script>
+
+
+    </body>
+</html>

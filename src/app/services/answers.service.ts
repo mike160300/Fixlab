@@ -13,7 +13,7 @@ export class AnswersService {
 
   selectedAnswer: Answers;
   payRealized: boolean;
-  uri = 'http://localhost:3000/answers';
+  uri = 'https://fixlab-backend.herokuapp.com/answers';
 
   constructor(private http: HttpClient, private router: Router) {
    }
