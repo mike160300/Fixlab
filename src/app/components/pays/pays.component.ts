@@ -55,7 +55,7 @@ export class PaysComponent implements OnInit, AfterViewChecked
             }
         })
     },
-  
+
     // onAuthorize() is called when the buyer approves the payment
     onAuthorize:(data, actions) => {
   
@@ -69,8 +69,11 @@ export class PaysComponent implements OnInit, AfterViewChecked
     }
   };
   
-  ngAfterViewChecked(): void {
-    //Called after every check of the component's view. Applies to components only.
+  /**
+  *Called after every check of the component's view. Applies to components only.
+  */  
+  ngAfterViewChecked(): void 
+  {
     //Add 'implements AfterViewChecked' to the class
     if(!this.addScript) {
       this.addPaypalScript().then(() => {
@@ -80,7 +83,11 @@ export class PaysComponent implements OnInit, AfterViewChecked
     }
   }
 
-  addPaypalScript(){
+  /**
+  *Renderiza el botón de Paypal.
+  */ 
+  addPaypalScript()
+  {
       this.addScript = true;
       return new Promise((resolve, reject) => {
         let scriptElement = document.createElement('script');
@@ -90,7 +97,6 @@ export class PaysComponent implements OnInit, AfterViewChecked
       })
   }
 
-  ngOnInit() {
-  }
+  ngOnInit() {}
 
 }

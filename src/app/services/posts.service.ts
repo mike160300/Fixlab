@@ -11,7 +11,7 @@ import { Posts } from '../../models/posts';
 })
 export class PostsService {
 
-  uri = 'http://localhost:3000/posts';
+  uri = 'https://fixlab-backend.herokuapp.com/posts';
 
   constructor(private http: HttpClient, private router: Router) {
 

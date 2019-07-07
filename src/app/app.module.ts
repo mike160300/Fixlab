@@ -3,9 +3,10 @@ import { NgModule, Component } from '@angular/core'
 import { HttpClientModule } from '@angular/common/http'
 import { FormsModule } from '@angular/forms'
 import { RouterModule, Routes } from '@angular/router'
-import { environment } from '../environments/environment';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { ToastrModule } from 'ngx-toastr';
+import { environment } from '../environments/environment'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
+import { ServiceWorkerModule } from '@angular/service-worker'
+import { ToastrModule } from 'ngx-toastr'
 
 import { AppComponent } from './app.component'
 
@@ -85,7 +86,8 @@ import { PaysComponent } from './components/pays/pays.component';
     AngularFireModule.initializeApp(environment.firebase),
     AngularFireStorageModule,
     BrowserAnimationsModule,
-    ToastrModule.forRoot()
+    ToastrModule.forRoot(),
+    ServiceWorkerModule.register('/ngsw-worker.js',{enabled: environment.production})
   ],
   providers: [PostsService, AnswersService, RatesService],
   bootstrap: [AppComponent],

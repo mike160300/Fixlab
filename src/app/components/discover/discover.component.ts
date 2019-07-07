@@ -37,15 +37,18 @@ modalRef1: BsModalRef;
   
   }
 
-  getPosts() {
+  getPosts() 
+  {
     return this.posts.getposts(this.phone, this.pc, this.console, this.other)
       .subscribe(
           pposts => {
             this.pposts = pposts;
-          }
-  )
+          })
   }; 
 
+  /**
+  *Para filtrar por la categoría de Teléfonos.
+  */
   getPhones()
   {
     this.toastr.info('Se muestran las etiquetas de la categoría: Teléfonos y Tablets');
@@ -56,6 +59,9 @@ modalRef1: BsModalRef;
     this.ngOnInit();
   }
 
+  /**
+  *Para filtrar por la categoría de PC's/Laptops.
+  */
   getPcs()
   {
     this.toastr.info('Se muestran las etiquetas de la categoría: PCs y Laptops');
@@ -66,6 +72,9 @@ modalRef1: BsModalRef;
     this.ngOnInit();
   }
 
+  /**
+  *Para filtrar por la categoría de Consolas.
+  */
   getConsoles()
   {
     this.toastr.info('Se muestran las etiquetas de la categoría: Consolas');
@@ -76,6 +85,9 @@ modalRef1: BsModalRef;
     this.ngOnInit();
   }
 
+  /**
+  *Para filtrar por la categoría de Otros.
+  */
   getOthers()
   {
     this.toastr.info('Se muestran las etiquetas de la categoría: Otros');
@@ -86,6 +98,9 @@ modalRef1: BsModalRef;
     this.ngOnInit();
   }
 
+  /**
+  *Para no aplicar filtros.
+  */
   getAll()
   {
     this.toastr.info('Se muestran las etiquetas de todas las categoría');
@@ -96,6 +111,9 @@ modalRef1: BsModalRef;
     this.ngOnInit();
   }        
 
+  /**
+  *Modal para responder una publicación.
+  */
   reply(template: TemplateRef<any>, replyPost: Posts) 
   {
     this.selectedPost = replyPost;
@@ -113,6 +131,9 @@ modalRef1: BsModalRef;
     this.modalRef1.hide();
   }
 
+  /**
+  *Responde a una publicación.
+  */
   addreply(form: NgForm)
   {
     if(form.value.text === "")

@@ -1,9 +1,9 @@
-<div class="container box">
+<div class="container-fluid box">
 
     <!--Imagen de Perfil-->
     <div class="img-profile">
-        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.auth.getUserDetails().image && this.imageUrl==null" src="{{this.selectedUser.image}}">
-        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.auth.getUserDetails().image == null && this.imageUrl==null" src="/assets/images/sin-perfil.png">
+        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image && this.imageUrl==null" src="{{this.selectedUser.image}}">
+        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image == null && this.imageUrl==null" src="/assets/images/sin-perfil.png">
         <img class="img-fluid profile-pic" *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail img-circle img-fluid">
 
     </div>
@@ -45,21 +45,21 @@
                             <div class="col-xs-6">
                                	<label for="first_name"><h4>Nombre de Usuario</h4></label>
                                 <input type="text" disabled
-                                placeholder="{{auth.getUserDetails()?.username  | titlecase}}">
+                                placeholder="{{this.selectedUser.username  | titlecase}}">
                           	</div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="email"><h4>Email</h4></label>
                                 <input type="text" disabled 
-                                placeholder="{{auth.getUserDetails()?.email}}">
+                                placeholder="{{this.selectedUser.email}}">
                             </div>
                         </div>
                         <div class="form-group">
                             <div class="col-xs-6">
                                 <label for="description"><h4>Descripción</h4></label>
                                 <input #description type="text" class="form-control" name="description" 
-                                id="description" placeholder="{{auth.getUserDetails()?.description}}" [(ngModel)]="descriptionValue" >
+                                id="description" placeholder="{{this.selectedUser.description}}" [(ngModel)]="descriptionValue" >
 
                             </div>
                         </div>
