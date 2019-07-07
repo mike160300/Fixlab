@@ -14,7 +14,7 @@ export class AuthenticationService {
   private token: string
   customer: Customers;
 
-  uri = 'http://localhost:3000/users'
+  uri = 'https://fixlab-backend.herokuapp.com'
 
   constructor(private http: HttpClient, private router: Router) {
   }
@@ -54,11 +54,11 @@ export class AuthenticationService {
 
   public register(user: Customers): Observable<any> 
   {
-    return this.http.post(`/users/register`, user)
+    return this.http.post(`https://fixlab-backend.herokuapp.com/users/register`, user)
   }
 
   public login(user: Customers): Observable<any> {
-    const base = this.http.post(`/users/login`, user)
+    const base = this.http.post(`https://fixlab-backend.herokuapp.com/users/login`, user)
 
     const request = base.pipe(
       map((data: TokenResponse) => {
@@ -79,7 +79,7 @@ export class AuthenticationService {
   }
 
   public editprofile(prof:Customers): Observable<any> {
-    return this.http.post('http://localhost:3000/users/update/', prof)
+    return this.http.post('https://fixlab-backend.herokuapp.com/users/update/', prof)
   }
 
   getUsers(id: number): Observable<Customers[]> {    
