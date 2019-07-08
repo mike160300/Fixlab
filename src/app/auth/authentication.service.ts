@@ -4,26 +4,48 @@ import { Observable, of } from 'rxjs'
 import { map } from 'rxjs/operators'
 import { Router } from '@angular/router'
 import { Customers } from '../../models/customers';
-
+/**
+*@ignore
+*/
 interface TokenResponse {
   token: string
 }
-
+/**
+*Servicio para realizar la autenticación y modificación de datos de usuarios.
+*/
 @Injectable()
 export class AuthenticationService {
+  /**
+  *@ignore
+  */  
   private token: string
+  /**
+  *@ignore
+  */  
   customer: Customers;
 
+  /**
+  *URL al hosting del backend.
+  */
   uri = 'https://fixlab-backend.herokuapp.com/users'
 
+  /**
+  *@ignore
+  */
   constructor(private http: HttpClient, private router: Router) {}
 
+  /**
+  *Guarda el valor del Token para la autenticación.
+  */
   private saveToken(token: string): void 
   {
     localStorage.setItem('usertoken', token)
     this.token = token
   }
 
+  /**
+  *Obtiene el Token para la autenticación.
+  */
   private getToken(): string 
   {
     if (!this.token) {
@@ -32,6 +54,9 @@ export class AuthenticationService {
     return this.token
   }
 
+  /**
+  *Obtiene los datos de un usuario.
+  */
   public getUserDetails() 
   {
     const token = this.getToken()
@@ -45,6 +70,9 @@ export class AuthenticationService {
     }
   }
 
+  /**
+  *Comprueba si el usuario esta logeado.
+  */
   public isLoggedIn(): boolean 
   {
     const user = this.getUserDetails()
@@ -55,12 +83,18 @@ export class AuthenticationService {
     }
   }
 
+  /**
+  *Registra a un usuario.
+  */
   public register(user: Customers): Observable<any> 
   {
     const url=` ${this.uri}/register`;
     return this.http.post(url, user)
   }
 
+  /**
+  *Inicia sesión a un usuario.
+  */
   public login(user: Customers): Observable<any> 
   {
     const url=` ${this.uri}/login`;
@@ -78,23 +112,35 @@ export class AuthenticationService {
     return request
   }
 
+  /**
+  *Cierra la sesión.
+  */
   public logout(): void {
     this.token = ''
     window.localStorage.removeItem('usertoken')
     this.router.navigateByUrl('/')
   }
 
+  /**
+  *Edita los datos del perfil.
+  */
   public editprofile(prof:Customers): Observable<any> 
   {
     const url=` ${this.uri}/update`;
     return this.http.post(url, prof)
   }
 
+  /**
+  *Obtiene a todos los usuarios.
+  */
   getUsers(id: number): Observable<Customers[]> {    
     const url = `${this.uri}/${id}`;
     return this.http.get<Customers[]>(url);
   }
 
+  /**
+  *Obtiene al usuario actual.
+  */
   getUser(id: number): Observable<Customers>
   {
     const url = `${this.uri}/profile/${id}`;

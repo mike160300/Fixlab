@@ -65,6 +65,14 @@
     <code>src/app/components/home/home.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Muestra las publicaciones propias del usuario y gestiona su creación, modificación y eliminación.
+De igual manera, permite ver las respuestas asociadas a estas, así como, desbloquearlas y valorarlas.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -134,9 +142,6 @@
                                 <a href="#aanswer">aanswer</a>
                             </li>
                             <li>
-                                <a href="#descriptionValue">descriptionValue</a>
-                            </li>
-                            <li>
                                 <a href="#done">done</a>
                             </li>
                             <li>
@@ -144,33 +149,6 @@
                             </li>
                             <li>
                                 <a href="#imageUrl">imageUrl</a>
-                            </li>
-                            <li>
-                                <a href="#modalRef1">modalRef1</a>
-                            </li>
-                            <li>
-                                <a href="#modalRef2">modalRef2</a>
-                            </li>
-                            <li>
-                                <a href="#modalRef3">modalRef3</a>
-                            </li>
-                            <li>
-                                <a href="#modalRef4">modalRef4</a>
-                            </li>
-                            <li>
-                                <a href="#modalRef5">modalRef5</a>
-                            </li>
-                            <li>
-                                <a href="#modalRef6">modalRef6</a>
-                            </li>
-                            <li>
-                                <a href="#nameValue">nameValue</a>
-                            </li>
-                            <li>
-                                <a href="#newPost">newPost</a>
-                            </li>
-                            <li>
-                                <a href="#newRate">newRate</a>
                             </li>
                             <li>
                                 <a href="#oldimageUrl">oldimageUrl</a>
@@ -198,9 +176,6 @@
                             </li>
                             <li>
                                 <a href="#uuser">uuser</a>
-                            </li>
-                            <li>
-                                <a href="#x">x</a>
                             </li>
                             <li>
                                 <a href="#y">y</a>
@@ -289,150 +264,6 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(modalService: BsModalService, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, answers: <a href="../injectables/AnswersService.html">AnswersService</a>, rates: <a href="../injectables/RatesService.html">RatesService</a>, posts: <a href="../injectables/PostsService.html">PostsService</a>, auth: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, http: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, storage: AngularFireStorage, toastr: ToastrService)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/home/home.component.ts:53</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>modalService</td>
-                                                  
-                                                        <td>
-                                                                    <code>BsModalService</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>answers</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/AnswersService.html" target="_self" >AnswersService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>rates</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/RatesService.html" target="_self" >RatesService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>posts</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/PostsService.html" target="_self" >PostsService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>auth</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>http</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>storage</td>
-                                                  
-                                                        <td>
-                                                                    <code>AngularFireStorage</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>toastr</td>
-                                                  
-                                                        <td>
-                                                                    <code>ToastrService</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
 
 
@@ -465,8 +296,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="216"
-                            class="link-to-prism">src/app/components/home/home.component.ts:216</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="297"
+                            class="link-to-prism">src/app/components/home/home.component.ts:297</a></div>
                 </td>
             </tr>
 
@@ -537,8 +368,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="371"
-                            class="link-to-prism">src/app/components/home/home.component.ts:371</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="452"
+                            class="link-to-prism">src/app/components/home/home.component.ts:452</a></div>
                 </td>
             </tr>
 
@@ -578,8 +409,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="384"
-                            class="link-to-prism">src/app/components/home/home.component.ts:384</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="465"
+                            class="link-to-prism">src/app/components/home/home.component.ts:465</a></div>
                 </td>
             </tr>
 
@@ -619,8 +450,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="397"
-                            class="link-to-prism">src/app/components/home/home.component.ts:397</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="478"
+                            class="link-to-prism">src/app/components/home/home.component.ts:478</a></div>
                 </td>
             </tr>
 
@@ -660,8 +491,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="72"
-                            class="link-to-prism">src/app/components/home/home.component.ts:72</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="153"
+                            class="link-to-prism">src/app/components/home/home.component.ts:153</a></div>
                 </td>
             </tr>
 
@@ -732,8 +563,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="206"
-                            class="link-to-prism">src/app/components/home/home.component.ts:206</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="287"
+                            class="link-to-prism">src/app/components/home/home.component.ts:287</a></div>
                 </td>
             </tr>
 
@@ -816,8 +647,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="316"
-                            class="link-to-prism">src/app/components/home/home.component.ts:316</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="397"
+                            class="link-to-prism">src/app/components/home/home.component.ts:397</a></div>
                 </td>
             </tr>
 
@@ -857,8 +688,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="334"
-                            class="link-to-prism">src/app/components/home/home.component.ts:334</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="415"
+                            class="link-to-prism">src/app/components/home/home.component.ts:415</a></div>
                 </td>
             </tr>
 
@@ -925,8 +756,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="63"
-                            class="link-to-prism">src/app/components/home/home.component.ts:63</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="144"
+                            class="link-to-prism">src/app/components/home/home.component.ts:144</a></div>
                 </td>
             </tr>
 
@@ -966,8 +797,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="90"
-                            class="link-to-prism">src/app/components/home/home.component.ts:90</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="171"
+                            class="link-to-prism">src/app/components/home/home.component.ts:171</a></div>
                 </td>
             </tr>
 
@@ -1050,14 +881,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="410"
-                            class="link-to-prism">src/app/components/home/home.component.ts:410</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="494"
+                            class="link-to-prism">src/app/components/home/home.component.ts:494</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Obtiene todas las publicaciones del usuario al inicio</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
@@ -1089,8 +922,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="155"
-                            class="link-to-prism">src/app/components/home/home.component.ts:155</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="236"
+                            class="link-to-prism">src/app/components/home/home.component.ts:236</a></div>
                 </td>
             </tr>
 
@@ -1161,8 +994,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="102"
-                            class="link-to-prism">src/app/components/home/home.component.ts:102</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="183"
+                            class="link-to-prism">src/app/components/home/home.component.ts:183</a></div>
                 </td>
             </tr>
 
@@ -1245,8 +1078,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="129"
-                            class="link-to-prism">src/app/components/home/home.component.ts:129</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="210"
+                            class="link-to-prism">src/app/components/home/home.component.ts:210</a></div>
                 </td>
             </tr>
 
@@ -1313,8 +1146,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="170"
-                            class="link-to-prism">src/app/components/home/home.component.ts:170</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="251"
+                            class="link-to-prism">src/app/components/home/home.component.ts:251</a></div>
                 </td>
             </tr>
 
@@ -1385,8 +1218,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="268"
-                            class="link-to-prism">src/app/components/home/home.component.ts:268</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="349"
+                            class="link-to-prism">src/app/components/home/home.component.ts:349</a></div>
                 </td>
             </tr>
 
@@ -1457,8 +1290,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="342"
-                            class="link-to-prism">src/app/components/home/home.component.ts:342</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="423"
+                            class="link-to-prism">src/app/components/home/home.component.ts:423</a></div>
                 </td>
             </tr>
 
@@ -1525,8 +1358,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="114"
-                            class="link-to-prism">src/app/components/home/home.component.ts:114</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="195"
+                            class="link-to-prism">src/app/components/home/home.component.ts:195</a></div>
                 </td>
             </tr>
 
@@ -1597,8 +1430,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="183"
-                            class="link-to-prism">src/app/components/home/home.component.ts:183</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="264"
+                            class="link-to-prism">src/app/components/home/home.component.ts:264</a></div>
                 </td>
             </tr>
 
@@ -1681,8 +1514,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="195"
-                            class="link-to-prism">src/app/components/home/home.component.ts:195</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="276"
+                            class="link-to-prism">src/app/components/home/home.component.ts:276</a></div>
                 </td>
             </tr>
 
@@ -1769,31 +1602,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="29" class="link-to-prism">src/app/components/home/home.component.ts:29</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/home/home.component.ts:39</a></div>
                             </td>
                         </tr>
 
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="descriptionValue"></a>
-                        <span class="name">
-                            <b>
-                            descriptionValue</b>
-                            <a href="#descriptionValue"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <div class="io-description"><p>Arreglo de respuestas.</p>
+</div>
                     </td>
                 </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="37" class="link-to-prism">src/app/components/home/home.component.ts:37</a></div>
-                            </td>
-                        </tr>
-
 
             </tbody>
         </table>
@@ -1822,10 +1640,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="46" class="link-to-prism">src/app/components/home/home.component.ts:46</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="107" class="link-to-prism">src/app/components/home/home.component.ts:107</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Flag para determinar si calificó al usuario.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -1849,10 +1673,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/home/home.component.ts:43</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="95" class="link-to-prism">src/app/components/home/home.component.ts:95</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>URL de descarga de la imagen.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -1881,257 +1711,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="38" class="link-to-prism">src/app/components/home/home.component.ts:38</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="75" class="link-to-prism">src/app/components/home/home.component.ts:75</a></div>
                             </td>
                         </tr>
 
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="modalRef1"></a>
-                        <span class="name">
-                            <b>
-                            modalRef1</b>
-                            <a href="#modalRef1"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <div class="io-description"><p>URL para la imagen de la publicación a ser almacenada en Firebase Storage.</p>
+</div>
                     </td>
                 </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>BsModalRef</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="48" class="link-to-prism">src/app/components/home/home.component.ts:48</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="modalRef2"></a>
-                        <span class="name">
-                            <b>
-                            modalRef2</b>
-                            <a href="#modalRef2"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>BsModalRef</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="49" class="link-to-prism">src/app/components/home/home.component.ts:49</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="modalRef3"></a>
-                        <span class="name">
-                            <b>
-                            modalRef3</b>
-                            <a href="#modalRef3"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>BsModalRef</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="50" class="link-to-prism">src/app/components/home/home.component.ts:50</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="modalRef4"></a>
-                        <span class="name">
-                            <b>
-                            modalRef4</b>
-                            <a href="#modalRef4"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>BsModalRef</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="51" class="link-to-prism">src/app/components/home/home.component.ts:51</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="modalRef5"></a>
-                        <span class="name">
-                            <b>
-                            modalRef5</b>
-                            <a href="#modalRef5"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>BsModalRef</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="52" class="link-to-prism">src/app/components/home/home.component.ts:52</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="modalRef6"></a>
-                        <span class="name">
-                            <b>
-                            modalRef6</b>
-                            <a href="#modalRef6"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>    <code>BsModalRef</code>
-
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="53" class="link-to-prism">src/app/components/home/home.component.ts:53</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="nameValue"></a>
-                        <span class="name">
-                            <b>
-                            nameValue</b>
-                            <a href="#nameValue"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/app/components/home/home.component.ts:36</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="newPost"></a>
-                        <span class="name">
-                            <b>
-                            newPost</b>
-                            <a href="#newPost"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Posts.html" target="_self" >Posts</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>new Posts()</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="40" class="link-to-prism">src/app/components/home/home.component.ts:40</a></div>
-                            </td>
-                        </tr>
-
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="newRate"></a>
-                        <span class="name">
-                            <b>
-                            newRate</b>
-                            <a href="#newRate"><span class="icon ion-ios-link"></span></a>
-                        </span>
-                    </td>
-                </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="../classes/Rates.html" target="_self" >Rates</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>new Rates()</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/app/components/home/home.component.ts:32</a></div>
-                            </td>
-                        </tr>
-
 
             </tbody>
         </table>
@@ -2160,10 +1749,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="39" class="link-to-prism">src/app/components/home/home.component.ts:39</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="79" class="link-to-prism">src/app/components/home/home.component.ts:79</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>URL para la imagen de la publicación a ser eliminada.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -2187,10 +1782,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/app/components/home/home.component.ts:28</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/home/home.component.ts:35</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Arreglo de publicaciones.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -2214,10 +1815,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="42" class="link-to-prism">src/app/components/home/home.component.ts:42</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="91" class="link-to-prism">src/app/components/home/home.component.ts:91</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Referencia al Storage de Firebase.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -2241,10 +1848,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="31" class="link-to-prism">src/app/components/home/home.component.ts:31</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="47" class="link-to-prism">src/app/components/home/home.component.ts:47</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Arreglo de calificaciones de usuario.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -2268,10 +1881,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="34" class="link-to-prism">src/app/components/home/home.component.ts:34</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="59" class="link-to-prism">src/app/components/home/home.component.ts:59</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Respuesta seleccionada actualmente.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -2295,10 +1914,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="33" class="link-to-prism">src/app/components/home/home.component.ts:33</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="55" class="link-to-prism">src/app/components/home/home.component.ts:55</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Publicación seleccionada actualmente.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -2322,10 +1947,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="35" class="link-to-prism">src/app/components/home/home.component.ts:35</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="63" class="link-to-prism">src/app/components/home/home.component.ts:63</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Calificación de usuario seleccionada actualmente.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -2349,10 +1980,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="41" class="link-to-prism">src/app/components/home/home.component.ts:41</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="87" class="link-to-prism">src/app/components/home/home.component.ts:87</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Porcentaje para la barra de progreso al subir imagen.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -2376,42 +2013,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="30" class="link-to-prism">src/app/components/home/home.component.ts:30</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="43" class="link-to-prism">src/app/components/home/home.component.ts:43</a></div>
                             </td>
                         </tr>
 
-
-            </tbody>
-        </table>
-        <table class="table table-sm table-bordered">
-            <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="x"></a>
-                        <span class="name">
-                            <b>
-                            x</b>
-                            <a href="#x"><span class="icon ion-ios-link"></span></a>
-                        </span>
+                        <div class="io-description"><p>Arreglo de usuarios.</p>
+</div>
                     </td>
                 </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Type : </i>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/number" target="_blank" >number</a></code>
-
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <i>Default value : </i><code>0</code>
-                        </td>
-                    </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="45" class="link-to-prism">src/app/components/home/home.component.ts:45</a></div>
-                            </td>
-                        </tr>
-
 
             </tbody>
         </table>
@@ -2440,10 +2051,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="44" class="link-to-prism">src/app/components/home/home.component.ts:44</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="99" class="link-to-prism">src/app/components/home/home.component.ts:99</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Nro de estrellas predefinido para el rating de usuario.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -2473,40 +2090,121 @@ import { HttpClient } from &#x27;@angular/common/http&#x27;;
 import { Customers } from &#x27;../../../models/customers&#x27;;
 import { ToastrService } from &#x27;ngx-toastr&#x27;;
 
+/**
+*Muestra las publicaciones propias del usuario y gestiona su creación, modificación y eliminación.
+*De igual manera, permite ver las respuestas asociadas a estas, así como, desbloquearlas y valorarlas.
+*/
 @Component({
   selector: &#x27;app-home&#x27;,
   templateUrl: &#x27;./home.component.html&#x27;,
   styleUrls: [&#x27;./home.component.css&#x27;]
 })
-export class HomeComponent implements OnInit {
-
+export class HomeComponent implements OnInit 
+{
+  /**
+  *Arreglo de publicaciones.
+  */
   pposts: Posts[];
+  /**
+  *Arreglo de respuestas.
+  */  
   aanswer: Answers[];
+  /**
+  *Arreglo de usuarios.
+  */  
   uuser: Customers[];
+  /**
+  *Arreglo de calificaciones de usuario.
+  */  
   rrate: Rates[];
+  /**
+  *@ignore
+  */  
   newRate: Rates &#x3D; new Rates();
+  /**
+  *Publicación seleccionada actualmente.
+  */  
   selectedPost: Posts;
+  /**
+  *Respuesta seleccionada actualmente.
+  */    
   selectedAnswer: Answers;
+  /**
+  *Calificación de usuario seleccionada actualmente.
+  */    
   selectedRate: Rates;
+  /**
+  *@ignore
+  */    
   nameValue;
+  /**
+  *@ignore
+  */    
   descriptionValue;
+  /**
+  *URL para la imagen de la publicación a ser almacenada en Firebase Storage.
+  */    
   imageUrl: string &#x3D; null;
+  /**
+  *URL para la imagen de la publicación a ser eliminada.
+  */      
   oldimageUrl: string &#x3D; null;
+  /**
+  *@ignore
+  */      
   newPost: Posts &#x3D; new Posts();
-  uploadProgress: Observable&lt;number&gt;; 
+  /**
+  *Porcentaje para la barra de progreso al subir imagen.
+  */      
+  uploadProgress: Observable&lt;number&gt;;
+  /**
+  *Referencia al Storage de Firebase.
+  */ 
   ref: AngularFireStorageReference;
+  /**
+  *URL de descarga de la imagen.
+  */
   downloadURL: Observable&lt;string&gt;;
+  /**
+  *Nro de estrellas predefinido para el rating de usuario.
+  */
   y: number &#x3D; 0;
+  /**
+  *@ignore
+  */
   x: number &#x3D; 0;
+  /**
+  *Flag para determinar si calificó al usuario.
+  */
   done: boolean &#x3D; false;
-
+  /**
+  *@ignore
+  */
   modalRef1: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef2: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef3: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef4: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef5: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef6: BsModalRef;
 
+  /**
+  *@ignore
+  */
   constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService, private rates: RatesService ,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage, private toastr: ToastrService) 
   { 
 
@@ -2862,9 +2560,11 @@ export class HomeComponent implements OnInit {
     this.modalRef6.hide();
   }
   
+  /**
+  *Obtiene todas las publicaciones del usuario al inicio
+  */
   ngOnInit() 
   {
-    //Obtiene todas las publicaciones de usuario al inicio
     this.getPosts();
   }
 
@@ -3409,7 +3109,7 @@ hr
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><div class="container">    <h1 class="text-center">Mis Publicaciones</h1>    <br>    <!--Agregue un nuevo post-->    <div class="containet text-center">       	<button type="button" class="btn btn-success btn-create" (click)="create(template1)"        	tooltip="Agregar nueva publicación" placement="bottom">      		<i class="fas fa-plus fa-2x"></i>  		</button>    </div>    <hr>           <!--Visualización de tarjetas-->    <div class="container-fluid" *ngFor="let post of pposts">     	    	<div class="notice notice-info notice-lg">        	<strong>{{post.title}}</strong>        	<hr>        	<img *ngIf="post.image!=\'\'" src="{{post.image}}" class="img-fluid text-center avatar">        	<img *ngIf="post.image==\'\'" src="/assets/images/no-image.png" class="img-fluid text-center avatar">        	<br>        	<p>{{ post.description }}</p>        	<div class="text-right">				&nbsp;				<button type="button" class="btn btn-info btn-answer" 					(click)="viewAnswers(template4, post)" tooltip="Ver respuestas" placement="bottom">				   <i class="far fa-eye"></i>			   </button>			   &nbsp;				<button type="button" class="btn btn-primary btn-modify" (click)="modify(template2, post)"				   tooltip="Modificar la publicación" placement="bottom">			      	<i class="fas fa-pencil-alt"></i>			  	</button>			  	&nbsp;			  	<button type="button" class="btn btn-danger btn-delete" (click)="delet(template3, post)"			  		tooltip="Eliminar la publicación" placement="bottom">			      	<i class="fas fa-trash-alt"></i>			  	</button>        	</div>    	</div>  		<br><br>    			</div></div><!--Modal para crear la publicación--><ng-template #template1>	<div class="modal-header">	    <h4 class="modal-title pull-left">Crear nueva publicación</h4>	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef1.hide()">	      <span aria-hidden="true">&times;</span>	    </button>	</div>	<div class="modal-body">		<div class="container text-center">				<div class="tab-content">								<div class="text-center">					<img *ngIf="this.imageUrl==null" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic img-content">                    <img *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-fluid img-circle img-thumbnail profile-pic img-content">					<h6>Seleccione la foto para el producto</h6>					<br>											<div class="container">						<!--Barra de progreso-->						<progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>						<!--Muestra el progreso de la barra-->						<div class="item">								Progress: {{ (uploadProgress | async) / 100 | percent }}						</div>						<br>						<div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">            			<p>La foto se cargó correctamente</p>        				</div>						<!--Se sube una nueva foto para el usuario-->						<div class="item">							<input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">							<button type="button" class="btn btn-lg btn-success" (click)="inputFile.click()">								Subir foto							<i class="fas fa-upload"></i>							</button>						</div>					</div>				</div>				<hr>												<form #f="ngForm" novalidate="" method="POST">										<div class="form-group">						<div class="col-xs-6">								<label for="name"><h4>Título</h4></label>								<input type="text"  name="title" class="form-control"  placeholder="Nombre del Post" [(ngModel)]="newPost.title">						</div>					</div>					<div class="form-group">						<div class="col-xs-6">								<label for="descripcion"><h4>Descripción</h4></label><br>								<textarea type="text" name="description" placeholder="Descripcion del Post" class="form-control" [(ngModel)]="newPost.description"></textarea>						</div>					</div>					<div class="form-group">						<div class="col-xs-6">								<label for="descripcion"><h4>Categoria</h4></label><br>								<select class="browser-default custom-select" name="categoria" [(ngModel)]="newPost.categoria" >									<option value="Telefono">Teléfono/Tableta</option>									<option value="PC">PC/Laptop</option>									<option value="Consola">Consolas</option>									<option value="Otros">Otros</option>								  </select>						</div>					</div>					<hr>					<div class="text-center">						<button class="btn btn-primary" value="POST" (click)="addpost(f)" type="submit">Crear Publicación							<i class="fas fa-pencil-alt"></i>						</button>						<br><br>						<button class="btn btn-cancelar btn-danger" (click)="cancelAdd()">Cancelar							<i class="far fa-times-circle"></i>						</button>					</div>			</form>	</div>		</div>	  </div></ng-template><!--Modal para modificar la publicación--><ng-template #template2>	<div class="modal-header">		<h4 class="modal-title pull-left">Modificar publicación</h4>		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef2.hide()">	  		<span aria-hidden="true">&times;</span>		</button>	</div>	<div class="modal-body">		<div class="container text-center">			<div class="tab-content">								<form #f="ngForm" class="form" id="ProductForm">					<img *ngIf="selectedPost.image==\'\'" src="/assets/images/no-image.png" class="img-fluid img-circle img-thumbnail profile-pic img-content">                    <img *ngIf="selectedPost.image!=\'\'" src={{selectedPost.image}} class="img-fluid img-circle img-thumbnail profile-pic img-content">					<h6>Seleccione la foto para el producto</h6>					<br>					<div class="container">						<!--Barra de progreso-->						<progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>						<!--Muestra el progreso de la barra-->						<div class="item">								Progress: {{ (uploadProgress | async) / 100 | percent }}						</div>						<br>						<div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">            			<p>La foto se cargó correctamente</p>        				</div>						<!--Se sube una nueva foto para el usuario-->						<div class="item">								<!--Selecciona un archivo .png o .jpg-->								<input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">								<!--Botón para poner en funcionamiento el input-->								<button type="button" class="btn btn-lg btn-success" (click)="inputFile.click()">								Subir foto								<i class="fas fa-upload"></i>								</button>						</div>					</div>					<hr>														<div class="form-group">						<div class="col-xs-6">								<label for="name"><h4>Título</h4></label>								<input [(ngModel)]="nameValue" #name="ngModel" ngModel type="text" class="form-control" name="name" id="name" placeholder="{{selectedPost.title}}">						</div>					</div>					<div class="form-group">						<div class="col-xs-6">							<label for="descripcion"><h4>Descripción</h4></label><br>							<textarea [(ngModel)]="descriptionValue" #descripcion="ngModel"							type="text" class="form-control" name="descripcion" id="descripcion" placeholder="{{selectedPost.description}}"></textarea>						</div>					</div>					<hr>					<div class="form-group text-center">						<div class="col-xs-12">							<br>							<button class="btn btn-primary" (click)="update(f)" type="submit">Actualizar											<i class="fas fa-sync-alt"></i>							</button>							<br><br>							<button class="btn btn-cancelar btn-danger" (click)="cancelEdit()">Cancelar											<i class="far fa-times-circle"></i>							</button>						</div>					</div>				</form>			</div>		</div>	</div></ng-template><!--Modal para eliminar la publicación--><ng-template #template3>	<div class="modal-header">		<h4 class="modal-title pull-left">Eliminar publicación</h4>	    <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef3.hide()">	      <span aria-hidden="true">&times;</span>	    </button>	</div>	<div class="modal-body">		¿Desea borrar de forma permanente la publicación seleccionada?		<br><br>		<div class="text-center">			<button (click)="delete()" class="btn btn-success" type="button">Sí</button>			&nbsp;			<button (click)="modalRef3.hide()" class="btn btn-danger btn-cancelar" type="button">No</button>		</div>	</div></ng-template><!--Modal para ver respuestas--><ng-template #template4>	<div class="modal-header">		<h4 class="modal-title pull-left">Respuestas de la publicación</h4>		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef4.hide()">	  		<span aria-hidden="true">&times;</span>		</button>	</div>	<div class="modal-body">		<div *ngIf="aanswer<=0" class="container-fluid text-center">			<strong>No existen respuestas para la publicación</strong>			<br><br>				<i class="fas fa-frown fa-5x"></i>		</div>		<div class="container-fluid" *ngFor="let answer of aanswer">	    	<div class="notice notice-success notice-md">				<!--Respuesta bloqueda (pago con Paypal)-->				<div *ngIf="!answer.unlocked">					<button class="btn btn-danger btn-unlock" 						(click)="pay(template6, answer);">						<i class="fas fa-lock"></i>&nbsp;						<strong>							No se puede acceder a la respuesta, por favor asegúrese de desbloquearla.						</strong>					</button>				</div>				<div *ngIf="answer.unlocked">					<strong>{{answer.text | slice:0:20}} ...</strong>					<div class="text-right">						<button class="btn btn-success btn-answer" 							(click)="viewAnswer(template5,answer)" tooltip="Ver en detalle" 							placement="bottom">							<i class="fas fa-eye"></i>						</button>&nbsp;							<button class="btn btn-primary btn-answer" *ngIf="!answer.valorated"							(click)="valorate(answer)" tooltip="¡Solucionó el problema!" 							placement="bottom">							<i class="fas fa-heart"></i>						</button>&nbsp;						<button class="btn btn-danger btn-answer" *ngIf="answer.valorated"							(click)="notvalorate(answer)" tooltip="¡No me sirvió!" 							placement="bottom">							<i class="fas fa-heart-broken"></i>						</button>											</div>				</div>		    	</div>	    	<hr>			</div>	</div></ng-template><!--Modal para detallar respuestas--><ng-template #template5>	<div class="modal-header">		<h4 class="modal-title pull-left">Detalles de la publicación</h4>		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef5.hide()">	  		<span aria-hidden="true">&times;</span>		</button>	</div>	<div class="modal-body">	    	<div class="notice notice-success notice-md">				<!--Respuesta desbloqueada (pago realizado)-->				<div class="container-fluid text-center" *ngFor="let user of uuser">					<img *ngIf="user.image==null" src="/assets/images/sin-perfil.png" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">					<img *ngIf="user.image!=null" src="{{user.image}}" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">					<strong>{{ user.username }}</strong>					<hr>					<p>{{ selectedAnswer.text }}</p>					<hr>					<strong>Precio pagado:</strong>					<p>{{ selectedAnswer.price | currency: \'USD\'}}</p>					<hr>										<div *ngIf="selectedAnswer.valorated">						<alert type="success">Esta respuesta resolvió tu problema</alert>						<br><br>						<div *ngIf="!done">							<p>¡Hazle saber a <b>{{ user.username }}</b> lo útil que te fue su respuesta!</p>							<br>							  <rating [max]="5" [(ngModel)]="y" [customTemplate]="tt"></rating>						  <ng-template #tt let-i="index" let-v="value">						    <button class="btn btn-answer btn-{{i < v ? \'warning\' : \'default\'}}"						    	(click)="rateUser(i+1)">						      {{i < v ? \'&#9733;\' : \'&#9734;\'}}						    </button>						  </ng-template>						</div>						<div *ngIf="done">						  <strong>¡Has calificado a {{user.username}} con {{x}} estrellas!</strong>						</div>					</div>					<div *ngIf="!selectedAnswer.valorated">						<alert type="danger">Esta respuesta NO resolvió tu problema</alert>					</div>				</div>									    		        		    	</div>		</div></ng-template><ng-template #template6>	<div class="modal-header">		<h4 class="modal-title pull-left">Detalles de la publicación</h4>		<button type="button" class="close pull-right" aria-label="Close" (click)="modalRef6.hide()">	  		<span aria-hidden="true">&times;</span>		</button>	</div>	<div class="modal-body">	    	<div class="notice notice-success notice-md">				<!--Respuesta bloqueada, pago por realizar-->				<div class="container-fluid text-center" *ngFor="let user of uuser">					<img *ngIf="user.image==null" src="/assets/images/sin-perfil.png" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">					<img *ngIf="user.image!=null" src="{{user.image}}" class="img-fluid img-circle img-thumbnail profile-pic img-content-user">					<strong>{{ user.username }}</strong>					<hr>					<strong>Respuestas Valoradas: {{ user.respuestas_valoradas }}</strong>					<hr>					<strong>Rating general:</strong>					<br>					<rating [max]="5" [(ngModel)]="user.rating"></rating>					<alert type="info">Guíese por los ratings y valoraciones antes de pagar una respuesta</alert>					<hr>					<p>{{ selectedAnswer.text |  slice:0:150}}...</p>					<alert type="danger">Para ver el resto de la respuesta pagué el precio indicado abajo.</alert>					<hr>					<strong>Precio a pagar:</strong>					<p>{{ selectedAnswer.price | currency: \'USD\'}}</p>					<hr>					<app-pays></app-pays>					<br><br>					<button class="btn btn-primary btn-unlock" (click)="comprobar()" type="submit">Comprobar pago						<i class="fas fa-sync-alt"></i>					</button>				</div>									    		        		    	</div>		</div></ng-template></div>'
-    var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
+    var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'HomeComponent'};
 </script>

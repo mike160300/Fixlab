@@ -18,40 +18,121 @@ import { HttpClient } from '@angular/common/http';
 import { Customers } from '../../../models/customers';
 import { ToastrService } from 'ngx-toastr';
 
+/**
+*Muestra las publicaciones propias del usuario y gestiona su creación, modificación y eliminación.
+*De igual manera, permite ver las respuestas asociadas a estas, así como, desbloquearlas y valorarlas.
+*/
 @Component({
   selector: 'app-home',
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css']
 })
-export class HomeComponent implements OnInit {
-
+export class HomeComponent implements OnInit 
+{
+  /**
+  *Arreglo de publicaciones.
+  */
   pposts: Posts[];
+  /**
+  *Arreglo de respuestas.
+  */  
   aanswer: Answers[];
+  /**
+  *Arreglo de usuarios.
+  */  
   uuser: Customers[];
+  /**
+  *Arreglo de calificaciones de usuario.
+  */  
   rrate: Rates[];
+  /**
+  *@ignore
+  */  
   newRate: Rates = new Rates();
+  /**
+  *Publicación seleccionada actualmente.
+  */  
   selectedPost: Posts;
+  /**
+  *Respuesta seleccionada actualmente.
+  */    
   selectedAnswer: Answers;
+  /**
+  *Calificación de usuario seleccionada actualmente.
+  */    
   selectedRate: Rates;
+  /**
+  *@ignore
+  */    
   nameValue;
+  /**
+  *@ignore
+  */    
   descriptionValue;
+  /**
+  *URL para la imagen de la publicación a ser almacenada en Firebase Storage.
+  */    
   imageUrl: string = null;
+  /**
+  *URL para la imagen de la publicación a ser eliminada.
+  */      
   oldimageUrl: string = null;
+  /**
+  *@ignore
+  */      
   newPost: Posts = new Posts();
-  uploadProgress: Observable<number>; 
+  /**
+  *Porcentaje para la barra de progreso al subir imagen.
+  */      
+  uploadProgress: Observable<number>;
+  /**
+  *Referencia al Storage de Firebase.
+  */ 
   ref: AngularFireStorageReference;
+  /**
+  *URL de descarga de la imagen.
+  */
   downloadURL: Observable<string>;
+  /**
+  *Nro de estrellas predefinido para el rating de usuario.
+  */
   y: number = 0;
+  /**
+  *@ignore
+  */
   x: number = 0;
+  /**
+  *Flag para determinar si calificó al usuario.
+  */
   done: boolean = false;
-
+  /**
+  *@ignore
+  */
   modalRef1: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef2: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef3: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef4: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef5: BsModalRef;
+  /**
+  *@ignore
+  */  
   modalRef6: BsModalRef;
 
+  /**
+  *@ignore
+  */
   constructor(private modalService: BsModalService, private router: Router, private answers: AnswersService, private rates: RatesService ,private posts: PostsService, private auth: AuthenticationService, private http: HttpClient, private storage: AngularFireStorage, private toastr: ToastrService) 
   { 
 
@@ -407,9 +488,11 @@ export class HomeComponent implements OnInit {
     this.modalRef6.hide();
   }
   
+  /**
+  *Obtiene todas las publicaciones del usuario al inicio
+  */
   ngOnInit() 
   {
-    //Obtiene todas las publicaciones de usuario al inicio
     this.getPosts();
   }
 

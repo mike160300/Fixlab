@@ -12,6 +12,9 @@ import { Answers } from '../../../models/answers';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
+/**
+*Para ver y modificar las respuestas hechas por el usuario.
+*/
 @Component({
   selector: 'app-answers',
   templateUrl: './answers.component.html',
@@ -19,20 +22,42 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class AnswersComponent implements OnInit {
 
+/**
+*Arreglo de publicaciones.
+*/
 pposts: Posts[];
+/**
+*Arreglo de usuarios.
+*/
 uuser: Customers[];
+/**
+*Arreglo de respuestas.
+*/
 aanswers: Answers[];
+/**
+*Respuesta seleccionada actualmente.
+*/
 selectedAnswer: Answers;
-message: string;
-
+/**
+*@ignore
+*/
 modalRef1: BsModalRef;
+/**
+*@ignore
+*/
 modalRef2: BsModalRef;
 
+  /**
+  *@ignore
+  */
   constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient, private toastr: ToastrService) 
   { 
 
   }
 
+  /**
+  *Obtiene las respuestas hechas por el usuario.
+  */
   getAnswers() 
   {
     return this.answers.getAnswersUser(this.auth.getUserDetails().id_user)
@@ -43,7 +68,7 @@ modalRef2: BsModalRef;
   };
 
   /**
-  *Modal para modificar una respuesta.
+  *Ventana de modal para modificar una respuesta.
   */
   modify(template: TemplateRef<any>, modifyAnswer: Answers) 
   {
@@ -53,7 +78,7 @@ modalRef2: BsModalRef;
   }
 
   /**
-  *Modal para borrar una respuesta.
+  *Ventana de modal para borrar una respuesta.
   */
   delet(template: TemplateRef<any>, delAnswer: Answers) 
   {
@@ -63,7 +88,7 @@ modalRef2: BsModalRef;
   }
 
   /**
-  *Modifica una respuesta.
+  *Modifica una respuesta existente.
   */
   update(form: NgForm) {
 
@@ -99,7 +124,7 @@ modalRef2: BsModalRef;
   }
 
   /**
-  *Elimina una respuesta.
+  *Elimina una respuesta existente.
   */
   delete() 
   {
@@ -115,9 +140,11 @@ modalRef2: BsModalRef;
     this.modalRef2.hide();
   }
 
+  /**
+  *Obtiene todas las publicaciones de usuario al inicio
+  */
   ngOnInit() 
   {
-    //Obtiene todas las publicaciones de usuario al inicio
     this.getAnswers();
   }
 

@@ -1,3 +1,6 @@
+/**
+*Credenciales de Firebase (producción):
+*/
 export const environment = {
   production: true,
   firebase: {

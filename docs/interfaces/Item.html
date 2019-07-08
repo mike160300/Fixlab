@@ -259,24 +259,29 @@
 import { HttpClient } from  &#x27;@angular/common/http&#x27;;
 import { Observable } from  &#x27;rxjs&#x27;;
 
-export  interface  Item{
-name:  string;
-description:  string;
-url:  string;
-html:  string;
-markdown:  string;
+export interface Item
+{
+	name: string;
+	description: string;
+	url: string;
+	html: string;
+	markdown: string;
 }
 
 @Injectable({
-providedIn:  &#x27;root&#x27;
+	providedIn: &#x27;root&#x27;
 })
 
-export  class  ApiService {
-private  dataURL:  string  &#x3D;  &quot;https://www.techiediaries.com/api/data.json&quot;;
-constructor(private  httpClient:  HttpClient) {}
-fetch():  Observable&lt;Item[]&gt;{
-return &lt;Observable&lt;Item[]&gt;&gt;this.httpClient.get(this.dataURL);
-}
+export class ApiService 
+{
+	private dataURL: string &#x3D; &quot;https://www.techiediaries.com/api/data.json&quot;;
+	
+	constructor(private httpClient: HttpClient) {}
+	
+	fetch():  Observable&lt;Item[]&gt;
+	{
+		return &lt;Observable&lt;Item[]&gt;&gt;this.httpClient.get(this.dataURL);
+	}
 }
 </code></pre>
     </div>

@@ -65,6 +65,13 @@
     <code>src/app/auth/login/login.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Llama al servicio y notifica si el inicio de sesión fue exitoso.</p>
+
+    </p>
 
 
 
@@ -154,78 +161,6 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(auth: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>, toastr: ToastrService)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/auth/login/login.component.ts:15</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>auth</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>toastr</td>
-                                                  
-                                                        <td>
-                                                                    <code>ToastrService</code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
 
 
@@ -258,14 +193,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="20"
-                            class="link-to-prism">src/app/auth/login/login.component.ts:20</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="31"
+                            class="link-to-prism">src/app/auth/login/login.component.ts:31</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Recibe los datos del formulario de login.</p>
+</div>
 
                     <div class="io-description">
                         <b>Parameters :</b>
@@ -337,10 +274,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="15" class="link-to-prism">src/app/auth/login/login.component.ts:15</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="21" class="link-to-prism">src/app/auth/login/login.component.ts:21</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Credenciales del usuario.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -357,6 +300,9 @@ import { NgForm } from &#x27;@angular/forms&#x27;;
 import { Customers } from &#x27;../../../models/customers&#x27;;
 import { ToastrService } from &#x27;ngx-toastr&#x27;;
 
+/**
+*Llama al servicio y notifica si el inicio de sesión fue exitoso.
+*/
 @Component({
   selector: &#x27;app-login&#x27;,
   templateUrl: &#x27;./login.component.html&#x27;,
@@ -364,11 +310,19 @@ import { ToastrService } from &#x27;ngx-toastr&#x27;;
 })
 export class LoginComponent {
 
+  /**
+  *Credenciales del usuario.
+  */
   credentials: Customers &#x3D; new Customers();
 
-
+  /**
+  *@ignore
+  */
   constructor(private auth: AuthenticationService, private router: Router, private toastr: ToastrService) {}
 
+  /**
+  *Recibe los datos del formulario de login.
+  */
   login(form: NgForm) 
   {
       this.credentials.email&#x3D; form.value.email;
@@ -564,7 +518,7 @@ export class LoginComponent {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><br><br><div class="py-5 text-center text-white">    <div class="container text-center">      <div class="row">        <div class="p-5 col-lg-6 col-10 mx-auto login-box">          <img src="/assets/images/logo.png" class="avatar text-center" alt="Logo FixLab">          <br><br>          <h1>Accede a Fixlab</h1>          <form (ngSubmit)="login(f)" #f="ngForm" novalidate="">            <!--Email-->              <input type="text" id="email" name="email" class="form-control" #email="ngModel" [(ngModel)]="credentials.email"          [ngClass]= "{\'is-invalid\':email.errors!=null && email.touched, \'is-valid\':email.errors==null}"           required pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,3}$" placeholder="Correo electrónico">                            <!--Si es válido-->              <div *ngIf="email.valid" class="valid-feedback"></div>              <!--Si es inválido-->              <div class="invalid-feedback">                <div *ngIf="email.errors?.required">                    <small><strong>Este campo es requerido.</strong></small>                </div>                <div *ngIf="email.errors?.pattern">                    <small><strong>Se debe introducir un patrón de email válido.</strong></small>                </div>              </div>            <hr>                        <!--Password-->              <input type="password" class="form-control" id="password" name="password"               #password="ngModel" [(ngModel)]="credentials.password" placeholder="Password"               [ngClass]= "{\'is-invalid\':password.errors!=null && password.touched, \'is-valid\':password.errors==null}" required minlength="8">              <!--Si es válido-->              <div *ngIf="email.valid" class="valid-feedback"></div>              <!--Si es inválido-->              <div class="invalid-feedback">                  <div *ngIf="password.errors?.required">                      <small><strong>Este campo es requerido.</strong></small>                  </div>                  <div *ngIf="password.errors?.minlength">                      <small><strong>El nombre debe tener al menos {{password.errors.minlength.requiredLength}} carácteres.</strong></small>                  </div>              </div>                       <hr>            <input class="btn btn-primary btn-block" type="submit" value="Acceder" [disabled]="!f.valid">            <input class="btn btn-danger btn-block" type="button" value="Volver" [routerLink]="[\'/\']">            <hr>            <a [routerLink]="[\'/register\']" routerLinkActive="active">¿No tienes una cuenta?</a>          </form>        </div>      </div>    </div>  </div>  <br><br></div>'
-    var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
+    var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'LoginComponent'};
 </script>

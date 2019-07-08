@@ -1,5 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 
+/**
+*Pantalla de inicio de la aplicación.
+*/
 @Component({
   selector: 'app-sign',
   templateUrl: './sign.component.html',
@@ -7,9 +10,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class SignComponent implements OnInit {
 
-  constructor() { }
+/**
+*@ignore
+*/
+constructor() { }
 
-  ngOnInit() {
-  }
+/**
+*@ignore
+*/
+ngOnInit() { }
 
 }

@@ -64,6 +64,13 @@
             <code>src/models/posts.ts</code>
         </p>
 
+            <p class="comment">
+                <h3>Description</h3>
+            </p>
+            <p class="comment">
+                <p>Modelo de datos de una publicación.</p>
+
+            </p>
 
 
 
@@ -151,10 +158,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">src/models/posts.ts:9</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="36" class="link-to-prism">src/models/posts.ts:36</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Categoría de la publicación.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -179,10 +192,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="4" class="link-to-prism">src/models/posts.ts:4</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">src/models/posts.ts:16</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Descripción de la publicación.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -207,10 +226,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/models/posts.ts:8</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="32" class="link-to-prism">src/models/posts.ts:32</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Dueño de la publicación.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -235,10 +260,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="2" class="link-to-prism">src/models/posts.ts:2</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/models/posts.ts:8</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>ID de la publicación.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -263,10 +294,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="5" class="link-to-prism">src/models/posts.ts:5</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="20" class="link-to-prism">src/models/posts.ts:20</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Imagen para la publicación.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -295,10 +332,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/models/posts.ts:6</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">src/models/posts.ts:24</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Fecha de creación de la publicación.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -323,10 +366,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">src/models/posts.ts:7</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="28" class="link-to-prism">src/models/posts.ts:28</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Resolución de la publicación.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -351,10 +400,16 @@
                     </tr>
                         <tr>
                             <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="3" class="link-to-prism">src/models/posts.ts:3</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">src/models/posts.ts:12</a></div>
                             </td>
                         </tr>
 
+                <tr>
+                    <td class="col-md-4">
+                        <div class="io-description"><p>Título de la publicación.</p>
+</div>
+                    </td>
+                </tr>
 
             </tbody>
         </table>
@@ -371,13 +426,37 @@
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">export class Posts {
+  	/**
+  	*ID de la publicación.
+  	*/		
     id_post? : number;
+  	/**
+  	*Título de la publicación.
+  	*/	    
     title? : string;
+  	/**
+  	*Descripción de la publicación.
+  	*/	    
     description? : string;
+  	/**
+  	*Imagen para la publicación.
+  	*/	    
     image? : string;
-    publish_date: Date &#x3D; new Date();;
+  	/**
+  	*Fecha de creación de la publicación.
+  	*/	    
+    publish_date: Date &#x3D; new Date();
+  	/**
+  	*Resolución de la publicación.
+  	*/	    
     resolved? : boolean;
+  	/**
+  	*Dueño de la publicación.
+  	*/	    
     id_owner? : number;
+  	/**
+  	*Categoría de la publicación.
+  	*/	    
     categoria? : string;
 }</code></pre>
     </div>

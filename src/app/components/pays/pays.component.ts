@@ -8,8 +8,14 @@ import { HttpClient } from '@angular/common/http';
 import { Router } from "@angular/router";
 import { Customers } from '../../../models/customers';
 import { ToastrService } from 'ngx-toastr';
+/**
+*@ignore
+*/
 declare let paypal: any;
 
+/**
+*Renderiza el botón de Paypal para efectuar el pago por dicho medio.
+*/
 @Component({
   selector: 'app-pays',
   templateUrl: './pays.component.html',
@@ -17,18 +23,34 @@ declare let paypal: any;
 })
 export class PaysComponent implements OnInit, AfterViewChecked 
 {
-
+  /**
+  *Para la carga de el botón de Paypal.
+  */
 	paypalLoad: boolean = true;
-  	addScript: boolean = false;
-  	payRealized: boolean = false;
-  	selectedAnswer: Answers;
+  /**
+  *Para el script de Paypal.
+  */
+  addScript: boolean = false;
+  /**
+  *Para comprobar si el pago fue realizado.
+  */
+  payRealized: boolean = false;
+  /**
+  *Respuesta seleccionada actualmente.
+  */
+  selectedAnswer: Answers;
 
+  /**
+  *Constructor - Se obtiene la respuesta actualmente seleccionada al iniciar el componente.
+  */
   constructor(private router: Router, private answers: AnswersService, private rates: RatesService, private auth: AuthenticationService, private http: HttpClient, private toastr: ToastrService)
   { 
   	this.selectedAnswer=this.answers.getSelectedAnswer();
   }
 
-  //Variable paypalConfig:
+  /**
+  *Configuración del botón de Paypal
+  */
   paypalConfig = {
     env: 'sandbox',
 
@@ -97,6 +119,9 @@ export class PaysComponent implements OnInit, AfterViewChecked
       })
   }
 
+  /**
+  *@ignore
+  */  
   ngOnInit() {}
 
 }

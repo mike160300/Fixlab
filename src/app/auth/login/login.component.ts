@@ -5,6 +5,9 @@ import { NgForm } from '@angular/forms';
 import { Customers } from '../../../models/customers';
 import { ToastrService } from 'ngx-toastr';
 
+/**
+*Llama al servicio y notifica si el inicio de sesión fue exitoso.
+*/
 @Component({
   selector: 'app-login',
   templateUrl: './login.component.html',
@@ -12,11 +15,19 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class LoginComponent {
 
+  /**
+  *Credenciales del usuario.
+  */
   credentials: Customers = new Customers();
 
-
+  /**
+  *@ignore
+  */
   constructor(private auth: AuthenticationService, private router: Router, private toastr: ToastrService) {}
 
+  /**
+  *Recibe los datos del formulario de login.
+  */
   login(form: NgForm) 
   {
       this.credentials.email= form.value.email;

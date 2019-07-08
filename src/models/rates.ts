@@ -1,5 +1,17 @@
+/**
+*Modelo de datos de una calificación a un usuario.
+*/ 
 export class Rates {
-    id_user1? : number; //Usuario de la respuesta
-    id_user2? : number;	//Usuario dueño del post (Tú)
+  	/**
+  	*ID del usuario de la respuesta.
+  	*/		
+    id_user1? : number;
+    /**
+  	*ID del dueño de la publicación.
+  	*/	
+    id_user2? : number;
+    /**
+  	*Calificación del usuario.
+  	*/	    
     value? : number;
 }

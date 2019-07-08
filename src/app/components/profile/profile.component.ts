@@ -8,6 +8,9 @@ import { Customers } from '../../../models/customers';
 import { AngularFireStorageReference, AngularFireStorage } from '@angular/fire/storage';
 import { ToastrService } from 'ngx-toastr';
 
+/**
+*Muestra y modifica los datos de perfil del usuario.
+**/
 @Component({
   selector: 'app-profile',
   templateUrl: './profile.component.html',
@@ -15,17 +18,44 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class ProfileComponent implements OnInit {
 
+  /**
+  *URL para la imagen a cargar en Firebase Storage.
+  **/
   imageUrl: string = null;
+  /**
+  *URL para la imagen a eliminar de Firebase Storage.
+  **/  
   oldimageUrl: string = null;
-  uploadProgress: Observable<number>; 
+  /**
+  *Progreso en la subida de la imagen.
+  **/    
+  uploadProgress: Observable<number>;
+  /**
+  *Referencia al Storage de Firebase.
+  **/     
   ref: AngularFireStorageReference;
+  /**
+  *URL de descarga de la imagen.
+  **/    
   downloadURL: Observable<string>;
+  /**
+  *Usuario seleccionado actualemente.
+  **/    
   selectedUser: Customers = new Customers();
+  /**
+  *@ignore
+  */
   descriptionValue;
 
+  /**
+  *@ignore
+  */
   constructor(private auth: AuthenticationService,private router: Router, private storage: AngularFireStorage, private toastr: ToastrService) {
   }
 
+  /**
+  *Obtiene el perfil del usuario.
+  */
   getUserProfile()
   {
     this.auth.getUser(this.auth.getUserDetails().id_user).subscribe(user=>{
@@ -34,6 +64,9 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  /**
+  *Para editar el perfil del usuario.
+  */
   editprofile(form: NgForm) {
 
     if(this.imageUrl!=null)
@@ -85,11 +118,17 @@ export class ProfileComponent implements OnInit {
     ).subscribe();
   }
 
+  /**
+  *Para eliminar la imagen a partir de una URL.
+  */
   deleteImage(downloadUrl) 
   {
     return this.storage.storage.refFromURL(downloadUrl).delete();
-  }  
+  }
 
+  /**
+  *Obtiene los datos del perfil al inicio.
+  */
   ngOnInit() 
   {
     this.getUserProfile();

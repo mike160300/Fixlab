@@ -12,31 +12,72 @@ import { Answers } from '../../../models/answers';
 import { HttpClient } from '@angular/common/http';
 import { ToastrService } from 'ngx-toastr';
 
+/**
+* Muestra todas las publicaciones de los demás usuarios para poder responder a las mismas.
+*/
 @Component({
   selector: 'app-discover',
   templateUrl: './discover.component.html',
   styleUrls: ['../home/home.component.css']
 })
+
 export class DiscoverComponent implements OnInit {
 
+/**
+*Arreglo de publicaciones de usuario.
+*/
 pposts: Posts[];
+/**
+*Arreglo de usuarios.
+*/
 uuser: Customers[];
+/**
+*@ignore
+*/
 newAnswer: Answers = new Answers();
+/**
+*@ignore
+*/
 selectedPost: Posts;
+/**
+*@ignore
+*/
 phone: boolean = false;
+/**
+*@ignore
+*/
 pc: boolean = false;
+/**
+*@ignore
+*/
 console: boolean = false;
+/**
+*@ignore
+*/
 other: boolean = false;
+/**
+*@ignore
+*/
 textValue;
+/**
+*@ignore
+*/
 priceValue;
-
+/**
+*@ignore
+*/
 modalRef1: BsModalRef;
 
+  /**
+  *@ignore
+  */
   constructor(private modalService: BsModalService, private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private http: HttpClient, private toastr: ToastrService) 
   { 
   
   }
-
+  /**
+  *Devuelve todas las publicaciones de los usuarios.
+  */
   getPosts() 
   {
     return this.posts.getposts(this.phone, this.pc, this.console, this.other)
@@ -112,12 +153,11 @@ modalRef1: BsModalRef;
   }        
 
   /**
-  *Modal para responder una publicación.
+  *Ventana de modal para responder una publicación.
   */
   reply(template: TemplateRef<any>, replyPost: Posts) 
   {
     this.selectedPost = replyPost;
-    console.log(this.selectedPost);
 
     this.newAnswer.id_answer= 0;
     this.newAnswer.text="";
@@ -168,12 +208,13 @@ modalRef1: BsModalRef;
       }
     );
     this.modalRef1.hide();    
-
   }
 
+  /**
+  *Para obtener todas las publicaciones de usuario al inicio.
+  */
   ngOnInit() 
   {
-    //Obtiene todas las publicaciones de usuario al inicio
     this.getPosts();
 
   }

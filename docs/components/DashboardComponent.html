@@ -65,6 +65,13 @@
     <code>src/app/components/dashboard/dashboard.component.ts</code>
 </p>
 
+    <p class="comment">
+        <h3>Description</h3>
+    </p>
+    <p class="comment">
+        <p>Dashboard de la aplicación.</p>
+
+    </p>
 
 
     <p class="comment">
@@ -118,102 +125,13 @@
     </table>
 </section>
 
-    <section>
-    <h3 id="index">Index</h3>
-    <table class="table table-sm table-bordered index-table">
-        <tbody>
-
-                <tr>
-                    <td class="col-md-4">
-                        <h6><b>Methods</b></h6>
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <ul class="index-list">
-                            <li>
-                                <a href="#ngOnInit">ngOnInit</a>
-                            </li>
-                        </ul>
-                    </td>
-                </tr>
 
 
 
 
 
-        </tbody>
-    </table>
-</section>
-
-    <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor()</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:8</a></div>
-                            </td>
-                        </tr>
-
-            </tbody>
-        </table>
-</section>
 
 
-
-
-
-    <section>
-    
-    <h3 id="methods">
-        Methods
-    </h3>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="ngOnInit"></a>
-                    <span class="name">
-                        <b>
-                            ngOnInit
-                        </b>
-                        <a href="#ngOnInit"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>ngOnInit()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="12"
-                            class="link-to-prism">src/app/components/dashboard/dashboard.component.ts:12</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-</section>
 
 </div>
 
@@ -221,17 +139,24 @@
     <div class="tab-pane fade  tab-source-code" id="c-source">
         <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Component, OnInit } from &#x27;@angular/core&#x27;;
 
+/**
+*Dashboard de la aplicación.
+*/
 @Component({
   selector: &#x27;app-dashboard&#x27;,
   templateUrl: &#x27;./dashboard.component.html&#x27;,
   styleUrls: [&#x27;./dashboard.component.css&#x27;]
 })
 export class DashboardComponent implements OnInit {
+/**
+*@ignore
+*/
+constructor() { }
 
-  constructor() { }
-
-  ngOnInit() {
-  }
+/**
+*@ignore
+*/
+ngOnInit() { }
 
 }
 </code></pre>
@@ -278,7 +203,7 @@ export class DashboardComponent implements OnInit {
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
         var COMPONENT_TEMPLATE = '<div><app-navbar></app-navbar><br><router-outlet></router-outlet><br><app-footer></app-footer></div>'
-    var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'AppComponent', 'selector': 'app-root'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
+    var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'DashboardComponent'};
 </script>

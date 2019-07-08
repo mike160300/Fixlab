@@ -62,6 +62,13 @@
                 <code>src/app/auth/auth-guard.service.ts</code>
             </p>
 
+                <p class="comment">
+                <h3>Description</h3>
+                </p>
+                <p class="comment">
+                    <p>Evita los accesos no permitidos.</p>
+
+                </p>
 
 
 
@@ -94,66 +101,6 @@
     </table>
 </section>
 
-                <section>
-    <h3 id="constructor">Constructor</h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-<code>constructor(auth: <a href="../injectables/AuthenticationService.html">AuthenticationService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
-                    </td>
-                </tr>
-                        <tr>
-                            <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">src/app/auth/auth-guard.service.ts:6</a></div>
-                            </td>
-                        </tr>
-
-                <tr>
-                    <td class="col-md-4">
-                            <div>
-                                    <b>Parameters :</b>
-                                    <table class="params">
-                                        <thead>
-                                            <tr>
-                                                <td>Name</td>
-                                                    <td>Type</td>
-                                                <td>Optional</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                                <tr>
-                                                        <td>auth</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/AuthenticationService.html" target="_self" >AuthenticationService</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>router</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                        </tbody>
-                                    </table>
-                            </div>
-                    </td>
-                </tr>
-            </tbody>
-        </table>
-</section>
 
                 <section>
     
@@ -182,14 +129,16 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="9"
-                            class="link-to-prism">src/app/auth/auth-guard.service.ts:9</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">src/app/auth/auth-guard.service.ts:18</a></div>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
+                    <div class="io-description"><p>Evita que pueda accederse por URL al dashboard sin autenticarse.</p>
+</div>
 
                     <div class="io-description">
                         <b>Returns : </b>        <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/boolean" target="_blank" >boolean</a></code>
@@ -207,11 +156,20 @@
             <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;
 import { Router, CanActivate } from &#x27;@angular/router&#x27;
 import { AuthenticationService } from &#x27;./authentication.service&#x27;
-
+/**
+*Evita los accesos no permitidos.
+*/
 @Injectable()
 export class AuthGuardService implements CanActivate {
+
+/**
+*@ignore
+*/	
   constructor(private auth: AuthenticationService, private router: Router) {}
 
+  /**
+  *Evita que pueda accederse por URL al dashboard sin autenticarse.
+  */
   canActivate() {
     if (!this.auth.isLoggedIn()) {
       this.router.navigateByUrl(&#x27;/&#x27;)

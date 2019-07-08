@@ -5,6 +5,9 @@ import { NgForm } from '@angular/forms';
 import { Customers } from '../../../models/customers';
 import { ToastrService } from 'ngx-toastr';
 
+/**
+*Llama y notifica si el registro fue exitoso.
+*/
 @Component({
   selector: 'app-register',
   templateUrl: './register.component.html',
@@ -12,12 +15,21 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RegisterComponent {
 
+  /**
+  *Credenciales del usuario.
+  */
   credentials: Customers = new Customers();
   
+  /**
+  *@ignore
+  */
   constructor(private auth: AuthenticationService, private router: Router, private toastr: ToastrService) {}
 
-  register(form: NgForm) {
-
+  /**
+  *Recibe los datos del formulario de registro.
+  */
+  register(form: NgForm) 
+  {
     this.credentials.id_user= 0;
     this.credentials.email= form.value.email;
     this.credentials.username= form.value.username;
