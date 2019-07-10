@@ -1,5 +1,5 @@
 <div class="container">
-    <h1 class="text-center">Mis Publicaciones</h1>
+    <h1 class="text-center" style="color: white">Mis Publicaciones</h1>
     <br>
 
     <!--Agregue un nuevo post-->
@@ -15,6 +15,19 @@
     <div class="container-fluid" *ngFor="let post of pposts">     	
     	<div class="notice notice-info notice-lg">
         	<strong>{{post.title}}</strong>
+        	<div class="text-right">
+        		<small>
+        			<br>
+					<span *ngIf="!post.resolved" class="badge badge-danger float-right pull-right">
+						No resuelto
+					</span>
+        			<span *ngIf="post.resolved" class="badge badge-success float-right pull-right">
+        				Resuelto
+        			</span>
+        			<br>
+        			<b>Publicado el {{post.publish_date}}</b>
+        		</small>
+        	</div>	
         	<hr>
         	<img *ngIf="post.image!=''" src="{{post.image}}" class="img-fluid text-center avatar">
         	<img *ngIf="post.image==''" src="/assets/images/no-image.png" class="img-fluid text-center avatar">
@@ -361,7 +374,7 @@
 					<strong>Rating general:</strong>
 					<br>
 					<div class="text-center">
-						<div *ngIf="user.rating==0">
+						<div *ngIf="user.rating==0 || user.rating==null">
 							<i class="far fa-star"></i>
 							<i class="far fa-star"></i>
 							<i class="far fa-star"></i>

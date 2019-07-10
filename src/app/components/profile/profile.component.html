@@ -2,77 +2,160 @@
 
     <!--Imagen de Perfil-->
     <div class="img-profile">
-        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image && this.imageUrl==null" src="{{this.selectedUser.image}}">
-        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image == null && this.imageUrl==null" src="/assets/images/sin-perfil.png">
-        <img class="img-fluid profile-pic" *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail img-circle img-fluid">
-
+        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image" 
+        src="{{this.selectedUser.image}}">
+        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image == null" 
+        src="/assets/images/sin-perfil.png">
     </div>
-    <br>
-
-    <!--Para actualizar/añadir imagen de perfil a un usuario-->
-    <div class="container">
-       <!--Barra de progreso-->
-       <progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>
-
-        <!--Muestra el progreso de la barra-->
-        <div class="container">
-            Progress: {{ (uploadProgress | async) / 100 | percent }}
-        </div>
+    <hr>
+    <h4>Nombre de Usuario:</h4>
+        <h6>{{this.selectedUser.username  | titlecase}}</h6>
         <br>
-        <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
-            <p>La foto se cargó correctamente</p>
-        </div>
+    <h4>Correo:</h4>
+        <h6>{{this.selectedUser.email}}</h6>
         <br>
-        <!--Se sube una nueva foto para el usuario-->
-        <div class="item">
-            <!--Selecciona un archivo .png o .jpg-->
-            <input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">
-            <!--Botón para poner en funcionamiento el input-->
-            <button type="button" class="btn btn-lg btn-success" (click)="inputFile.click()">
-                Subir foto
-                <i class="fas fa-upload"></i>
-            </button>
+    <h4>Descripción:</h4>
+        <h6>{{this.selectedUser.description}}</h6>
+        <br>
+    <h4>Número de respuestas valoradas:</h4>
+        <h6>{{this.selectedUser.respuestas_valoradas}}</h6>
+        <br>        
+    <h4>Rating promedio del usuario:</h4>
+        <div *ngIf="this.selectedUser.rating==0 || this.selectedUser.rating==null">
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+        </div>                      
+        <div *ngIf="this.selectedUser.rating==1">
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
         </div>
+        <div *ngIf="this.selectedUser.rating==2">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+        </div>
+        <div *ngIf="this.selectedUser.rating==3">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+            <i class="far fa-star"></i>
+        </div>
+        <div *ngIf="this.selectedUser.rating==4">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="far fa-star"></i>
+        </div>
+        <div *ngIf="this.selectedUser.rating==5">
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+            <i class="fas fa-star"></i>
+        </div>        
+        <br>        
+    <hr>
+    <button type="button" class="btn btn-primary" (click)="update(template1)"placement="bottom">
+        Actualizar datos
+        &nbsp;<i class="fas fa-edit"></i>
+    </button>
+    
+</div>
+
+<!--Modal para actualizar los datos del usuario actual-->
+<ng-template #template1>
+    <div class="modal-header">
+        <h4 class="modal-title pull-left">Actualizar datos de usuario</h4>
+        <button type="button" class="close pull-right" aria-label="Close" (click)="modalRef1.hide()">
+            <span aria-hidden="true">&times;</span>
+        </button>
     </div>
+    <div class="modal-body">
+        <div class="container text-center">
+            <div class="tab-content">
+                
+                <form #f="ngForm" class="form" id="ProductForm">
+                    <div class="img-profile">
+                        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image && this.imageUrl==null" src="{{this.selectedUser.image}}">
+                        <img class="img-fluid img-circle img-thumbnail" *ngIf="this.selectedUser.image == null && this.imageUrl==null" src="/assets/images/sin-perfil.png">
+                        <img class="img-fluid profile-pic" *ngIf="this.imageUrl!=null" src={{this.imageUrl}} class="img-thumbnail img-circle img-fluid">
 
-    <!--Se muestran los otros datos del usuario-->
-    <div>
-        <div class="tab-content">
-            <div class="tab-pane active" id="home">
-            	<hr>
-                   	<form (ngSubmit)="editprofile(f)" #f="ngForm" novalidate="" method="POST">
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                               	<label for="first_name"><h4>Nombre de Usuario</h4></label>
-                                <input type="text" disabled
-                                placeholder="{{this.selectedUser.username  | titlecase}}">
-                          	</div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="email"><h4>Email</h4></label>
-                                <input type="text" disabled 
-                                placeholder="{{this.selectedUser.email}}">
-                            </div>
-                        </div>
-                        <div class="form-group">
-                            <div class="col-xs-6">
-                                <label for="description"><h4>Descripción</h4></label>
-                                <input #description type="text" class="form-control" name="description" 
-                                id="description" placeholder="{{this.selectedUser.description}}" [(ngModel)]="descriptionValue" >
+                    </div>
+                    <br>
 
-                            </div>
+                    <div class="container">
+                       <!--Barra de progreso-->
+                       <progressbar [value]="uploadProgress| async" type="primary" [striped]="true" [animate]="true"></progressbar>
+
+                        <!--Muestra el progreso de la barra-->
+                        <div class="container">
+                            Progress: {{ (uploadProgress | async) / 100 | percent }}
                         </div>
-                        <div class="form-group">
-                            <div class="col-xs-12">
-                                <br>
-                                <button class="btn btn-lg btn-success" type="submit">
-                                    Actualizar <i class="fas fa-sync-alt"></i>
-                               	</button>
-                            </div>
-                                </div>
-                    </form>
+                        <br>
+                        <div *ngIf="downloadURL | async; let downloadSrc" class="alert alert-info" role="alert">
+                            <p>La foto se cargó correctamente</p>
+                        </div>
+                        <br>
+                        <!--Se sube una nueva foto para el usuario-->
+                        <div class="item">
+                            <!--Selecciona un archivo .png o .jpg-->
+                            <input #inputFile class="hidden" type="file" (change)="upload($event)" accept=".png,.jpg">
+                            <!--Botón para poner en funcionamiento el input-->
+                            <button type="button" class="btn btn-lg btn-success" (click)="inputFile.click()">
+                                Subir foto
+                                <i class="fas fa-upload"></i>
+                            </button>
+                        </div>
+                    </div>
                     <hr>
+
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="first_name"><h4>Nombre de Usuario</h4></label>
+                            <input type="text" disabled
+                            placeholder="{{this.selectedUser.username  | titlecase}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="email"><h4>Email</h4></label>
+                            <input type="text" disabled 
+                            placeholder="{{this.selectedUser.email}}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <div class="col-xs-6">
+                            <label for="description"><h4>Descripción</h4></label>
+                            <input #description type="text" class="form-control" name="description" 
+                            id="description" placeholder="{{this.selectedUser.description}}" [(ngModel)]="descriptionValue" >
+                        </div>
+                    </div>                    
+
+                    <hr>
+                    <div class="form-group text-center">
+                        <div class="col-xs-12">
+                            <br>
+                            <button class="btn btn-primary" (click)="editprofile(f)" type="submit">Actualizar
+                                            <i class="fas fa-sync-alt"></i>
+                            </button>
+                            <br><br>
+                            <button class="btn btn-cancelar btn-danger" (click)="cancelEdit()">Cancelar
+                                            <i class="far fa-times-circle"></i>
+                            </button>
+                        </div>
+                    </div>
+                </form>
             </div>
         </div>
-</div>
+    </div>
+</ng-template>

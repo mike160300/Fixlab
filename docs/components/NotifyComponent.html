@@ -208,8 +208,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="42"
-                            class="link-to-prism">src/app/components/notify/notify.component.ts:42</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="37"
+                            class="link-to-prism">src/app/components/notify/notify.component.ts:37</a></div>
                 </td>
             </tr>
 
@@ -249,8 +249,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="55"
-                            class="link-to-prism">src/app/components/notify/notify.component.ts:55</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="50"
+                            class="link-to-prism">src/app/components/notify/notify.component.ts:50</a></div>
                 </td>
             </tr>
 
@@ -290,8 +290,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="64"
-                            class="link-to-prism">src/app/components/notify/notify.component.ts:64</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="59"
+                            class="link-to-prism">src/app/components/notify/notify.component.ts:59</a></div>
                 </td>
             </tr>
 
@@ -418,11 +418,6 @@ export class NotifyComponent implements OnInit {
   /**
   *@ignore
   */
-  objDate &#x3D; Date.now();	
-
-  /**
-  *@ignore
-  */
   constructor(private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private toastr: ToastrService) { }
 
   /**
@@ -465,11 +460,8 @@ export class NotifyComponent implements OnInit {
 		&lt;div *ngIf&#x3D;&quot;(post.id_owner &#x3D;&#x3D; this.auth.getUserDetails().id_user)&quot;&gt;
 			&lt;div class&#x3D;&quot;container-fluid&quot;&gt; 
 				&lt;div class&#x3D;&quot;notice notice-success notice-lg&quot;&gt;
-				&lt;i class&#x3D;&quot;fas fa-info-circle fa-2x info&quot;&gt;&lt;/i&gt;&amp;nbsp;Tienes una nueva respuesta en: &lt;strong&gt;{{post.title}}&lt;/strong&gt;
-					&lt;!--div class&#x3D;&quot;container text-right&quot;&gt;
-						&lt;i class&#x3D;&quot;far fa-clock&quot;&gt;&lt;/i&gt;&amp;nbsp;
-						&lt;small&gt;&lt;strong&gt;{{objDate | date :&#x27;short&#x27;}}&lt;/strong&gt;&lt;/small&gt;
-					&lt;/div--&gt;
+				&lt;i class&#x3D;&quot;fas fa-info-circle fa-2x info&quot;&gt;&lt;/i&gt;&amp;nbsp;Tienes una nueva respuesta en: 
+				&lt;strong&gt;{{post.title}}&lt;/strong&gt;
 				&lt;/div&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;		
@@ -578,7 +570,7 @@ hr
 .avatar
 {
     display: block;
-    width: 640px;
+    width: 500px;
     height: 480px;
     margin-left: auto;
     margin-right: auto;    
@@ -624,7 +616,7 @@ hr
 <script src="../js/libs/htmlparser.js"></script>
 <script src="../js/libs/deep-iterator.js"></script>
 <script>
-        var COMPONENT_TEMPLATE = '<div><div *ngFor="let post of pposts">	<div *ngFor="let answer of aanswers">		<div *ngIf="(post.id_owner == this.auth.getUserDetails().id_user)">			<div class="container-fluid"> 				<div class="notice notice-success notice-lg">				<i class="fas fa-info-circle fa-2x info"></i>&nbsp;Tienes una nueva respuesta en: <strong>{{post.title}}</strong>					<!--div class="container text-right">						<i class="far fa-clock"></i>&nbsp;						<small><strong>{{objDate | date :\'short\'}}</strong></small>					</div-->				</div>			</div>		</div>			</div>	</div></div>'
+        var COMPONENT_TEMPLATE = '<div><div *ngFor="let post of pposts">	<div *ngFor="let answer of aanswers">		<div *ngIf="(post.id_owner == this.auth.getUserDetails().id_user)">			<div class="container-fluid"> 				<div class="notice notice-success notice-lg">				<i class="fas fa-info-circle fa-2x info"></i>&nbsp;Tienes una nueva respuesta en: 				<strong>{{post.title}}</strong>				</div>			</div>		</div>			</div>	</div></div>'
     var COMPONENTS = [{'name': 'AnswersComponent', 'selector': 'app-answers'},{'name': 'DashboardComponent', 'selector': 'app-dashboard'},{'name': 'DiscoverComponent', 'selector': 'app-discover'},{'name': 'FooterComponent', 'selector': 'app-footer'},{'name': 'HomeComponent', 'selector': 'app-home'},{'name': 'LoginComponent', 'selector': 'app-login'},{'name': 'NavbarComponent', 'selector': 'app-navbar'},{'name': 'NotifyComponent', 'selector': 'app-notify'},{'name': 'PaysComponent', 'selector': 'app-pays'},{'name': 'ProfileComponent', 'selector': 'app-profile'},{'name': 'RegisterComponent', 'selector': 'app-register'},{'name': 'SignComponent', 'selector': 'app-sign'}];
     var DIRECTIVES = [];
     var ACTUAL_COMPONENT = {'name': 'NotifyComponent'};

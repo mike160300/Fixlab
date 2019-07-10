@@ -33,7 +33,12 @@
 	<div *ngIf="(!this.phone)&&(!this.console)&&(!this.pc)&&(!this.other)">
 		<div *ngIf="(post.id_owner != this.auth.getUserDetails().id_user)&&(!post.resolved)">
 			<div class="notice notice-info notice-lg">
-		    	<strong>{{post.title}}</strong>
+	        	<strong>{{post.title}}</strong>&nbsp;
+	        	<div class="text-right">
+	        		<small>
+	        			<b>Publicado el {{post.publish_date}}</b>&nbsp;
+	        		</small>
+	        	</div>	
 		    	<hr>
 		    	<br>
 		    	<img *ngIf="post.image==''" src="/assets/images/no-image.png" class="img-fluid avatar">

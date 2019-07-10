@@ -29,11 +29,6 @@ export class NotifyComponent implements OnInit {
   /**
   *@ignore
   */
-  objDate = Date.now();	
-
-  /**
-  *@ignore
-  */
   constructor(private router: Router, private posts: PostsService, private answers: AnswersService, private auth: AuthenticationService, private toastr: ToastrService) { }
 
   /**

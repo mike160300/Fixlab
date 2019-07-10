@@ -1,4 +1,5 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, TemplateRef } from '@angular/core';
+import { BsModalService, BsModalRef } from 'ngx-bootstrap/modal';
 import {AuthenticationService} from '../../auth/authentication.service';
 import { Router } from "@angular/router";
 import { NgForm } from '@angular/forms';
@@ -16,8 +17,8 @@ import { ToastrService } from 'ngx-toastr';
   templateUrl: './profile.component.html',
   styleUrls: ['./profile.component.css']
 })
-export class ProfileComponent implements OnInit {
-
+export class ProfileComponent implements OnInit 
+{
   /**
   *URL para la imagen a cargar en Firebase Storage.
   **/
@@ -46,11 +47,23 @@ export class ProfileComponent implements OnInit {
   *@ignore
   */
   descriptionValue;
-
   /**
   *@ignore
   */
-  constructor(private auth: AuthenticationService,private router: Router, private storage: AngularFireStorage, private toastr: ToastrService) {
+  modalRef1: BsModalRef;
+  /**
+  *@ignore
+  */
+  constructor(private modalService: BsModalService, private auth: AuthenticationService,private router: Router, private storage: AngularFireStorage, private toastr: ToastrService) 
+  { }
+
+  /**
+  *Modal editar un usuario.
+  */
+  update(template: TemplateRef<any>) 
+  {
+    this.modalRef1 = this.modalService.show(template);
+    this.modalRef1.hide();
   }
 
   /**
@@ -90,13 +103,13 @@ export class ProfileComponent implements OnInit {
       err => {
         this.toastr.error('Error al editar los datos del usuario');
       }
-    ); ;
+    );
   }
 
   /**
   *Carga la imagen de perfil en Firebase Storage.
   */ 
- upload(event) 
+  upload(event) 
   {
     // Obtiene la imagen:
     const file = event.target.files[0];
@@ -116,6 +129,19 @@ export class ProfileComponent implements OnInit {
         this.downloadURL.subscribe(url => {this.imageUrl = url} );
       })
     ).subscribe();
+  }
+
+  /**
+  *Cancela la actualización de los datos de usuario.
+  */
+  cancelEdit()
+  {
+    if(this.imageUrl!=null)
+    {
+      this.deleteImage(this.imageUrl);
+    }
+    this.imageUrl=null;
+    this.modalRef1.hide();
   }
 
   /**
